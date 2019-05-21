@@ -1,0 +1,63 @@
+def_key "alt-up"
+    previous_screen
+
+def_key "alt-down"
+    next_screen
+
+def_key "space"
+	pause
+
+def_key "left"
+	seek_backward
+
+def_key "right"
+	seek_forward
+
+def_key "d"
+	delete_playlist_items
+
+def_key "v"
+	select_item
+
+def_key "V"
+	select_album
+
+def_key "escape"
+	remove_selection
+	start_searching
+
+def_key "n"
+	next_found_item
+
+def_key "N"
+	previous_found_item
+
+def_key "r"
+	toggle_random
+
+def_key "A"
+	move_selected_items_to
+
+def_key "h"
+	toggle_interface
+
+def_key "="
+	volume_up
+
+def_key "+"
+	volume_up
+
+def_key "-"
+	volume_down
+
+def_key "s"
+	sort_playlist
+
+def_key "z"
+	dummy
+
+def_key "y"
+	dummy
+
+def_key "ctrl-l"
+	dummy

@@ -1,0 +1,110 @@
+#	  ___     ___    ___ ___   _____    ___  _____   _____   
+#	/' _ `\  /'___\/' __` __`\/\ '__`\ /'___/\ '__`\/\ '__`\ 
+#	/\ \/\ \/\ \__//\ \/\ \/\ \ \ \L\ /\ \__\ \ \L\ \ \ \L\ \
+#	\ \_\ \_\ \____\ \_\ \_\ \_\ \ ,__\ \____\ \ ,__/\ \ ,__/
+#	 \/_/\/_/\/____/\/_/\/_/\/_/\ \ \/ \/____/\ \ \/  \ \ \/ 
+#	                             \ \_\         \ \_\   \ \_\ 
+#	                              \/_/          \/_/    \/_/ 
+
+
+# mpd
+#mpd_port = "7755"
+
+
+# display
+song_list_format = "$0%t $R$7%b $4%a"
+# alternative -- song_columns_list_format = "(5)[]{}(55)[16]{t}"
+#song_columns_list_format = "(6)[green]{l} (28)[blue]{a} (29)[cyan]{b} (50)[white]{t}"
+song_status_format = "$3%t"
+playlist_display_mode = "classic"
+enable_window_title = yes
+song_window_title_format = "%a - %t"
+
+
+# now playing
+now_playing_prefix = "$2» "
+#now_playing_suffix = "$2«"
+execute_on_song_change = "lastfm -nqo"
+
+# playlist
+browser_playlist_prefix = "$3 ♥ $3 "
+
+
+# delays
+playlist_disable_highlight_delay = "1"
+message_delay_time= "1"
+
+
+# progress bar
+progressbar_look = "───"
+progressbar_color = "cyan"
+progressbar_elapsed_color = "2"
+
+
+# colors
+colors_enabled = "yes"
+empty_tag_color = "white"
+statusbar_color = "white"
+state_line_color = "white"
+state_flags_color = "white"
+main_window_color = "white"
+header_window_color = "white"
+
+
+# misc
+display_bitrate = "no"
+autocenter_mode = "yes"
+centered_cursor = "yes"
+titles_visibility = "no"
+statusbar_visibility = "no"
+mouse_support = "yes"
+header_visibility = "no"
+display_remaining_time = "no"
+ask_before_clearing_playlists = "yes"
+discard_colors_if_item_is_selected = "yes"
+allow_for_physical_item_deletion = "no"
+seek_time = 5
+
+
+## Screens available for use: help, playlist, browser, search_engine,	
+## media_library, playlist_editor, tag_editor, outputs, visualizer, clock.
+screen_switcher_mode = "playlist, browser, search_engine"
+
+
+## For a song format you can use:
+##
+## %l - length
+## %f - filename
+## %D - directory
+## %a - artist
+## %A - album artist
+## %t - title
+## %b - album
+## %y - date
+## %n - track number (01/12 -> 01)
+## %N - full track info (01/12 -> 01/12)
+## %g - genre
+## %c - composer
+## %p - performer
+## %d - disc
+## %C - comment
+## %P - priority
+## $R - begin right alignment
+#
+## In addition, formats support markers used for text attributes.  They are
+## followed by character '$'. After that you can put:
+##
+## - 0 - default window color (discards all other colors)
+## - 1 - black
+## - 2 - red
+## - 3 - green
+## - 4 - yellow
+## - 5 - blue
+## - 6 - magenta
+## - 7 - cyan
+## - 8 - white
+## - 9 - end of current color
+## - b - bold text
+## - u - underline text
+## - r - reverse colors
+## - a - use alternative character set
