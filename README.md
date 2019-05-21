@@ -39,7 +39,7 @@ keyboard shortcuts select styles or fetch all my colorschemes and wallpapers fro
 
 ### menubar + notifications
 + (cmd + shift + x) load random [xanthia](https://github.com/zzzeyez/xanthia) + [pecan](https://github.com/zzzeyez/pecan) style
-+ (cmd + shift + h) [toggle](https://github.com/zzzeyez/bin) `xanthia` + `pecan` (also applies `chunkwm` menubar offset via [wal-set](https://github.com/zzzeyez/bin)
++ (cmd + shift + h) [toggle](https://github.com/zzzeyez/bin) `xanthia` + `pecan` (also applies `chunkwm` menubar offset via [wal-set](https://github.com/zzzeyez/bin))
 
 ## install
 i regularly reformat my laptop, run `dots.sh` and pick up where i left off
