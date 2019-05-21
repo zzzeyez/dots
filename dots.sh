@@ -17,6 +17,12 @@ setup() {
 	if [[ "$notify" ]] ; then
 		notify-send "cleaning and updating system.."
 	fi
+	# log in to sudo and stay there
+	#if [[ "$sudo" ]] ; then
+	#	sudo -v
+	#while true; do sudo -n true; sleep 60; kill -0 "$$"\
+	#	|| exit; done 2>/dev/null &
+	#fi
 }
 
 screenshot() {
@@ -214,7 +220,7 @@ paths() {
 			case $yn in
 				[Yy]*)
 					if [[ ! "$test" ]] ; then
-						sudo echo "$paths >> /etc/paths.d/paths" &&
+						sudo echo "$paths" >> /etc/paths.d/paths &&
 						echo "paths updated"
 					else
 						echo "paths updated"
@@ -317,12 +323,6 @@ clearlibrary() {
 
 # called by clearhome() and clearlibrary()
 remove() {
-	# log in to sudo and stay there
-	#if [[ ! "$test" ]] ; then
-	#	sudo -v
-	#while true; do sudo -n true; sleep 60; kill -0 "$$"\
-	#	|| exit; done 2>/dev/null &
-	#fi
 	deleted="$cyn$(find "$remove" -maxdepth 1 -not -name "$1" -not -name "$2" -not -name "$3"\
 		-not -name "$4" -not -name "$5" -not -name "$6"\
 		-not -name "$7" -not -name "$8" -not -name "$9" -not -name "." -not -name ".."\
@@ -342,7 +342,7 @@ remove() {
 					-not -name "$4" -not -name "$5" -not -name "$6"\
 					-not -name "$7" -not -name "$8" -not -name "$9" -not -name "." -not -name ".."\
 					| awk '{system ("sudo rm -rf \""$0"\"")}' &&
-				printf "\nfinished!!\n"
+				printf "\nfinished\n"
 			else
 				find "$remove" -maxdepth 1 -not -name "$1" -not -name "$2" -not -name "$3"\
 					-not -name "$4" -not -name "$5" -not -name "$6"\
@@ -397,7 +397,7 @@ symlinkdots() {
 	dot 'chunkwm/chunkwmrc' '.chunkwmrc'
 	dot 'chunkwm/skhdrc' '.skhdrc'
 	# irssi
-	#title='$ylwirssi'
+	#title='irssi'
 	#dot 'irssi' '.irssi'
 	# iterm2
 	title='iterm2'
@@ -432,12 +432,15 @@ symlinkdots() {
 	dot 'git/gitconfig' '.gitconfig'
 	# fonts
 	title='fonts'
-	dot "..dots/fonts" "Library/Fonts"
+	dot "fonts" "Library/Fonts"
 	# pecan + xanthia
 	title='pecan + xanthia'
 	mkdir -p "Library/Application Support/Übersicht/widgets" &>/dev/null
 	dot '../pecan' "Library/Application Support/Übersicht/widgets/pecan"
 	dot '../xanthia' "Library/Application Support/Übersicht/widgets/xanthia"
+	# this file
+	title='dots'
+	dot 'dots.sh' '../../usr/local/bin/dots'
 	if [[ "$notify" ]] ; then
 		ps cax | grep bersicht > /dev/null
 		if [ $? -eq 0 ] ; then
@@ -596,18 +599,17 @@ finished() {
 		case $yn in
 			[Yy]*)
 				if [[ ! "$test" ]] ; then
-					if [[ "$noninteractive" ]] && [[ "$libraryoff" ]] ; then
+					if [[ ! "$noninteractive" ]] ; then
 						sudo reboot
 						echo "rebooting.."
 					else
-						printf "\nexiting..\n"
+						printf "\nnon-interactive mode.. skipping reboot\n"
 					fi
 					exit
 				else
 					echo "rebooting.."
 					exit
 				fi
-				break
 			;;
 			[Nn]*)
 				echo "exiting.."
@@ -653,11 +655,9 @@ setup
 makebar
 if [[ "$auto" ]] ; then
 	yes | clearhome
-	yes | symlinkdots
-	yes | applysettings &>/dev/null
-	brewupdate
-	yes | brewservices
-	yes | finished
+	yes | dotfiles
+	yes | applysettings
+	yes | brewupdate
 else
 	brewinstall
 	gitclone
@@ -667,8 +667,33 @@ else
 	shell
 	clearhome
 	clearlibrary
-	symlinkdots
+	dotfiles
 	applysettings
 	brewservices
 	finished
 fi
+
+# todo
+
+# touch .hushlogin
+
+# map caps lock -> alt (current method is reset on reboot)
+
+# echo path to skhd plist
+# gsed -i 's/:\/sbin/:\/sbin:\/Users\/zzzeyez\/.bin:\/Users\/zzzeyez\/scripts\/bin/g' skhd.plist 
+
+# echo paths to /etc/paths.d/paths
+
+# get skhd to access bin (sometimes it doesn't) 
+# or was this because my .scss files sourced invalid paths?
+# wallpaper is not working, but wal, togglebar and colorlovers are?
+
+# link colorlovers and new-roses
+
+# zsh-git-prompt is buggy
+
+# gray highlught isn't working now? the accents are..
+
+# i could simplify this script by eliminating redundant functions if you can store commands in arrays
+
+# apply `pollen` as safari home page
