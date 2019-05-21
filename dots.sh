@@ -697,3 +697,5 @@ fi
 # i could simplify this script by eliminating redundant functions if you can store commands in arrays
 
 # apply `pollen` as safari home page
+
+#process array with `find` better than $1, $2, etc

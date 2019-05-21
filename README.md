@@ -1,6 +1,6 @@
 # macos dotfiles
-![screenshot](screenshot.png)
-here is the [wallpaper](wallpaper.png) and `wal` [colorscheme](colors.json) shown in the screenshot. the colorscheme can be loaded with `wal --theme ./colors.json`
+![screenshot](screenshot/screenshot.png)
+here is the [wallpaper](screenshot/wallpaper.png) and `wal` [colorscheme](screenshot/colors.json) shown in the screenshot. the colorscheme can be loaded with `wal --theme ./colors.json`
 
 ## features
 + three-finger dragging, tap to click, two-finger tap to right click
