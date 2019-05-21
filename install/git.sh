@@ -20,6 +20,8 @@ clone() {
 	if [[ ! -d "$scripts/$1" ]] ; then                         
 		printf "\ncloning $1 into $scripts/$1\n"
 		git clone "https://github.com/zzzeyez/$1.git" "$scripts/$1"
+	else
+		printf "\n$1 exists.  skipping..\n"
 	fi                                                             
 }                                                                      
 

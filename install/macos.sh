@@ -3,14 +3,31 @@
 # based on mathias' script, heavily altered
 # this will apply my macos settings
 
+bar() {
+	# color escapes
+	red="\e[31m"
+	grn="\e[32m"
+	ylw="\e[33m"
+	blu="\e[34m"
+	pur="\e[35m"             
+	cyn="\e[36m"                                       
+	gry="\e[90m"
+	rst="\e[0m"
+	bar="▔▔▔▔▔▔"       
+	bar="$red$bar$grn$bar$ylw$bar$blu$bar$pur$bar$cyn$bar$rst"
+}
 
 new() {
-	printf "\n\n$title\n$outt\n"
+	printf "\n$title\n$bar\n"
 }
 
 macos() {
 	printf "\n$1\n\n"
 }
+
+# define colors
+bar
+
 
 
 
@@ -18,6 +35,7 @@ macos() {
 
 ##
 title='macos settings'
+new
 macos 'quitting System Preferences and logging into root' 
 osascript -e 'tell application "System Preferences" to quit'
 sudo -v

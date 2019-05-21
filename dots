@@ -47,9 +47,9 @@ makebar() {
 	clear
 }
 
-brewupgrade() {
-	printf "\nhomebrew upgrades\n$bar\n"
-	printf "\ndo you want to install or upgrade all brew packages?\n\n"
+brewinstall() {
+	printf "\nhomebrew packages\n$bar\n"
+	printf "\ndo you want to install all brew packages?\n\n"
 	while true
 	do
 	read -p "(y/n) " yn
@@ -105,8 +105,135 @@ gitclone() {
 	done
 }
 
+pythonpackages() {
+	printf "\npython\n$bar\n"
+	printf "\ndo you want to install python packages?\n\n"
+	while true
+	do
+	read -p "(y/n) " yn
+		case $yn in
+			[Yy]*)
+				if [[ ! "$test" ]] ; then
+					pip3 install pywal &&
+					echo "pywal installed"
+					pip install Mopidy-Tidal &&
+					echo "mopidy-tidal installed"
+				else
+					echo "pywal installed"
+					echo "mopidy-tidal installed"
+				fi
+				break
+			;;
+			[Nn]*)
+				break
+			;;
+			*)
+				echo 'enter yes/no'
+			;;
+		esac
+	done
+}
+
+ohmyzsh() {
+	printf "\noh-my-zsh\n$bar\n"
+	printf "\ndo you want to install oh-my-zsh + plugins?\n\n"
+	while true
+	do
+	read -p "(y/n) " yn
+		case $yn in
+			[Yy]*)
+				if [[ ! "$test" ]] ; then
+					sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" &&
+					echo "oh-my-zsh installed"
+					git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions &&
+					echo "zsh-autosuggestions installed"
+					git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting &&
+					echo "zsh-syntax-highlighting installed"
+					git clone https://github.com/olivierverdier/zsh-git-prompt.git ~/.oh-my-zsh/custom/plugins/zsh-git-prompt
+					echo "zsh-git-prompt installed"
+				else
+					echo "oh-my-zsh installed"
+					echo "zsh-autosuggestions installed"
+					echo "zsh-syntax-highlighting installed"
+					echo "zsh-git-prompt installed"
+				fi
+				break
+			;;
+			[Nn]*)
+				break
+			;;
+			*)
+				echo 'enter yes/no'
+			;;
+		esac
+	done
+}
+
+shell() {
+	query="$(cat /etc/shells | grep /usr/local/bin/zsh)"
+		if [[ -z "$query" ]] ; then
+			printf "\nshell\n$bar\n"
+			printf "\nswitch to zsh and brew-installed bash?\n\n$paths\n\n"
+			while true
+			do
+			read -p "(y/n) " yn
+				case $yn in
+					[Yy]*)
+						if [[ ! "$test" ]] ; then
+							sudo sh -c 'echo /usr/local/bin/zsh >> /etc/shells && chsh -s /usr/local/bin/zsh'
+							if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
+								echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells;
+								chsh -s "${BREW_PREFIX}/bin/bash";
+							fi;
+							echo "shell changed to brew-installed bash and zsh"
+						else
+							echo "shell changed to brew-installed bash and zsh"
+						fi
+						break
+					;;
+					[Nn]*)
+						break
+					;;
+					*)
+						echo 'enter yes/no'
+					;;
+				esac
+			done
+		fi
+	unset query
+}
+
+paths() {
+	if [[ ! -f "/etc/paths.d/paths" ]] ; then
+		paths="/usr/bin/local\n${HOME}/scripts/bin\n${HOME}/.bin\n$(brew --prefix coreutils)/libexec/gnubin"
+		printf "\npath\n$bar\n"
+		printf "\ndo you want to export these to your path?\n\n$paths\n\n"
+		while true
+		do
+		read -p "(y/n) " yn
+			case $yn in
+				[Yy]*)
+					if [[ ! "$test" ]] ; then
+						sudo echo "$paths >> /etc/paths.d/paths" &&
+						echo "paths updated"
+					else
+						echo "paths updated"
+					fi
+					break
+				;;
+				[Nn]*)
+					break
+				;;
+				*)
+					echo 'enter yes/no'
+				;;
+			esac
+		done
+	fi
+}
+
 clearhome() {
-	printf "\ndots utility\n$bar\n"
+	printf "\nhome\n$bar\n"
 	printf "\ndo you want to delete your home?\n"
 	while true
 	do
@@ -164,7 +291,8 @@ recreate() {
 }
 
 clearlibrary() {
-	printf "\ndo you want to delete ~/Library (reboot required)\n"
+	printf "\nLibrary\n$bar\n"
+	printf "\ndo you want to delete ~/Library?  restart required\n"
 	while true
 	do
 	read -p "(y/n) " yn
@@ -293,7 +421,7 @@ symlinkdots() {
 	dot 'weechat' '.weechat'
 	# oh-my-zsh
 	title='oh-my-zsh'
-	dot 'oh-my-zsh/custom' '.oh-my-zsh/custom'
+	dot 'oh-my-zsh/themes' '.oh-my-zsh/custom/themes'
 	dot 'oh-my-zsh/zshrc' '.zshrc'
 	# new-roses
 	title='new-roses'
@@ -401,6 +529,31 @@ applysettings() {
 	done
 }
 
+brewupdate() {
+	printf "\nbrew update\n$bar\n"
+	printf "\ndo you want to update homebrew?\n"
+	while true
+	do
+	read -p "(y/n) " yn
+		case $yn in
+			[Yy]*)
+				if [[ ! "$test" ]] ; then
+					brew update
+					brew upgrade
+					brew cleanup
+				fi
+				break
+			;;
+			[Nn]*)
+				break
+			;;
+			*)
+				echo 'enter yes/no'
+			;;
+		esac
+	done
+}
+
 brewservices() {
 	printf "\nhomebrew services\n$bar\n"
 	printf "\ndo you want to auto start mopidy, skhd and chunkwm?\\n"
@@ -458,6 +611,7 @@ finished() {
 			;;
 			[Nn]*)
 				echo "exiting.."
+				exit
 			;;
 			*)
 				echo 'enter yes/no'
@@ -501,12 +655,16 @@ if [[ "$auto" ]] ; then
 	yes | clearhome
 	yes | symlinkdots
 	yes | applysettings &>/dev/null
-	brewupgrade &>/dev/null
+	brewupdate
 	yes | brewservices
 	yes | finished
 else
-	brewupgrade
+	brewinstall
 	gitclone
+	pythonpackages
+	ohmyzsh
+	paths
+	shell
 	clearhome
 	clearlibrary
 	symlinkdots
