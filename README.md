@@ -69,7 +69,7 @@ as is the case with all dotfiles: configs are a very personal thing and my workf
 
 ## to do + issues i'm experiencing (maybe you can help)
 + caps-lock -> alt-key bind reverts upon reset.  seeking new terminal method..
-+ custom `oh-my-zsh` themes is buggy (is this just how it is?)
++ custom `oh-my-zsh` theme is buggy (is this just how it is?)
 + sometimes my method of changing macos highlight color doesn't work
-+ unable to echo paths to `/etc/paths.d/paths`
-+ make `./install/brew,sh` and `./install/macos.sh` interactive
++ unable to `sudo echo` paths to `/etc/paths.d/paths`
++ make `./install/brew.sh` and `./install/macos.sh` interactive
