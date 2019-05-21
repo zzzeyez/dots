@@ -3,7 +3,7 @@ cmd - return : osascript -e 'tell application "iTerm" to activate' -e 'tell appl
 
 # wallpaper
 lcmd + shift - 0 : wallpaper -n ~/pictures/wallpapers
-lcmd - 0 : wallpaper -ns ~/pictures/wallpapers
+lcmd - 0 : wallpaper -no ~/pictures/wallpapers
 rcmd + shift - 0 : wallpaper -n 6
 rcmd - 0 : wallpaper -n 8
 cmd + shift - d : new-roses -ns ~/pictures/wallpapers
