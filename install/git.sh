@@ -23,7 +23,8 @@ clone() {
 	fi                                                             
 }                                                                      
 
-mkdir -p "$scripts"                                                        
+mkdir -p "$scripts"
+git config --global user.email "zzzeyez@gmail.com"
 clone dots                                                                 
 clone bin                                                                  
 clone pecan                                                                
