@@ -190,12 +190,12 @@ clearlibrary() {
 # called by clearhome() and clearlibrary()
 remove() {
 	# log in to sudo and stay there
-	if [[ ! "$test" ]] ; then
-		sudo -v
-	while true; do sudo -n true; sleep 60; kill -0 "$$"\
-		|| exit; done 2>/dev/null &
-	fi
-	deleted="$cyn$(sudo find "$remove" -maxdepth 1 -not -name "$1" -not -name "$2" -not -name "$3"\
+	#if [[ ! "$test" ]] ; then
+	#	sudo -v
+	#while true; do sudo -n true; sleep 60; kill -0 "$$"\
+	#	|| exit; done 2>/dev/null &
+	#fi
+	deleted="$cyn$(find "$remove" -maxdepth 1 -not -name "$1" -not -name "$2" -not -name "$3"\
 		-not -name "$4" -not -name "$5" -not -name "$6"\
 		-not -name "$7" -not -name "$8" -not -name "$9" -not -name "." -not -name ".."\
 		| awk '{system ("echo \""$0"\"")}')$rst"
@@ -210,13 +210,13 @@ remove() {
 			if [[ "$test" ]] ; then
 				printf "\nfinished\n"
 			elif [[ "$library" ]] ; then
-				sudo find "$remove" -maxdepth 1 -not -name "$1" -not -name "$2" -not -name "$3"\
+				find "$remove" -maxdepth 1 -not -name "$1" -not -name "$2" -not -name "$3"\
 					-not -name "$4" -not -name "$5" -not -name "$6"\
 					-not -name "$7" -not -name "$8" -not -name "$9" -not -name "." -not -name ".."\
 					| awk '{system ("sudo rm -rf \""$0"\"")}' &&
 				printf "\nfinished!!\n"
 			else
-				sudo find "$remove" -maxdepth 1 -not -name "$1" -not -name "$2" -not -name "$3"\
+				find "$remove" -maxdepth 1 -not -name "$1" -not -name "$2" -not -name "$3"\
 					-not -name "$4" -not -name "$5" -not -name "$6"\
 					-not -name "$7" -not -name "$8" -not -name "$9" -not -name "." -not -name ".."\
 					| awk '{system ("sudo rm -rf \""$0"\"")}' &&
