@@ -629,8 +629,6 @@ for app in "Activity Monitor" \
 	"Finder" \
 	"Messages" \
 	"Photos" \
-	#"Safari" \
-	#"Terminal" \
 	"SystemUIServer"; do
 	killall "${app}" &> /dev/null
 done
