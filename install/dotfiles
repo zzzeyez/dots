@@ -48,6 +48,11 @@ oh-my-zsh/zshrc .zshrc
 # new-roses
 title=new-roses
 new-roses .config/new-roses
+../new-roses/new-rose ../../usr/local/bin/new-roses
+
+#colorlovers
+title=colorlovers
+../colorlovers/colorlovers ../../usr/local/bin/colorlovers
 
 # git
 title=git
@@ -62,8 +67,11 @@ fonts Library/fonts
 title=pecan + xanthia
 bash mkdir -p Library/ApplicationSupport/Übersicht/widgets
 ../pecan Library/ApplicationSupport/Übersicht/widgets/pecan
+../pecan/pecan-style ../../usr/local/bin/pecan-style
 ../xanthia Library/ApplicationSupport/Übersicht/widgets/xanthia
 
 # this file
 title=dots
 dots.sh ../../usr/local/bin/dots
+
+

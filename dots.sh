@@ -3,9 +3,27 @@
 # symlink my dotfiles
 # get dotfiles directory, even if this script is symlinked
 
-wallpaper='/tmp/wallpaper.png'
+lists_directory=install
+
+# install()
+brew_packages=brew_packages
+python_packages=python_packages
+macos_settings=macos_settings
+
+# copy()
+my_github=zzzeyez
+git_clones=git_clones
+dotfiles=dotfiles
+
+# remove()
+save_home=save_home
+save_library=save_library
+
+# recreate()
+make_directories=make_directories
 
 setup() {
+
 	# get absolute path of dots folder
 	source="${BASH_SOURCE[0]}"
 	while [ -h "$source" ]; do
@@ -13,33 +31,11 @@ setup() {
 		source="$(readlink "$source")"
 		[[ $source != /* ]] && source="$dots/$source"
 	done
+
+	# dots is now an absolute path
 	dots="$( cd -P "$( dirname "$source" )" >/dev/null 2>&1 && pwd )"
-	if [[ "$notify" ]] ; then
-		notify-send "cleaning and updating system.."
-	fi
-	# log in to sudo and stay there
-	#if [[ "$sudo" ]] ; then
-	#	sudo -v
-	#while true; do sudo -n true; sleep 60; kill -0 "$$"\
-	#	|| exit; done 2>/dev/null &
-	#fi
-}
 
-screenshot() {
-	# screenshot
-	screencapture "$dots/screenshot.png"
-	# wallpaper
-	cp "$wallpaper" "$dots/wallpaper.png"
-	# wal colors
-	cp "${HOME}/.cache/wal/colors.json" "$dots/colors.json"
-	# notify
-	if [[ "$notify" ]] ; then
-		notify-send -m "dotfiles updated" -i "$dots/screenshot.png"
-	fi
-	}
-
-makebar() {
-	# color escapes
+	# escape sequences
 	red="\e[31m"
 	grn="\e[32m"
 	ylw="\e[33m"
@@ -48,608 +44,380 @@ makebar() {
 	cyn="\e[36m"
 	gry="\e[90m"
 	rst="\e[0m"
+
+	# build the bar
 	bar="▔▔▔▔▔▔"
 	bar="$red$bar$grn$bar$ylw$bar$blu$bar$pur$bar$cyn$bar$rst"
+
+	# clear the screen
 	clear
 }
 
-brewinstall() {
-	printf "\nhomebrew packages\n$bar\n"
-	printf "\ndo you want to install brew packages?\n\n(y/n) "
-	read -r response
-	if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-		if [[ ! "$(command -v brew)" ]] ; then
-			printf "\nhomebrew is not installed.  install?\n\n(y/n) "
-			read -r response
-##########################################################################################
-			if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-				printf "\ninstalling homebrew..\n\n"
-				/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-				BREW_PREFIX=$(brew --prefix)
-				printf "\nhomebrew installed\n\n"
-			fi
-#############################################################################################
-		else
-			printf "\nupdating homebrew..\n\n"
-			brew update
-			brew upgrade
-			printf "\nhomebrew updated\n\n"
-		fi
-		brew_packages=(); while read -r; do brew_packages+=("$REPLY"); done < "$dots/install/brew_packages"
-		for package in "${brew_packages[@]}"
-		do
-			if [[ ! "$package" == \#* ]] && [[ ! -z "$package" ]] ; then
-				printf "\nhomebrew packages\n$bar\n"
-				printf "\n$package\n\n(y/n) "
-				read -r response
-				if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-					bash $package
-					echo ""
-				fi
-			fi
-		done
-		brew cleanup
+get_password() {
+	title="sudo"
+	title
+
+	question 'some features require sudo.  log in for the duration of this installation?'
+	if [[ "$answer" ]] ; then
+
+		# log in and stay logged in
+		sudo -v
+		while true; do sudo -n true; sleep 60; kill -0 "$$"\
+			|| exit; done 2>/dev/null &
+
 	fi
 }
 
-gitclone() {
-	printf "\ngithub\n$bar\n"
-	printf "\ndo you want to clone your git repos?\n\n"
-	while true
-	do
-	read -p "(y/n) " yn
-		case $yn in
-			[Yy]*)
-				if [[ ! "$test" ]] ; then
-					bash "$dots/install/git_clones" &&
-					echo "repos cloned"
-				else
-					echo "repos cloned"
-				fi
-				break
-			;;
-			[Nn]*)
-				break
-			;;
-			*)
-				echo 'enter yes/no'
-			;;
-		esac
-	done
+title() {
+	if [[ $# -ne 0 ]] ; then
+		printf "%s\n$bar\n" "$1"
+	else
+		printf "%s\n$bar\n" "$title"
+	fi
 }
 
-pythonpackages() {
-	printf "\npython\n$bar\n"
-	printf "\ndo you want to install python packages?\n\n"
-	while true
-	do
-	read -p "(y/n) " yn
-		case $yn in
-			[Yy]*)
-				if [[ ! "$test" ]] ; then
-					pip3 install pywal &&
-					echo "pywal installed"
-					pip install Mopidy-Tidal &&
-					echo "mopidy-tidal installed"
-				else
-					echo "pywal installed"
-					echo "mopidy-tidal installed"
-				fi
-				break
-			;;
-			[Nn]*)
-				break
-			;;
-			*)
-				echo 'enter yes/no'
-			;;
-		esac
-	done
-}
-
-zsh_plugins() {
-	printf "\noh-my-zsh\n$bar\n"
-	printf "\ndo you want to install oh-my-zsh + plugins?\n"
-	zsh_plugins=(); while read -r; do zsh_plugins+=("$REPLY"); done < "$dots/install/zsh_plugins"
-	printf "\n(y/n)"
-	read -r response
-	if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-		gitpre='https://github.com'
-		zshdir="${HOME}/.oh-my-zsh/custom/plugins"
-		for repo in "${zsh_plugins[@]}"
-		do
-			if [[ ! "$repo" = \#* ]] && [[ ! -z "$repo" ]] ; then
-				printf "\noh-my-zsh\n$bar\n"
-				printf "\ninstall $repo?\n\n(y/n) "
-				read -r response
-				if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-					if [[ ! -d "$zshdir/${repo##*/}" ]] ; then
-						echo ""
-						git clone "$gitpre/$repo.git" "$zshdir/${repo##*/}"
-					else
-						echo ""
-						echo "$repo exists, skipping.."
-					fi
-				fi
-			fi
-		done
+message() {
+	if [[ $# -ne 0 ]] ; then
+		echo "$1"
+		echo ""
+	else
+		echo "$message"
 		echo ""
 	fi
 }
 
-shell() {
-	query="$(cat /etc/shells | grep /usr/local/bin/zsh)"
-		if [[ -z "$query" ]] ; then
-			printf "\nshell\n$bar\n"
-			printf "\nswitch to zsh and brew-installed bash?\n\n$paths\n\n"
-			while true
-			do
-			read -p "(y/n) " yn
-				case $yn in
-					[Yy]*)
-						if [[ ! "$test" ]] ; then
-							sudo sh -c 'echo /usr/local/bin/zsh >> /etc/shells && chsh -s /usr/local/bin/zsh'
-							if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
-								echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells;
-								chsh -s "${BREW_PREFIX}/bin/bash";
-							fi;
-							echo "shell changed to brew-installed bash and zsh"
-						else
-							echo "shell changed to brew-installed bash and zsh"
-						fi
-						break
-					;;
-					[Nn]*)
-						break
-					;;
-					*)
-						echo 'enter yes/no'
-					;;
-				esac
-			done
+question() {
+	printf "%s\n(y/n) " "$1"
+	unset answer
+	read -r in
+	if [[ "$in" = y* ]] ; then
+		answer=true
+	else
+		unset answer
+	fi
+	echo ""
+}
+
+# turn lists into variables ($list, $line, $entry) 
+get_list() {
+	echo ""
+}
+
+install() {
+	mode="$1"
+	title "$mode"
+	question "do you want to install $mode?"
+	if [[ "$answer" ]] ; then
+
+		# get variables from list file
+		list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$mode"
+		# separate the lines
+		for line in "${list[@]}"
+		do
+			
+			# turn string into array
+			read -r -a entry <<< "$line"
+
+			# check for titles
+			if [[ $line == title* ]] ; then
+				# is this redundant
+				title=${line##*=}
+				title
+
+			# check for messages	
+			elif [[ $line == message* ]] ; then
+				message="${line##*=}"
+				message
+
+			# ignore comments and blank lines
+			elif [[ ! "$line" == \#* ]] && [[ ! -z "$line" ]] ; then
+
+				# titles for if not fancy like macos
+				if [[ ! "$mode" == $macos_settings ]] ; then
+					title ${line##*install}
+				fi
+
+				# perform task
+				question "$line?"
+				if [[ "$answer" ]] ; then
+					$test $line
+				else
+					message "skipping.."
+					if [[ ! "$answer" ]] ; then
+						answer=skipped
+					fi
+				fi
+			fi
+		done
+	else
+		message "skipping.."
+		 if [[ ! "$answer" ]] ; then
+			answer=skipped
 		fi
-	unset query
-}
 
-paths() {
-	if [[ ! -f "/etc/paths.d/paths" ]] ; then
-		paths="/usr/bin/local\n${HOME}/scripts/bin\n${HOME}/.bin\n$(brew --prefix coreutils)/libexec/gnubin"
-		printf "\npath\n$bar\n"
-		printf "\ndo you want to export these to your path?\n\n$paths\n\n"
-		while true
-		do
-		read -p "(y/n) " yn
-			case $yn in
-				[Yy]*)
-					if [[ ! "$test" ]] ; then
-						sudo echo "$paths" >> /etc/paths.d/paths &&
-						echo "paths updated"
-					else
-						echo "paths updated"
-					fi
-					break
-				;;
-				[Nn]*)
-					break
-				;;
-				*)
-					echo 'enter yes/no'
-				;;
-			esac
-		done
 	fi
 }
 
-clearhome() {
-	printf "\nhome\n$bar\n"
-	printf "\ndo you want to delete your home?\n"
-	while true
-	do
-	read -p "(y/n) " yn
-		case $yn in
-			[Yy]*)
-				# delete everything in home, with exceptions in save_home
-				remove="${HOME}"
-				save_home=(); while read -r; do save_home+=("$REPLY"); done < \
-					"$dots/install/save_home"
-				remove "${save_home[@]}"
-				# recreate folders in home, defined in recreate_home
-				make_dir=(); while read -r; do make_dir+=("$REPLY"); done < \
-					"$dots/install/make_directories" && 
-				recreate "${make_dir[@]}"
-				break
-			;;
-			[Nn]*)
-				break
-			;;
-			*)
-				echo "enter yes/no"
-			;;
-		esac
-	done
-}
-
-# called by clearhome()
-recreate() {
-	printf "\nmake directories\n$bar\n"
-	printf "$gry%s$rst\n" "${make_dir[@]}"
-	printf "\ncreate these directories if they are non-existant?\n"
-	while true
-	do
-	read -p "(y/n) " yn
-		case $yn in
-			[Yy]*)	 
-				if [[ "$test" ]] ; then
-					printf "\ndirectories created\n"
-				else
-					cd "${HOME}" &&
-					mkdir -p "${make_dir[@]}" &&
-					printf "\ndirectories created\n"
-				fi
-				break
-			;;
-			[Nn]*)
-				break
-			;;
-			*)
-				echo "enter yes/no"
-			;;
-		esac
-	done
-}
-
-clearlibrary() {
-	printf "\nLibrary\n$bar\n"
-	printf "\ndo you want to delete ~/Library?  restart required\n"
-	while true
-	do
-	read -p "(y/n) " yn
-		case $yn in
-			[Yy]*)
-				library="on"
-				remove="${HOME}/Library"
-				save_library=(); while read -r; do save_library+=("$REPLY"); done < \
-					"$dots/install/save_library" && 
-				remove "${save_library[@]}"
-				break
-			;;
-			[Nn]*)
-				break
-			;;
-			*)
-				echo "enter yes/no"
-			;;
-		esac
-	done
-}
-
-# called by clearhome() and clearlibrary()
+# delete everything except those defined in list file $1
 remove() {
-	deleted="$cyn$(find "$remove" -maxdepth 1 -not -name "$1" -not -name "$2" -not -name "$3"\
-		-not -name "$4" -not -name "$5" -not -name "$6"\
-		-not -name "$7" -not -name "$8" -not -name "$9" -not -name "." -not -name ".."\
-		| awk '{system ("echo \""$0"\"")}')$rst"
-	printf "\ndelete these:\n$bar\n$deleted\n\nand keep these:\n$bar\n"
-	printf "$gry%s$rst\n" "$@"
-	printf "\nis this really what you want?\n"
-	while true
-	do
-	read -p "(y/n) " yn
-		case $yn in
-			[Yy]*)
-			if [[ "$test" ]] ; then
-				printf "\nfinished\n"
-			elif [[ "$library" ]] ; then
-				find "$remove" -maxdepth 1 -not -name "$1" -not -name "$2" -not -name "$3"\
-					-not -name "$4" -not -name "$5" -not -name "$6"\
-					-not -name "$7" -not -name "$8" -not -name "$9" -not -name "." -not -name ".."\
-					| awk '{system ("sudo rm -rf \""$0"\"")}' &&
-				printf "\nfinished\n"
-			else
-				find "$remove" -maxdepth 1 -not -name "$1" -not -name "$2" -not -name "$3"\
-					-not -name "$4" -not -name "$5" -not -name "$6"\
-					-not -name "$7" -not -name "$8" -not -name "$9" -not -name "." -not -name ".."\
-					| awk '{system ("sudo rm -rf \""$0"\"")}' &&
-				printf "\nfinished!!\n"
-			fi
-			break
-			;;
-			[Nn]*)
-			break
-			;;
-			*)
-			echo "enter yes/no"
-			;;
-		esac
-	done
-}
+	mode="$1"
+	title "$mode"
 
-dotfiles() {
-	printf "\ndotfiles\n$bar\n"
-	printf "\ndo you want to symlink your dotfiles?\n"
-	while true
-	do
-	read -p "(y/n) " yn
-		case $yn in
-			[Yy]*)
-				if [[ ! "$test" ]] ; then
-					symlinkdots
-				fi
-				break
-			;;
-			[Nn]*)
-				break
-			;;
-			*)
-				echo 'enter yes/no'
-			;;
-		esac
-	done
-}
-
-# updates links
-# dots/$1 to ~/$2
-symlinkdots() {
-	# first arg is dots/$1 and second is ~/$2
-	# bin
-	title='bin'
-	dot 'bin' '.bin'
-	# chunkwm + skhd
-	title='chunkwm + skhd'
-	dot 'chunkwm/chunkwmrc' '.chunkwmrc'
-	dot 'chunkwm/skhdrc' '.skhdrc'
-	# irssi
-	#title='irssi'
-	#dot 'irssi' '.irssi'
-	# iterm2
-	title='iterm2'
-	dot 'iterm2/com.googlecode.iterm2.plist' 'Library/Preferences/com.googlecode.iterm2.plist'
-	# ncmpcpp
-	title='ncmpcpp + mpd'
-	dot 'ncmpcpp' '.ncmpcpp'
-	dot 'ncmpcpp/mopidy.conf' '.config/mopidy/mopidy.conf'
-	# neovim
-	title='neovim'
-	dot 'nvim' '.config/nvim'
-	# tmux
-	title='tmux'
-	dot 'tmux/tmux.conf' '.tmux.conf'
-	dot 'tmux/tmux-better-mouse-mode' '.config/tmux-better-mouse-mode'
-	# wal
-	title='wal'
-	dot 'wal' '.config/wal'
-	# weechat
-	title='weechat'
-	dot 'weechat' '.weechat'
-	# oh-my-zsh
-	title='oh-my-zsh'
-	dot 'oh-my-zsh/themes' '.oh-my-zsh/custom/themes'
-	dot 'oh-my-zsh/zshrc' '.zshrc'
-	# new-roses
-	title='new-roses'
-	dot 'new-roses' '.config/new-roses'
-	# git
-	title='git'
-	dot 'git/gitignore_global' '.gitignore_global'
-	dot 'git/gitconfig' '.gitconfig'
-	# fonts
-	title='fonts'
-	dot "fonts" "Library/fonts"
-	# pecan + xanthia
-	title='pecan + xanthia'
-	mkdir -p "Library/Application Support/Übersicht/widgets" &>/dev/null
-	dot '../pecan' "Library/Application Support/Übersicht/widgets/pecan"
-	dot '../xanthia' "Library/Application Support/Übersicht/widgets/xanthia"
-	# this file
-	title='dots'
-	dot 'dots.sh' '../../usr/local/bin/dots'
-	if [[ "$notify" ]] ; then
-		ps cax | grep bersicht > /dev/null
-		if [ $? -eq 0 ] ; then
-			ubersicht=$(ps cax | grep bersicht | awk '{print $1}')
-			kill $ubersicht
-			open -a Übersicht
-			sleep 2s
+	# check which folder to delete and ask to delete
+	if [[ "$mode" == $save_home ]] ; then
+		question "do you want to delete your home?"
+	elif [[ "$mode" == $save_library ]] ; then
+		library="/Library"
+		question "do you want to delete ~/Library?"
 	fi
-fi
 
+	# permission granted
+	if [[ "$answer" ]] ; then
+		# get a list from $1
+		list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$mode"
+
+		# pretty title
+		title 'delete these'
+
+		# find everything except those listed in $1
+		# is there a way to just use ${list[@]} here?
+		deleted="$(find "${HOME}$library" -maxdepth 1\
+			-not -name "${list[0]}"\
+			-not -name "${list[1]}"\
+			-not -name "${list[2]}"\
+			-not -name "${list[3]}"\
+			-not -name "${list[4]}"\
+			-not -name "${list[5]}"\
+			-not -name "${list[6]}"\
+			-not -name "${list[7]}"\
+			-not -name "${list[8]}"\
+			-not -name "${list[9]}"\
+			-not -name "${list[10]}"\
+			-not -name "${list[11]}"\
+			-not -name "${list[12]}"\
+			-not -name "${list[13]}"\
+			-not -name "${list[14]}"\
+			-not -name "${list[15]}"\
+			-not -name "${list[16]}"\
+			-not -name "." -not -name "..")"
+
+		# confirm list
+		printf "$gry$deleted$rst\n\n"
+		title 'and keep these'
+		printf "$gry%s\n" "${list[@]}"
+		question ''
+	
+		# permission granted
+		if [[ "$answer" ]] ; then
+			message 'deleting home directory..'
+			echo "$deleted" | $test awk '{system ("sudo rm -rf \""$0"\"")}' &&
+			message "home has been deleted"
+		else
+			message skipping..
+		fi
+	fi
 }
 
-# move and overwrite old dots with verification prompt
-dot() {
-	new="$dots/$1"
-	old="${HOME}/$2"
-	printf "\n$title\n$bar\n$new $red->$rst\n$old\n"
-	while true
-	do
-		read -p "(y/n) " yn
-		case $yn in
-			[Yy]*)
-				if [[ -d "$old" ]] || [[ -f "$old" ]] ; then
-					printf "\n$old exists.. overwrite?\n"
-					while true
-					do
-						read -p "(y/n) " yn
-						case $yn in
-							[Yy]*)
-								if [[ "$test" ]] ; then
-									printf "\nremoved $old\n"
-								else
-									rm -rf "$old" &&
-									printf "\nremoved $old\n"
-								fi
-								break
-							;;
-							[Nn]*)
-								printf "\nskipping..\n"
-								break
-							;;
-							*)
-								echo "enter yes/no"
-							;;
-						esac
-					done
-				else
-					printf "\n$old not found. creating..\n"
-				fi
-				if [[ "$test" ]] ; then
-					echo "linked $new to $old"
-				else
-					ln -sf "$new" "$old" &&
-					echo "linked $new to $old"
-				fi
-				break
-			;;
-			[Nn]* )
-			echo "skipping.."
-			break
-			;;
-			* )
-				echo 'enter yes/no'
-			;;
-		esac
-	done
+# recreate folders in home director (sourced from $1)
+recreate() {
+	mode=$1
+	list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$mode"
+	title recreate
+	
+	# ask permission
+	printf "$gry%s$rst\n" "${list[@]}"
+	echo ""
+	question "do you want to recreate these?"
+
+	# permission granted
+	if [[ "$answer" ]] ; then
+		$test mkdir -p "${list[@]}" &&
+		message "directories created"
+	else
+		message "skipping.."
+	fi
 }
 
-macos_settings() {
-	printf "\nmacos settings\n$bar\n"
-	printf "\ndo you want to apply mac settings?\n"
-	read -r response
-	if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-		macos_settings=(); while read -r; do macos_settings+=("$REPLY"); done < "$dots/install/macos_settings"
-		for setting in "${macos_settings[@]}"
+# two-argument functions
+# called by git_clones, dotfiles
+copy() {
+	mode=$1
+	# perform task?
+	if [[ "$mode" == $git_clones ]] ; then
+		title "github repositories"
+		question "do you want to clone your github repos?"
+	elif [[ "$mode" == $dotfiles ]] ; then
+		title "symlink dotfiles"
+		question "do you want to symlink your dotfiles?"
+	fi
+
+	# permission granted
+	if [[ "$answer" ]] ; then
+		
+		# get variables from list file
+		list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$mode"
+		# separate the lines
+		for line in "${list[@]}"
 		do
-			if [[ ! "$setting" == \#* ]] && [[ ! -z "$setting" ]] ; then
-				if [[ "$setting" == title* ]] ; then
-					bash $setting
-					printf "\n$title\n$bar\n"
-				elif [[ "$setting" == message* ]] ; then
-					bash $setting
-					printf "\n$message\n$bar\n"
-				else
-					printf "\n$setting\n\n(y/n) "
-					read -r response
-					if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-						bash $setting
-						echo ""
+			
+			# turn string into array
+			read -r -a entry <<< "$line"
+
+			# check for titles
+			if [[ $line == title* ]] ; then
+				title=${line##*=}
+				title
+
+			# check for messages	
+			elif [[ $line == message* ]] ; then
+				message="${line##*=}"
+				message
+
+			# check for commands
+			elif [[ $line == bash* ]] ; then
+				command="${line##*bash }"
+				$test $command
+
+			# ignore comments and blank lines
+			elif [[ ! "$line" == \#* ]] && [[ ! -z "$line" ]] ; then
+
+				# answered yes..
+				if [[ "$answer" ]] ; then
+
+					# define vars
+					if [[ "$mode" == $git_clones ]] ; then
+						source="https://github.com/${entry[0]}"
+						dest="${HOME}/${entry[1]}"
+					elif [[ "$mode" == $dotfiles ]] ; then
+						source="$dots/${entry[0]}"
+						dest="${HOME}/${entry[1]}"
 					fi
+
+					# ask for permission
+					echo "$source ->"
+					question "$dest"
+					if [[ "$answer" ]] ; then
+
+						# ask to overwrite
+						if [[ -d "$dest" ]] || [[ -f "$dest" ]] ; then
+							question "$dest exists..  overwrite?"
+
+							# overwrite
+							if [[ "$answer" ]] ; then
+								$test rm -rf "$dest"
+							fi
+						fi
+
+						# tasks
+						# git_clones
+						if [[ "$mode" == $git_clones ]] ; then
+							$test git clone "$source" "$dest" &&
+							message "cloned repo"
+
+						# dotfiles
+						elif [[ "$mode" == $dotfiles ]] ; then
+							$test ln -sf "$source" "$dest" &&
+							message "created symlink"
+						fi
+
+					# skip
+					# if we don't turn $answer back on then it skips all other questions too
+					else
+						message "skipping.."
+						if [[ ! "$answer" ]] ; then
+							answer=skipped
+						fi
+					fi 
+				else
+
+				# skip
+				# if we don't turn $answer back on then it skips all other questions too
+				message "skipping.."
+				if [[ ! "$answer" ]] ; then
+					answer=skipped
 				fi
 			fi
+		fi
 		done
 	fi
 }
 
-brewupdate() {
-	printf "\nbrew update\n$bar\n"
-	printf "\ndo you want to update homebrew?\n"
-	while true
+update() {
+	title "update"
+	message "looking for updates.."
+
+	# homebrew update
+	$test brew update
+	$test brew upgrade
+	$test brew clean
+
+	# python update
+	# get variables from list file
+	list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$python_packages"
+
+	# separate the lines
+	for line in "${list[@]}"
 	do
-	read -p "(y/n) " yn
-		case $yn in
-			[Yy]*)
-				if [[ ! "$test" ]] ; then
-					brew update
-					brew upgrade
-					brew cleanup
-				fi
-				break
-			;;
-			[Nn]*)
-				break
-			;;
-			*)
-				echo 'enter yes/no'
-			;;
-		esac
+			
+		# turn string into array
+		read -r -a entry <<< "$line"
+
+		# ignore commented or empty lines
+		if [[ ! "$line" == \#* ]] && [[ ! -z "$line" ]] ; then
+
+			# pip3 install --upgrade pywal
+			$test ${entry[0]} ${entry[1]} --upgrade ${entry[2]}
+		fi
+
 	done
+
+	# github update
+	# get variables from list file
+	list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$git_clones"
+
+	# separate the lines
+	for line in "${list[@]}"
+	do
+
+		# turn string into array
+		read -r -a entry <<< "$line"
+
+		# ignore my packages and commented or empty
+		if [[ ! "${entry[0]}" == $my_github* ]] && [[ ! "$line" == \#* ]] && [[ ! -z "$line" ]]
+		then
+
+		# move to the directory and pull it
+		message "updating ${entry[0]}.."
+		$test cd "${entry[1]}"
+		$test git pull origin master
+
+		fi
+	done
+
+	# conclude
+	$test cd "${HOME}"
+	notify
 }
 
-brewservices() {
-	printf "\nhomebrew services\n$bar\n"
-	printf "\ndo you want to auto start mopidy, skhd and chunkwm?\\n"
-	while true
-	do
-	read -p "(y/n) " yn
-		case $yn in
-			[Yy]*)
-				if [[ ! "$test" ]] ; then
-					brew services start skhd &>/dev/null &&
-					echo "skhd started" 
-					brew services start chunkwm &>/dev/null &&
-					echo "chunkwm started"
-					brew services start mopidy &>/dev/null &&
-					echo "mopidy started"
-				fi
-				break
-			;;
-			[Nn]*)
-				break
-			;;
-			*)
-				echo 'enter yes/no'
-			;;
-		esac
-	done
-}
-
-finished() {
-	printf "\nfinished\n$bar\n"
-	printf "if ~/Library was removed, reapply macos settings after reboot\n"
-	printf "most settings won't be applied until after rebooting\n"
-	printf "do you want to reboot right now?\n"
+notify() {
 	if [[ "$notify" ]] ; then
-		notify-send "system upgraded and cleaned"
+		notify-send finished updating system
 	fi
-	while true
-	do
-	read -p "(y/n) " yn
-		case $yn in
-			[Yy]*)
-				if [[ ! "$test" ]] ; then
-					if [[ ! "$noninteractive" ]] ; then
-						sudo reboot
-						echo "rebooting.."
-					else
-						printf "\nnon-interactive mode.. skipping reboot\n"
-					fi
-					exit
-				else
-					echo "rebooting.."
-					exit
-				fi
-			;;
-			[Nn]*)
-				echo "exiting.."
-				exit
-			;;
-			*)
-				echo 'enter yes/no'
-			;;
-		esac
-	done
 }
 
 flags() {
-	while getopts snyx opt; do
+	while getopts nxo opt; do
 		case $opt in
-			s)
-			screenshot
-			exit
+			n) notify=on
 			;;
-			n)
-			notify="on"
+			# $test is slipped in before all commands
+			x) test=echo
 			;;
-			y)
-			auto="on"
-			;;
-			x)
-			test="on"
-			;;
-			*)
-			echo '-u to save screen shot and wal colors'
-			echo '-n to notify-send when done'
-			echo '-y for non-interactive mode'
-			echo '-x to test without affecting system'
+			u) yes | remove "$save_home"
+			yes | recreate "$make_directories"
+			yes | copy "$dotfiles"
+			yes | update
+			yes | install "$macos_settings"
 			exit
 			;;
 		esac
@@ -657,51 +425,21 @@ flags() {
 }
 
 setup
-makebar
-flags "$@"
-if [[ "$auto" ]] ; then
-	yes | clearhome
-	yes | dotfiles
-	yes | macos_settings
-	yes | brewupdate
-else
-	brewinstall
-	gitclone
-	pythonpackages
-	zsh_plugins
-	paths
-	shell
-	clearhome
-	clearlibrary
-	dotfiles
-	macos_settings
-	brewservices
-	finished
-fi
+flags $@
+get_password
+remove "$save_home"
+remove "$save_library"
+recreate "$make_directories"
+install "$brew_packages"
+install "$python_packages"
+install "$macos_settings"
+copy "$git_clones"
+copy "$dotfiles"
 
-# todo
 
-# touch .hushlogin
+# update
+# brew services
+# save_home save_library
+# misc
 
-# map caps lock -> alt (current method is reset on reboot)
-
-# echo path to skhd plist
-# gsed -i 's/:\/sbin/:\/sbin:\/Users\/zzzeyez\/.bin:\/Users\/zzzeyez\/scripts\/bin/g' skhd.plist 
-
-# echo paths to /etc/paths.d/paths
-
-# get skhd to access bin (sometimes it doesn't) 
-# or was this because my .scss files sourced invalid paths?
-# wallpaper is not working, but wal, togglebar and colorlovers are?
-
-# link colorlovers and new-roses pecanstyle
-
-# zsh-git-prompt is buggy
-
-# gray highlught isn't working now? the accents are..
-
-# i could simplify this script by eliminating redundant functions if you can store commands in arrays
-
-# apply `pollen` as safari home page
-
-#process array with `find` better than $1, $2, etc
+# why did it delete $dir
