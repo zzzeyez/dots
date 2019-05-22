@@ -391,11 +391,11 @@ notify() {
 }
 
 flags() {
-	while getopts nto opt; do
+	while getopts nxo opt; do
 		case $opt in
 			n) notify=on
 			;;
-			t) unset test
+			x) unset test
 			;;
 			o) update ; exit
 			;;
@@ -420,3 +420,5 @@ copy "$dotfiles"
 # brew services
 # save_home save_library
 # misc
+
+# why did it delete $dir
