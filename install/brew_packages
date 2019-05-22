@@ -1,44 +1,40 @@
 #!/usr/bin/env bash
-message=install homebrew packages
+# original by mathias, @zzzeyez version
 
-message=install homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+# Install command-line tools using Homebrew.
+
+# Make sure we’re using the latest Homebrew.
 brew update
+
+# Upgrade any already-installed formulae.
 brew upgrade
 
-message=save homebrew’s installed location.
-
+# Save Homebrew’s installed location.
 BREW_PREFIX=$(brew --prefix)
 
-message=install gnu core utilities (those that come with macos are outdated).
-message=you might have to add this to your path yourself
-
-echo "/usr/bin/local\n${HOME}/scripts/bin\n${HOME}/.bin\n$(brew --prefix coreutils)/libexec/gnubin" > /etc/paths.d/paths
-
+# Install GNU core utilities (those that come with macOS are outdated).
+# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils
 ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
 
-message=install some other useful utilities like `sponge`.
+# Install some other useful utilities like `sponge`.
 brew install moreutils
-
-message=install gnu `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
+# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew install findutils
-
-message=install gnu `sed`, overwriting the built-in `sed`.
-brew install gnu-sed
-
-message=install bash 4.
+# Install GNU `sed`, overwriting the built-in `sed`.
+brew install gnu-sed --with-default-names
+# Install Bash 4.
 brew install bash
 brew install bash-completion2
-brew install grep
-brew install python3
-brew install zsh
 
-message=switch to zsh and bash4
-sudo sh -c 'echo /usr/local/bin/zsh >> /etc/shells && chsh -s /usr/local/bin/zsh'
-echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells
-chsh -s "${BREW_PREFIX}/bin/bash"
+# Switch to using brew-installed bash as default shell
+if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
+  echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells;
+  chsh -s "${BREW_PREFIX}/bin/bash";
+fi;
+
+# my stuff
 brew install neovim
 brew install tmux
 brew install weechat 
@@ -61,28 +57,26 @@ brew install mpc
 brew install sassc
 brew install wget
 brew install pidof
+
+# fonts
 brew tap caskroom/fonts
 brew cask install font-iosevka
 brew cask install font-fira-code
 
-message=chunkwm
+# chunkwm
 brew tap koekeishiya/formulae
 brew install chunkwm
-
-message=install from git repo
 brew install --HEAD chunkwm
-
-message=skhd
 brew install koekeishiya/formulae/skhd
 
-message=mopidy
+# mopidy
 brew tap mopidy/mopidy
 brew install mopidy-scrobbler
 
-message=cask
+# cask
 brew tap caskroom/cask
 brew cask install iterm2
 brew cask install ubersicht
 
-message=remove outdated versions from the cellar.
+# remove old versions from cellar
 brew cleanup

@@ -108,47 +108,7 @@ install() {
 	title "$mode"
 	question "do you want to install $mode?"
 	if [[ "$answer" ]] ; then
-
-		# get variables from list file
-		list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$mode"
-		# separate the lines
-		for line in "${list[@]}"
-		do
-			
-			# turn string into array
-			read -r -a entry <<< "$line"
-
-			# check for titles
-			if [[ $line == title* ]] ; then
-				# is this redundant
-				title=${line##*=}
-				title
-
-			# check for messages	
-			elif [[ $line == message* ]] ; then
-				message="${line##*=}"
-				message
-
-			# ignore comments and blank lines
-			elif [[ ! "$line" == \#* ]] && [[ ! -z "$line" ]] ; then
-
-				# titles for if not fancy like macos
-				if [[ ! "$mode" == $macos_settings ]] ; then
-					title ${line##*install}
-				fi
-
-				# perform task
-				question "$line?"
-				if [[ "$answer" ]] ; then
-					$test $line
-				else
-					message "skipping.."
-					if [[ ! "$answer" ]] ; then
-						answer=skipped
-					fi
-				fi
-			fi
-		done
+		bash "$dots/$lists_directory/$mode"
 	else
 		message "skipping.."
 		 if [[ ! "$answer" ]] ; then
@@ -169,6 +129,7 @@ remove() {
 	elif [[ "$mode" == $save_library ]] ; then
 		library="/Library"
 		question "do you want to delete ~/Library?"
+		sudo=sudo
 	fi
 
 	# permission granted
@@ -210,7 +171,7 @@ remove() {
 		# permission granted
 		if [[ "$answer" ]] ; then
 			message 'deleting home directory..'
-			echo "$deleted" | $test awk '{system ("sudo rm -rf \""$0"\"")}' &&
+			$test $sudo echo "$deleted" | awk '{system ("rm -rf \""$0"\"")}' &&
 			message "home has been deleted"
 		else
 			message skipping..
@@ -406,7 +367,7 @@ notify() {
 }
 
 flags() {
-	while getopts nxo opt; do
+	while getopts nxu opt; do
 		case $opt in
 			n) notify=on
 			;;

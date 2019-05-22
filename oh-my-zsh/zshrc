@@ -101,4 +101,6 @@ source $ZSH/custom/plugins/zsh-git-prompt/zshrc.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # wal
-(cat ~/.cache/wal/sequences &)
+if [[ -f ~/.cache/wal/sequences ]] ; then
+	(cat ~/.cache/wal/sequences &)
+fi
