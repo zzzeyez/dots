@@ -1,0 +1,485 @@
+#!/usr/bin/env bash
+# author: daniel neemann (@zzzeyez)
+# based on mathias script, heavily altered
+# this will apply my macos settings
+# defaults-write.com is amazing btw
+
+##
+title=macos settings
+message=quitting System Preferences and logging into root 
+osascript -e tell application "System Preferences" to quit
+
+##
+title=general
+message=naming machine zzzeyez
+sudo scutil --set ComputerName "zzzeyez"
+sudo scutil --set HostName "zzzeyez"
+sudo scutil --set LocalHostName "zzzeyez"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "zzzeyez"
+
+##
+message=disable system boot audio, set 24-hour standby delay
+sudo pmset -a standbydelay 300
+sudo nvram SystemAudioVolume=" "
+
+##
+message=disable transparency, make cocoa apps animate faster
+defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+defaults write com.apple.universalaccess reduceTransparency -bool true
+
+##
+message=highlights + accents gray, battery percentage on the menu bar
+defaults write NSGlobalDomain AppleHighlightColor -string "0.576500 0.576500 0.576500"
+defaults write NSGlobalDomain AppleAccentColor -int -1
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+
+##
+message=sidebar icon size medium, hide scrollbars, disable focus animation
+defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
+defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
+## `WhenScrolling`, `Automatic` and `Always`
+defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool false
+
+##
+message=save to disk rather than icloud, disable crash reporter
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+defaults write com.apple.CrashReporter DialogType -string "none"
+
+##
+message=disable sleep mode and notification center
+sudo systemsetup -setcomputersleep Off > /dev/null
+launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+
+##
+message=disable all forms of auto correct
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+##
+message=set default wallpaper to /tmp/wallpaper.png and hide menu bar
+rm -rf ~/Library/Application Support/Dock/desktoppicture.db
+sudo rm -rf /System/Library/CoreServices/DefaultDesktop.jpg
+sudo ln -s /tmp/wallpaper.png /System/Library/CoreServices/DefaultDesktop.jpg
+defaults write NSGlobalDomain _HIHideMenuBar -bool true
+
+
+
+
+
+##
+title=ssd
+message=disable hibernation + sleep image (wastes space)
+sudo pmset -a hibernatemode 0
+sudo rm /private/var/vm/sleepimage
+sudo touch /private/var/vm/sleepimage
+sudo chflags uchg /private/var/vm/sleepimage
+
+
+
+
+
+##
+title=peripherals
+message=tap to click, two finger tap right click, three-finger dragging, natural scrolling
+# single finger + double finger tap to click.  tested on mojave
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write Apple Global Domain com.apple.mouse.tapBehavior 1
+#
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
+
+##
+message=faster cursor, faster key repeat
+# higher is faster
+defaults write -g com.apple.trackpad.scaling 7
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+# lower is faster
+defaults write NSGlobalDomain KeyRepeat -float 1.0
+defaults write NSGlobalDomain InitialKeyRepeat -int 13
+
+##
+message=remap caps lock to alt key, prevent itunes from responding to keys
+hidutil property --set {"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x7000000E2}]}
+launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
+
+
+
+
+
+##
+title=screen
+message=require password immediately after sleep
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+##
+message=save screenshots as .png to ~/pictures/screenshots
+defaults write com.apple.screencapture location -string "${HOME}/pictures/screenshots/"
+defaults write com.apple.screencapture type -string "png"
+
+
+
+
+
+##
+title=finder
+message=disable opening animations and desktop icons
+defaults write com.apple.finder DisableAllAnimations -bool true
+defaults write com.apple.finder CreateDesktop false
+
+##
+message=set ~/ as default locatin
+defaults write com.apple.finder NewWindowTarget -string "PfLo"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
+
+##
+message=show hidden files, ~/Library, /Volumes/ and file extensions
+defaults write com.apple.finder AppleShowAllFiles -bool true
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+chflags nohidden ~/Library
+sudo chflags nohidden /Volumes
+
+##
+message=hide statusbar, pathbar, POSIX path
+defaults write com.apple.finder ShowStatusBar -bool false
+defaults write com.apple.finder ShowPathbar -bool false
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool false
+
+##
+message=windows in columns view with folders on top
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+# view modes: `icnv`, `clmv`, `Flwv`
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+
+##
+message=search current directory by default, no file extension warnings
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+##
+message=spring loading with no delay
+defaults write NSGlobalDomain com.apple.springing.enabled -bool true
+defaults write NSGlobalDomain com.apple.springing.delay -float 0
+
+##
+message=enable quit option for Finder
+defaults write com.apple.finder QuitMenuItem -bool true
+
+##
+message=disable disk image verification and .ds_store files on external disks
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+defaults write com.apple.frameworks.diskimages skip-verify -bool true
+defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
+defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+
+##
+message=disable emptying trash warning, dropbox green checkmark
+defaults write com.apple.finder WarnOnEmptyTrash -bool false
+# Remove Dropbox’s green checkmark icons in Finder
+file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
+[ -e "${file}" ] && mv -f "${file}" "${file}.bak"
+
+message=dock, dashboard, and hot corners
+title=dock, dashboad, hot corners
+message=enable highlight hover effect for the grid view of a stack (dock)
+defaults write com.apple.dock mouse-over-hilite-stack -bool true
+
+message=set the icon size of dock items to 36 pixels
+defaults write com.apple.dock tilesize -int 36
+
+message=dock position on screen
+defaults write com.apple.dock "orientation" -string "right"
+
+message=change minimize/maximize window effect
+defaults write com.apple.dock mineffect -string "scale"
+
+message=minimize windows into their application’s icon
+defaults write com.apple.dock minimize-to-application -bool true
+
+message=enable spring loading for all dock items
+defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
+
+message=show indicator lights for open applications in the dock
+defaults write com.apple.dock show-process-indicators -bool true
+
+message=wipe all (default) app icons from the dock
+message=this is only really useful when setting up a new mac, or if you don’t use
+message=the dock to launch apps.
+defaults write com.apple.dock persistent-apps -array
+
+message=show only open applications in the dock
+defaults write com.apple.dock static-only -bool true
+
+message=don’t animate opening applications from the dock
+defaults write com.apple.dock launchanim -bool false
+
+message=speed up mission control animations
+defaults write com.apple.dock expose-animation-duration -float 0.1
+
+message=don’t group windows by application in mission control
+message=(i.e. use the old exposé behavior instead)
+defaults write com.apple.dock expose-group-by-app -bool false
+
+message=disable dashboard
+defaults write com.apple.dashboard mcx-disabled -bool true
+
+message=don’t show dashboard as a space
+defaults write com.apple.dock dashboard-in-overlay -bool true
+
+message=don’t automatically rearrange spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
+
+message=remove the auto-hiding dock delay
+defaults write com.apple.dock autohide-delay -float 0
+message=remove the animation when hiding/showing the dock
+defaults write com.apple.dock autohide-time-modifier -float 0
+
+message=automatically hide and show the dock
+defaults write com.apple.dock autohide -bool true
+
+message=make dock icons of hidden applications translucent
+defaults write com.apple.dock showhidden -bool true
+
+message=don’t show recent applications in dock
+defaults write com.apple.dock show-recents -bool false
+
+message=reset launchpad, but keep the desktop wallpaper intact
+find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
+
+title=Safari & WebKit   
+
+message=privacy: don’t send search queries to apple
+defaults write com.apple.Safari UniversalSearchEnabled -bool false
+defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+
+message=press tab to highlight each item on a web page
+defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool true
+
+message=show the full url in the address bar (note: this still hides the scheme)
+defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+
+message=set Safari’s home page
+message=dont think this is working
+defaults write com.apple.Safari HomePage -string "file://${HOME}/scripts/pollen/index.html"
+
+message=set safari to open home page by default
+defaults write com.apple.Safari NewTabBehavior 0
+defaults write com.apple.Safari NewWindowBehavior 0
+
+message=prevent safari from opening ‘safe’ files automatically after downloading
+defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+
+message=allow hitting the backspace key to go to the previous page in history
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true
+
+message=hide safari’s bookmarks bar by default
+defaults write com.apple.Safari ShowFavoritesBar -bool false
+
+message=hide safari’s sidebar in top sites
+defaults write com.apple.Safari ShowSidebarInTopSites -bool false
+
+message=disable safari’s thumbnail cache for history and top sites
+defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+
+message=enable safari’s debug menu
+defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+
+message=make safari’s search banners default to contains instead of starts with
+defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
+
+message=remove useless icons from safari’s bookmarks bar
+defaults write com.apple.Safari ProxiesInBookmarksBar "()"
+
+message=enable the develop menu and the web inspector in safari
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+
+message=add a context menu item for showing the web inspector in web views
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+message=enable continuous spellchecking
+defaults write com.apple.Safari WebContinuousSpellCheckingEnabled -bool true
+message=disable auto-correct
+defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
+
+message=warn about fraudulent websites
+defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
+
+message=disable plug-ins
+defaults write com.apple.Safari WebKitPluginsEnabled -bool false
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2PluginsEnabled -bool false
+
+message=disable java
+defaults write com.apple.Safari WebKitJavaEnabled -bool false
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled -bool false
+
+message=block pop-up windows
+defaults write com.apple.Safari WebKitJavaScriptCanOpenWindowsAutomatically -bool false
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically -bool false
+
+message=enable “do not track”
+defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
+
+message=update extensions automatically
+defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
+
+title=Mail
+
+message=disable send and reply animations in mail.app
+defaults write com.apple.mail DisableReplyAnimations -bool true
+defaults write com.apple.mail DisableSendAnimations -bool true
+
+message=copy email addresses as `foo@example.com` instead of `foo bar <foo@example.com>` in mail.app
+defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
+
+message=display emails in threaded mode, sorted by date (oldest at the top)
+defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
+defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
+defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
+
+title=Spotlight
+
+message=hide spotlight tray-icon (and subsequent helper)
+sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
+message=disable spotlight indexing for any volume that gets mounted and has not yet
+message=been indexed before.
+message=use `sudo mdutil -i off "/volumes/foo"` to stop indexing any volume.
+sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
+message=change indexing order and disable some search results
+defaults write com.apple.spotlight orderedItems -array \
+	'{"enabled" = 1;"name" = "APPLICATIONS";}' \
+	'{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
+	'{"enabled" = 1;"name" = "DIRECTORIES";}' \
+	'{"enabled" = 0;"name" = "PDF";}' \
+	'{"enabled" = 1;"name" = "FONTS";}' \
+	'{"enabled" = 0;"name" = "DOCUMENTS";}' \
+	'{"enabled" = 0;"name" = "MESSAGES";}' \
+	'{"enabled" = 0;"name" = "CONTACT";}' \
+	'{"enabled" = 0;"name" = "EVENT_TODO";}' \
+	'{"enabled" = 0;"name" = "IMAGES";}' \
+	'{"enabled" = 0;"name" = "BOOKMARKS";}' \
+	'{"enabled" = 0;"name" = "MUSIC";}' \
+	'{"enabled" = 0;"name" = "MOVIES";}' \
+	'{"enabled" = 0;"name" = "PRESENTATIONS";}' \
+	'{"enabled" = 0;"name" = "SPREADSHEETS";}' \
+	'{"enabled" = 0;"name" = "SOURCE";}' \
+	'{"enabled" = 0;"name" = "MENU_DEFINITION";}' \
+	'{"enabled" = 0;"name" = "MENU_OTHER";}' \
+	'{"enabled" = 0;"name" = "MENU_CONVERSION";}' \
+	'{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
+	'{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
+	'{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
+message=load new settings before rebuilding the index
+killall mds > /dev/null 2>&1
+message=make sure indexing is enabled for the main volume
+sudo mdutil -i on / > /dev/null
+message=rebuild the index from scratch
+sudo mdutil -E / > /dev/null
+
+title=Terminal & iTerm 2 
+
+message=only use utf-8 in terminal.app
+defaults write com.apple.terminal StringEncodings -array 4
+
+message=specify the preferences directory
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "${HOME}/scripts/dots/iterm2"
+message=tell iterm2 to use the custom preferences in the directory
+defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+
+title=Time Machine                                                                #
+
+message=prevent time machine from prompting to use new hard drives as backup volume
+defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+
+message=disable local time machine backups
+hash tmutil &> /dev/null && sudo tmutil disablelocal
+
+title=Activity Monitor
+
+message=show the main window when launching activity monitor
+defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
+
+message=visualize cpu usage in the activity monitor dock icon
+defaults write com.apple.ActivityMonitor IconType -int 5
+
+message=show all processes in activity monitor
+defaults write com.apple.ActivityMonitor ShowCategory -int 0
+
+message=sort activity monitor results by cpu usage
+defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
+defaults write com.apple.ActivityMonitor SortDirection -int 0
+
+title=Address Book, Dashboard, iCal, TextEdit, and Disk Utility
+
+message=enable the debug menu in address book
+defaults write com.apple.addressbook ABShowDebugMenu -bool true
+
+message=enable dashboard dev mode (allows keeping widgets on the desktop)
+defaults write com.apple.dashboard devmode -bool true
+
+message=enable the debug menu in ical (pre-10.8)
+defaults write com.apple.iCal IncludeDebugMenu -bool true
+
+message=use plain text mode for new textedit documents
+defaults write com.apple.TextEdit RichText -int 0
+message=open and save files as utf-8 in textedit
+defaults write com.apple.TextEdit PlainTextEncoding -int 4
+defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
+message=enable the debug menu in disk utility
+defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
+defaults write com.apple.DiskUtility advanced-image-options -bool true
+
+Mac App Store                                                               
+
+message=enable the webkit developer tools in the mac app store
+defaults write com.apple.appstore WebKitDeveloperExtras -bool true
+
+message=enable debug menu in the mac app store
+defaults write com.apple.appstore ShowDebugMenu -bool true
+
+message=enable the automatic update check
+defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
+
+message=check for software updates daily, not just once per week
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+message=download newly available updates in background
+defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
+
+message=install system data files & security updates
+defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
+
+message=turn on app auto-update
+defaults write com.apple.commerce AutoUpdate -bool true
+
+message=allow the app store to reboot machine on macos updates
+defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
+
+title=Photos
+
+message=prevent photos from opening automatically when devices are plugged in
+defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
+message=messages
+
+message=disable automatic emoji substitution (i.e. use plain text smileys)
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
+
+message=disable smart quotes as it’s annoying for messages that contain code
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
+
+message=disable continuous spell checking
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
+
+title=finished
+
+message=reboot for settings to take effect

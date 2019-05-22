@@ -46,11 +46,13 @@ i regularly reformat my laptop, run `dots.sh` and pick up where i left off
 
 it (interactively) clones my github repositories to `~/scripts`, installs `homebrew`, installs my `brew` packages, python packages and (`oh-my-zsh` plugins.  it then symlinks all my dots from this repo to the default config locations and starts my `brew` services
 
-**./dots.sh** optionally install everything (interactive)
+**./dots.sh** install everything (asking for permission for each task)
 
-**./install/brew.sh** install homebrew packages (non-interactive)
+**./install/brew_packages** list of homebrew packages
 
-**./install/macos.sh** apply macos system settings (non-interactive)
+**./install/macos_settings** list of macos settings
+
+**./install/zsh_plugins** list of zsh plugins (installed to `~/.oh-my-zsh/custom/plugins`)
 
 **./install/save_home** list of files to save if deleting home directory
 

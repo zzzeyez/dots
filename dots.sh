@@ -55,34 +55,41 @@ makebar() {
 
 brewinstall() {
 	printf "\nhomebrew packages\n$bar\n"
-	printf "\ndo you want to install all brew packages?\n\n"
-	while true
-	do
-	read -p "(y/n) " yn
-		case $yn in
-			[Yy]*)
-				if [[ ! "$test" ]] && [[ "$auto" ]] ; then
-					yes | bash "$dots/install/brew.sh" &>/dev/null &&
-					echo "packages upgraded" &&
-					if [[ "$notify" ]] ; then
-						notify-send "brew packages upgraded"
-					fi
-				elif [[ ! "$test" ]] ; then
-					bash "$dots/install/brew.sh" &&
-					echo "packages upgraded.  if this is a fresh install you should restart before continuing"
-				else
-					echo "packages upgraded.  if this is a fresh install you should restart before continuing"
+	printf "\ndo you want to install brew packages?\n\n(y/n) "
+	read -r response
+	if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+		if [[ ! "$(command -v brew)" ]] ; then
+			printf "\nhomebrew is not installed.  install?\n\n(y/n) "
+			read -r response
+##########################################################################################
+			if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+				printf "\ninstalling homebrew..\n\n"
+				/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+				BREW_PREFIX=$(brew --prefix)
+				printf "\nhomebrew installed\n\n"
+			fi
+#############################################################################################
+		else
+			printf "\nupdating homebrew..\n\n"
+			brew update
+			brew upgrade
+			printf "\nhomebrew updated\n\n"
+		fi
+		brew_packages=(); while read -r; do brew_packages+=("$REPLY"); done < "$dots/install/brew_packages"
+		for package in "${brew_packages[@]}"
+		do
+			if [[ ! "$package" == \#* ]] && [[ ! -z "$package" ]] ; then
+				printf "\nhomebrew packages\n$bar\n"
+				printf "\n$package\n\n(y/n) "
+				read -r response
+				if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+					bash $package
+					echo ""
 				fi
-				break
-			;;
-			[Nn]*)
-				break
-			;;
-			*)
-				echo 'enter yes/no'
-			;;
-		esac
-	done
+			fi
+		done
+		brew cleanup
+	fi
 }
 
 gitclone() {
@@ -94,7 +101,7 @@ gitclone() {
 		case $yn in
 			[Yy]*)
 				if [[ ! "$test" ]] ; then
-					bash "$dots/install/git.sh" &&
+					bash "$dots/install/git_clones" &&
 					echo "repos cloned"
 				else
 					echo "repos cloned"
@@ -140,39 +147,34 @@ pythonpackages() {
 	done
 }
 
-ohmyzsh() {
+zsh_plugins() {
 	printf "\noh-my-zsh\n$bar\n"
-	printf "\ndo you want to install oh-my-zsh + plugins?\n\n"
-	while true
-	do
-	read -p "(y/n) " yn
-		case $yn in
-			[Yy]*)
-				if [[ ! "$test" ]] ; then
-					sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" &&
-					echo "oh-my-zsh installed"
-					git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions &&
-					echo "zsh-autosuggestions installed"
-					git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting &&
-					echo "zsh-syntax-highlighting installed"
-					git clone https://github.com/olivierverdier/zsh-git-prompt.git ~/.oh-my-zsh/custom/plugins/zsh-git-prompt
-					echo "zsh-git-prompt installed"
-				else
-					echo "oh-my-zsh installed"
-					echo "zsh-autosuggestions installed"
-					echo "zsh-syntax-highlighting installed"
-					echo "zsh-git-prompt installed"
+	printf "\ndo you want to install oh-my-zsh + plugins?\n"
+	zsh_plugins=(); while read -r; do zsh_plugins+=("$REPLY"); done < "$dots/install/zsh_plugins"
+	printf "\n(y/n)"
+	read -r response
+	if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+		gitpre='https://github.com'
+		zshdir="${HOME}/.oh-my-zsh/custom/plugins"
+		for repo in "${zsh_plugins[@]}"
+		do
+			if [[ ! "$repo" = \#* ]] && [[ ! -z "$repo" ]] ; then
+				printf "\noh-my-zsh\n$bar\n"
+				printf "\ninstall $repo?\n\n(y/n) "
+				read -r response
+				if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+					if [[ ! -d "$zshdir/${repo##*/}" ]] ; then
+						echo ""
+						git clone "$gitpre/$repo.git" "$zshdir/${repo##*/}"
+					else
+						echo ""
+						echo "$repo exists, skipping.."
+					fi
 				fi
-				break
-			;;
-			[Nn]*)
-				break
-			;;
-			*)
-				echo 'enter yes/no'
-			;;
-		esac
-	done
+			fi
+		done
+		echo ""
+	fi
 }
 
 shell() {
@@ -432,7 +434,7 @@ symlinkdots() {
 	dot 'git/gitconfig' '.gitconfig'
 	# fonts
 	title='fonts'
-	dot "fonts" "Library/Fonts"
+	dot "fonts" "Library/fonts"
 	# pecan + xanthia
 	title='pecan + xanthia'
 	mkdir -p "Library/Application Support/Übersicht/widgets" &>/dev/null
@@ -509,27 +511,32 @@ dot() {
 	done
 }
 
-applysettings() {
+macos_settings() {
 	printf "\nmacos settings\n$bar\n"
 	printf "\ndo you want to apply mac settings?\n"
-	while true
-	do
-	read -p "(y/n) " yn
-		case $yn in
-			[Yy]*)
-				if [[ ! "$test" ]] ; then
-					bash "$dots/install/macos.sh"
+	read -r response
+	if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+		macos_settings=(); while read -r; do macos_settings+=("$REPLY"); done < "$dots/install/macos_settings"
+		for setting in "${macos_settings[@]}"
+		do
+			if [[ ! "$setting" == \#* ]] && [[ ! -z "$setting" ]] ; then
+				if [[ "$setting" == title* ]] ; then
+					bash $setting
+					printf "\n$title\n$bar\n"
+				elif [[ "$setting" == message* ]] ; then
+					bash $setting
+					printf "\n$message\n$bar\n"
+				else
+					printf "\n$setting\n\n(y/n) "
+					read -r response
+					if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+						bash $setting
+						echo ""
+					fi
 				fi
-				break
-			;;
-			[Nn]*)
-				break
-			;;
-			*)
-				echo 'enter yes/no'
-			;;
-		esac
-	done
+			fi
+		done
+	fi
 }
 
 brewupdate() {
@@ -626,7 +633,6 @@ flags() {
 	while getopts snyx opt; do
 		case $opt in
 			s)
-			setup
 			screenshot
 			exit
 			;;
@@ -650,25 +656,25 @@ flags() {
 	done
 }
 
-flags "$@"
 setup
 makebar
+flags "$@"
 if [[ "$auto" ]] ; then
 	yes | clearhome
 	yes | dotfiles
-	yes | applysettings
+	yes | macos_settings
 	yes | brewupdate
 else
 	brewinstall
 	gitclone
 	pythonpackages
-	ohmyzsh
+	zsh_plugins
 	paths
 	shell
 	clearhome
 	clearlibrary
 	dotfiles
-	applysettings
+	macos_settings
 	brewservices
 	finished
 fi
@@ -688,7 +694,7 @@ fi
 # or was this because my .scss files sourced invalid paths?
 # wallpaper is not working, but wal, togglebar and colorlovers are?
 
-# link colorlovers and new-roses
+# link colorlovers and new-roses pecanstyle
 
 # zsh-git-prompt is buggy
 

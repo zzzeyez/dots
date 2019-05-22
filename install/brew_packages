@@ -1,33 +1,44 @@
 #!/usr/bin/env bash
-# install homebrew packages
+message=install homebrew packages
 
-if [[ ! "$(command -v brew)" ]] ; then
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
+message=install homebrew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew update
 brew upgrade
 
-# Save Homebrew’s installed location.
+message=save homebrew’s installed location.
+
 BREW_PREFIX=$(brew --prefix)
 
-# Install GNU core utilities (those that come with macOS are outdated).
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
+message=install gnu core utilities (those that come with macos are outdated).
+message=you might have to add this to your path yourself
+
+echo "/usr/bin/local\n${HOME}/scripts/bin\n${HOME}/.bin\n$(brew --prefix coreutils)/libexec/gnubin" > /etc/paths.d/paths
+
 brew install coreutils
 ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
 
-# Install some other useful utilities like `sponge`.
+message=install some other useful utilities like `sponge`.
 brew install moreutils
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
+
+message=install gnu `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew install findutils
-# Install GNU `sed`, overwriting the built-in `sed`.
+
+message=install gnu `sed`, overwriting the built-in `sed`.
 brew install gnu-sed
-# Install Bash 4.
+
+message=install bash 4.
 brew install bash
 brew install bash-completion2
 brew install grep
 brew install python3
 brew install zsh
+
+message=switch to zsh and bash4
+sudo sh -c 'echo /usr/local/bin/zsh >> /etc/shells && chsh -s /usr/local/bin/zsh'
+echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells
+chsh -s "${BREW_PREFIX}/bin/bash"
 brew install neovim
 brew install tmux
 brew install weechat 
@@ -53,21 +64,25 @@ brew install pidof
 brew tap caskroom/fonts
 brew cask install font-iosevka
 brew cask install font-fira-code
-# chunkwm
+
+message=chunkwm
 brew tap koekeishiya/formulae
 brew install chunkwm
-# install from git repo
+
+message=install from git repo
 brew install --HEAD chunkwm
-# skhd
+
+message=skhd
 brew install koekeishiya/formulae/skhd
-# mopidy
+
+message=mopidy
 brew tap mopidy/mopidy
 brew install mopidy-scrobbler
 
-# cask
+message=cask
 brew tap caskroom/cask
 brew cask install iterm2
 brew cask install ubersicht
 
-# Remove outdated versions from the cellar.
+message=remove outdated versions from the cellar.
 brew cleanup

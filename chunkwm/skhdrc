@@ -1,5 +1,5 @@
 # terminal
-cmd - return : osascript -e 'tell application "iTerm" to activate' -e 'tell application "System Events" to tell process "iTerm" to keystroke "t" using command down'
+cmd - return : iterm2
 
 # wallpaper
 lcmd + shift - 0 : wallpaper -n ~/pictures/wallpapers

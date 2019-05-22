@@ -1,3 +1,5 @@
+# list of files to exclude when deleting home directory
+# maximum of 16 entries (including commented lines)
 zzzeyez
 Library
 behaviors
@@ -7,3 +9,6 @@ text
 .oh-my-zsh
 .wine-thugpro
 .zsh_history
+.ncmpcpp
+.hushlogin
+.gitignore_global

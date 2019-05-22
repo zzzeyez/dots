@@ -1,0 +1,69 @@
+# list of dotfiles to symlink
+# $dots/$1 -> ${HOME}/$2
+
+# bin
+title=bin
+bin .bin
+
+# chunkwm + skhd
+title=chunkwm + skhd
+chunkwm/chunkwmrc .chunkwmrc
+chunkwm/skhdrc .skhdrc
+
+# irssi
+#title=irssi
+#irssi .irssi
+
+# iterm2
+title=iterm2
+iterm2/com.googlecode.iterm2.plist Library/Preferences/com.googlecode.iterm2.plist
+
+# ncmpcpp
+title=ncmpcpp + mpd
+ncmpcpp .ncmpcpp
+ncmpcpp/mopidy.conf .config/mopidy/mopidy.conf
+
+# neovim
+title=neovim
+nvim .config/nvim
+
+# tmux
+title=tmux
+tmux/tmux.conf .tmux.conf
+tmux/tmux-better-mouse-mode .config/tmux-better-mouse-mode
+
+# wal
+title=wal
+wal .config/wal
+
+# weechat
+title=weechat
+weechat .weechat
+
+# oh-my-zsh
+title=oh-my-zsh
+oh-my-zsh/themes .oh-my-zsh/custom/themes
+oh-my-zsh/zshrc .zshrc
+
+# new-roses
+title=new-roses
+new-roses .config/new-roses
+
+# git
+title=git
+git/gitignore_global .gitignore_global
+git/gitconfig .gitconfig
+
+# fonts
+title=fonts
+fonts Library/fonts
+
+# pecan + xanthia
+title=pecan + xanthia
+bash mkdir -p Library/ApplicationSupport/Übersicht/widgets
+../pecan Library/ApplicationSupport/Übersicht/widgets/pecan
+../xanthia Library/ApplicationSupport/Übersicht/widgets/xanthia
+
+# this file
+title=dots
+dots.sh ../../usr/local/bin/dots
