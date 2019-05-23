@@ -3,6 +3,7 @@
 # symlink my dotfiles
 # get dotfiles directory, even if this script is symlinked
 
+# list files
 lists_directory=install
 
 # install()
@@ -21,6 +22,24 @@ save_library=save_library
 
 # recreate()
 make_directories=make_directories
+
+screenshot() {
+	wallpaper=/tmp/wallpaper.png
+
+	# screenshot
+	screencapture "$dots/screenshot/screenshot.png"
+	
+	# wallpaper
+	cp "$wallpaper" "$dots/screenshot/wallpaper.png"
+	
+	# wal colors
+	cp "${HOME}/.cache/wal/colors.json" "$dots/screenshot/colors.json"
+	
+	# notify
+	if [[ "$notify" ]] ; then
+		notify-send -m "dotfiles updated" -i "$dots/screenshot/screenshot.png"
+	fi
+}
 
 setup() {
 
@@ -367,8 +386,10 @@ notify() {
 }
 
 flags() {
-	while getopts nxu opt; do
+	while getopts snxu opt; do
 		case $opt in
+			s) screenshot ; exit
+			;;
 			n) notify=on
 			;;
 			# $test is slipped in before all commands
@@ -397,11 +418,6 @@ install "$macos_settings"
 copy "$git_clones"
 copy "$dotfiles"
 
-
-# update
-# brew services
-# save_home save_library
-# misc
 
 # clear screenshots
 

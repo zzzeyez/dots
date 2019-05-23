@@ -3,37 +3,31 @@
 # so i'm doing this
 cmd - return : iterm2 & caps-lock
 
-# tmux doesn't allow alt-key binds
+# tmux doesn't allow alt-key binds with no leader
 alt - b : skhd -k "ctrl - b"
 alt - c : skhd -k "ctrl - c"
 alt - h : skhd -k "ctrl - h"
 alt - q : skhd -k "ctrl - q"
-alt - n : skhd -k "ctrl - n"
 alt - r : skhd -k "ctrl - r"
-alt - d : skhd -k "ctrl - d"
 alt - t : skhd -k "ctrl - t"
-alt - w : skhd -k "ctrl - w"
+alt - return : terminal
+alt - w : terminal exit
 
 # iterm2 reload
-alt - l : skhd -k "ctrl - l"
-
-# my program to open/close tmux windows depending on if it's running
-alt - return : terminal
-alt - o : terminal attach
+alt - r : skhd -k "ctrl - l"
 
 # wallpaper
 lcmd + shift - 0 : wallpaper -n ~/pictures/wallpapers
 lcmd - 0 : wallpaper -no ~/pictures/wallpapers
-rcmd + shift - 0 : new-roses 
-rcmd - 0 : wallpaper -o 8
+rcmd + shift - 0 : wallpaper -n 6
+rcmd - 0 : wallpaper -n 8
 cmd + shift - d : new-roses -ns ~/pictures/wallpapers
 
 # palette
 cmd + shift - r : colorlovers -nqr
-lcmd + shift - e : colorlovers -nq -b 191919
+cmd + shift - e : colorlovers -nq -b 191919
 lcmd + shift - w : colorlovers -nq -b fefefe
-rcmd + shift - e : wal -i ~/pictures/wallpapers -q -o wal-set
-rcmd + shift - w : wal -i ~/pictures/wallpapers -l -q -o wal-set
+rcmd + shift - w : wal -i ~/pictures/wallpapers -q -o wal-set
 cmd + shift - s : colorlovers -nqs
 
 # nightmode
@@ -54,29 +48,35 @@ cmd - p : scr -nu
 cmd + shift - z : dots -ns
 cmd + shift - u : dots -y && notify-send "system cleaned and updated"
 
-# windows
+# focus window
 cmd - left : chunkc tiling::window --focus west
 cmd - down : chunkc tiling::window --focus south
 cmd - up : chunkc tiling::window --focus north
 cmd - right : chunkc tiling::window --focus east
+
+# move window
 cmd + shift - left : chunkc tiling::window --warp west
 cmd + shift - down : chunkc tiling::window --warp south
 cmd + shift - up : chunkc tiling::window --warp north
 cmd + shift - right : chunkc tiling::window --warp east
 
-# workspaces
-cmd - tab : chunkc tiling::desktop --focus next
-cmd - 0x32 : chunkc tiling::desktop --focus prev
-cmd - 1 : chunkc tiling::desktop --focus 1
-cmd - 2 : chunkc tiling::desktop --focus 2
-cmd - 3 : chunkc tiling::desktop --focus 3
-cmd - 4 : chunkc tiling::desktop --focus 4
-cmd - 5 : chunkc tiling::desktop --focus 5
-cmd + shift - 1 : chunkc tiling::window --send-to-desktop 1; chunkc tiling::desktop --focus 1
-cmd + shift - 2 : chunkc tiling::window --send-to-desktop 2; chunkc tiling::desktop --focus 2
-cmd + shift - 3 : chunkc tiling::window --send-to-desktop 3; chunkc tiling::desktop --focus 3
-cmd + shift - 4 : chunkc tiling::window --send-to-desktop 4; chunkc tiling::desktop --focus 4
-cmd + shift - 5 : chunkc tiling::window --send-to-desktop 5; chunkc tiling::desktop --focus 5
+# alt tab
+cmd - tab : skhd -k "ctrl - right"
+cmd - 0x32 : skhd -k "ctrl - left"
+
+# switch to desktop
+cmd - 1 : skhd -k "ctrl - 1"
+cmd - 2 : skhd -k "ctrl - 2"
+cmd - 3 : skhd -k "ctrl - 3"
+cmd - 4 : skhd -k "ctrl - 4"
+cmd - 5 : skhd -k "ctrl - 5"
+
+# send window to desktop
+cmd + shift - 1 : chunkc tiling::window --send-to-desktop 1; skhd -k "ctrl - 1"
+cmd + shift - 2 : chunkc tiling::window --send-to-desktop 2; skhd -k "ctrl - 2"
+cmd + shift - 3 : chunkc tiling::window --send-to-desktop 3; skhd -k "ctrl - 3"
+cmd + shift - 4 : chunkc tiling::window --send-to-desktop 4; skhd -k "ctrl - 4"
+cmd + shift - 5 : chunkc tiling::window --send-to-desktop 5; skhd -k "ctrl - 5"
 
 # increase padding size
 #cmd - 0x18 : chunkc tiling::desktop -g inc

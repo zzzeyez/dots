@@ -47,7 +47,7 @@ oh-my-zsh/zshrc .zshrc
 # new-roses
 title=new-roses
 new-roses .config/new-roses
-../new-roses/new-rose ../../usr/local/bin/new-roses
+../new-roses/new-roses ../../usr/local/bin/new-roses
 
 #colorlovers
 title=colorlovers
