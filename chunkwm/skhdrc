@@ -3,6 +3,19 @@
 # so i'm doing this
 cmd - return : iterm2 & caps-lock
 
+# tmux doesn't allow alt-key binds with no leader
+alt - b : skhd -k "ctrl - b"
+alt - c : skhd -k "ctrl - c"
+alt - h : skhd -k "ctrl - h"
+alt - q : skhd -k "ctrl - q"
+alt - r : skhd -k "ctrl - r"
+alt - w : skhd -k "ctrl - w"
+alt - t : skhd -k "ctrl - t"
+alt - return : skhd -k "ctrl - t"
+
+# iterm2 reload
+alt - r : skhd -k "ctrl - l"
+
 # wallpaper
 lcmd + shift - 0 : wallpaper -n ~/pictures/wallpapers
 lcmd - 0 : wallpaper -no ~/pictures/wallpapers
