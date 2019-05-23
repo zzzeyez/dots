@@ -9,9 +9,9 @@ alt - c : skhd -k "ctrl - c"
 alt - h : skhd -k "ctrl - h"
 alt - q : skhd -k "ctrl - q"
 alt - r : skhd -k "ctrl - r"
-alt - w : skhd -k "ctrl - w"
 alt - t : skhd -k "ctrl - t"
-alt - return : skhd -k "ctrl - t"
+alt - return : terminal
+alt - w : terminal exit
 
 # iterm2 reload
 alt - r : skhd -k "ctrl - l"
