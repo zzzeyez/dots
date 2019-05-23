@@ -1,5 +1,7 @@
 # terminal
-cmd - return : iterm2
+# current capslock rebind method resets on reboot
+# so i'm doing this
+cmd - return : iterm2 & caps-lock
 
 # wallpaper
 lcmd + shift - 0 : wallpaper -n ~/pictures/wallpapers
@@ -76,4 +78,3 @@ cmd + shift - f : chunkc tiling::window --toggle native-fullscreen
 # float / unfloat window and center on screen
 cmd + shift - space : chunkc tiling::window --toggle float;\
 chunkc tiling::window --grid-layout 4:4:1:1:2:2
-

@@ -14,3 +14,6 @@ zzzeyez/colorlovers scripts/colorlovers
 zsh-users/zsh-autosuggestions .oh-my-zsh/custom/plugins/zsh-syntax-autosuggestions
 zsh-users/zsh-syntax-highlighting .oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 starcraftman/zsh-git-prompt .oh-my-zsh/custom/plugins/zsh-git-prompt
+
+# tmux-better-mouse-mode
+NHDaly/tmux-better-mouse-mode .config/tmux-better-mouse-mode

@@ -30,7 +30,6 @@ nvim .config/nvim
 # tmux
 title=tmux
 tmux/tmux.conf .tmux.conf
-tmux/tmux-better-mouse-mode .config/tmux-better-mouse-mode
 
 # wal
 title=wal
@@ -65,10 +64,11 @@ fonts Library/fonts
 
 # pecan + xanthia
 title=pecan + xanthia
-bash mkdir -p Library/ApplicationSupport/Übersicht/widgets
-../pecan Library/ApplicationSupport/Übersicht/widgets/pecan
-../pecan/pecan-style ../../usr/local/bin/pecan-style
-../xanthia Library/ApplicationSupport/Übersicht/widgets/xanthia
+# spaces aren't working here (resolve symlink "ApplicationSupport" ?
+#bash mkdir -p Library/ApplicationSupport/Übersicht/widgets
+#../pecan Library/ApplicationSupport/Übersicht/widgets/pecan
+#../pecan/pecan-style ../../usr/local/bin/pecan-style
+#../xanthia Library/ApplicationSupport/Übersicht/widgets/xanthia
 
 # this file
 title=dots

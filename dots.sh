@@ -277,7 +277,7 @@ copy() {
 
 						# dotfiles
 						elif [[ "$mode" == $dotfiles ]] ; then
-							$test ln -sf "$source" "$dest" &&
+							$test ln -s "$source" "$dest" &&
 							message "created symlink"
 						fi
 
@@ -403,4 +403,5 @@ copy "$dotfiles"
 # save_home save_library
 # misc
 
-# why did it delete $dir
+# clear screenshots
+

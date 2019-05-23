@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
-
-# ~/.macos — https://mths.be/macos
+# original by mathias, modified by @zzzeyez
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
 # Ask for the administrator password upfront
-sudo -v
+#sudo -v
 
 # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+#while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ###############################################################################
 # General UI/UX                                                               #
@@ -30,6 +29,9 @@ sudo nvram SystemAudioVolume=" "
 
 # Disable transparency in the menu bar and elsewhere on Yosemite
 defaults write com.apple.universalaccess reduceTransparency -bool true
+
+# hide and show the menu bar
+defaults write NSGlobalDomain _HIHideMenuBar -bool true
 
 # Set highlight color to gray
 defaults write NSGlobalDomain AppleHighlightColor -string "0.564700 0.564700 0.564700"
@@ -168,7 +170,8 @@ defaults write NSGlobalDomain KeyRepeat -float 1.0
 defaults write NSGlobalDomain InitialKeyRepeat -int 13
 
 ##
-hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x7000000E2}]}'
+# map caps-lock to alt-key (resets on reboot)
+hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x7000000E2}]}' &>/dev/null
 launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
 
 ###############################################################################
@@ -478,7 +481,10 @@ defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
 ###############################################################################
 
 # Hide Spotlight tray-icon (and subsequent helper)
-sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
+#sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
+# or renabke it
+#sudo chmod 755 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
+
 # Disable Spotlight indexing for any volume that gets mounted and has not yet
 # been indexed before.
 # Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
