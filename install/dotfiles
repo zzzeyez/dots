@@ -43,6 +43,8 @@ weechat .weechat
 title=oh-my-zsh
 oh-my-zsh/themes .oh-my-zsh/custom/themes
 oh-my-zsh/zshrc .zshrc
+# can git-super-status not symlink?
+#oh-my-zsh/themes/zshrc.sh .oh-my-zsh/custom/plugins/zsh-git-prompt/zshrc.sh
 
 # new-roses
 title=new-roses

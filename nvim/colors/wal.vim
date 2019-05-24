@@ -17,8 +17,9 @@ let g:colors_name = 'wal'
 
 " set t_Co=16
 hi Normal ctermbg=NONE ctermfg=7
-hi NonText ctermbg=NONE ctermfg=0
-hi Comment ctermbg=NONE ctermfg=8
+" this is tab-line
+hi NonText ctermbg=NONE ctermfg=8
+hi Comment ctermbg=NONE ctermfg=6
 hi Constant ctermbg=NONE ctermfg=3
 hi Error ctermbg=1 ctermfg=7
 hi Identifier ctermbg=NONE ctermfg=1 cterm=BOLD
@@ -35,13 +36,13 @@ hi StatusLine ctermbg=7 ctermfg=0
 hi StatusLineNC ctermbg=8 ctermfg=0
 hi TabLine ctermbg=NONE ctermfg=8
 hi TabLineFill ctermbg=NONE ctermfg=8
-hi TabLineSel ctermbg=4 ctermfg=0
+hi TabLineSel ctermbg=4 ctermfg=8
 hi TermCursorNC ctermbg=3 ctermfg=0
 hi VertSplit ctermbg=8 ctermfg=0
 hi Title ctermbg=NONE ctermfg=4
-hi CursorLine ctermbg=2 ctermfg=0
+hi CursorLine ctermbg=NONE ctermfg=NONE cterm=NONE
 hi LineNr ctermbg=NONE ctermfg=8
-hi CursorLineNr ctermbg=NONE ctermfg=8
+hi CursorLineNr ctermbg=NONE ctermfg=7
 hi helpLeadBlank ctermbg=NONE ctermfg=7
 hi helpNormal ctermbg=NONE ctermfg=7
 hi Visual ctermbg=0 ctermfg=15 cterm=reverse term=reverse
@@ -68,11 +69,11 @@ hi ErrorMsg ctermbg=NONE ctermfg=8
 hi ModeMsg ctermbg=NONE ctermfg=2
 hi MoreMsg ctermbg=NONE ctermfg=2
 hi Question ctermbg=NONE ctermfg=4
-hi WarningMsg ctermbg=1 ctermfg=0
+hi WarningMsg ctermbg=8 ctermfg=0
 hi Cursor ctermbg=NONE ctermfg=8
 hi Structure ctermbg=NONE ctermfg=5
 hi CursorColumn ctermbg=8 ctermfg=7
-hi ModeMsg ctermbg=NONE ctermfg=7
+hi ModeMsg ctermbg=NONE ctermfg=6
 hi SpellBad ctermbg=NONE ctermfg=1 cterm=underline
 hi SpellCap ctermbg=NONE ctermfg=4 cterm=underline
 hi SpellLocal ctermbg=NONE ctermfg=5 cterm=underline

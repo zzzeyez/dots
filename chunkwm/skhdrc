@@ -12,14 +12,23 @@ alt - n : skhd -k "ctrl - n"
 alt - r : skhd -k "ctrl - r"
 alt - d : skhd -k "ctrl - d"
 alt - t : skhd -k "ctrl - t"
-alt - w : skhd -k "ctrl - w"
+alt - u : shkd -k "ctrl - u"
+
+#cmd - return [
+#	"iTerm2"       : tmx
+#	*              : iterm2 & caps-lock
+#]
+
+# safari
+cmd + shift - t : open -a Safari
 
 # iterm2 reload
 alt - l : skhd -k "ctrl - l"
 
 # my program to open/close tmux windows depending on if it's running
-alt - return : terminal
-alt - o : terminal attach
+alt - return : tmx
+alt - o : tmx attach
+alt - w : tmx quit
 
 # wallpaper
 lcmd + shift - 0 : wallpaper -n ~/pictures/wallpapers
@@ -52,7 +61,7 @@ cmd - p : scr -nu
 
 # dotfiles
 cmd + shift - z : dots -ns
-cmd + shift - u : dots -y && notify-send "system cleaned and updated"
+cmd + shift - u : dots -u
 
 # windows
 cmd - left : chunkc tiling::window --focus west

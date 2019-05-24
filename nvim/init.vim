@@ -1,5 +1,17 @@
 set shell=/bin/bash
 set clipboard+=unnamedplus
+
+" bindings
+map <Space> <Leader>
+" repaste plugin
+map r <Leader>r
+" nerdcommenter plugin
+map c <Leader>c<space>
+" autoindent
+map <tab> =
+
+" indent
+" set noautoindent
 set tabstop=4
 set shiftwidth=4
 
@@ -28,9 +40,16 @@ set noruler
 " Don't redraw screen as often
 set lazyredraw
 
+" tab line
+" set list lcs=tab:\▏\ 
+
+" Enable cursor line position tracking:
 set nocursorcolumn
-set nocursorline
-	
+"set nocursorline
+set cursorline
+" Remove the underline from enabling cursorline:
+" highlight clear CursorLine
+
 " Don’t show the intro message when starting Vim
 set shortmess=atI
 
@@ -50,10 +69,24 @@ set incsearch
 set ignorecase
 set smartcase
 
-" Backspace over anything
-set backspace=indent,eol,start
+" backspace over anything but EOL
+set backspace=indent,start
 
 " No swapfiles
 set noswapfile
+
+" Specify a directory for plugins
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+" do ":PlugInstall" to install plugins
+call plug#begin('~/.config/nvim/bundle')
+Plug 'zirrostig/vim-repaste'
+Plug 'scrooloose/nerdcommenter'
+call plug#end()
+
+" nerdcommenter
+filetype plugin on
+
+" vim-repaste
+let g:RePaste_DeleteRegister = "r"
 
 colorscheme wal

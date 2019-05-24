@@ -167,7 +167,7 @@ defaults write -g com.apple.trackpad.scaling 7
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 # lower is faster
 defaults write NSGlobalDomain KeyRepeat -float 1.0
-defaults write NSGlobalDomain InitialKeyRepeat -int 13
+defaults write NSGlobalDomain InitialKeyRepeat -int 12
 
 ##
 # map caps-lock to alt-key (resets on reboot)
@@ -182,8 +182,8 @@ launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/nul
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
-# Save screenshots to the desktop
-defaults write com.apple.screencapture location -string "${HOME}/pictures/screenshots"
+# Save screenshots to the cache
+defaults write com.apple.screencapture location -string "${HOME}/.cache/"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
@@ -208,16 +208,13 @@ defaults write com.apple.finder QuitMenuItem -bool true
 # Finder: disable window animations and Get Info animations
 defaults write com.apple.finder DisableAllAnimations -bool true
 
-# Set Desktop as the default location for new Finder windows
+# Set home directory as the default location for new Finder windows
 # For other paths, use `PfLo` and `file:///full/path/here/`
 defaults write com.apple.finder NewWindowTarget -string "PfLo"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
 
-# Show icons for hard drives, servers, and removable media on the desktop
-#defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
-#defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
-#defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
-#defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+# disable desktop icons
+defaults write com.apple.finder CreateDesktop false; killall Finder
 
 # Finder: show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles -bool true

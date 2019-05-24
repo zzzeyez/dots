@@ -25,16 +25,16 @@ make_directories=make_directories
 
 screenshot() {
 	wallpaper=/tmp/wallpaper.png
-
+		
 	# screenshot
 	screencapture "$dots/screenshot/screenshot.png"
-	
+		
 	# wallpaper
 	cp "$wallpaper" "$dots/screenshot/wallpaper.png"
-	
+		
 	# wal colors
 	cp "${HOME}/.cache/wal/colors.json" "$dots/screenshot/colors.json"
-	
+		
 	# notify
 	if [[ "$notify" ]] ; then
 		notify-send -m "dotfiles updated" -i "$dots/screenshot/screenshot.png"
@@ -42,7 +42,7 @@ screenshot() {
 }
 
 setup() {
-
+	
 	# get absolute path of dots folder
 	source="${BASH_SOURCE[0]}"
 	while [ -h "$source" ]; do
@@ -50,10 +50,10 @@ setup() {
 		source="$(readlink "$source")"
 		[[ $source != /* ]] && source="$dots/$source"
 	done
-
+		
 	# dots is now an absolute path
 	dots="$( cd -P "$( dirname "$source" )" >/dev/null 2>&1 && pwd )"
-
+		
 	# escape sequences
 	red="\e[31m"
 	grn="\e[32m"
@@ -63,11 +63,11 @@ setup() {
 	cyn="\e[36m"
 	gry="\e[90m"
 	rst="\e[0m"
-
+		
 	# build the bar
 	bar="▔▔▔▔▔▔"
 	bar="$red$bar$grn$bar$ylw$bar$blu$bar$pur$bar$cyn$bar$rst"
-
+		
 	# clear the screen
 	clear
 }
@@ -75,15 +75,15 @@ setup() {
 get_password() {
 	title="sudo"
 	title
-
+		
 	question 'some features require sudo.  log in for the duration of this installation?'
 	if [[ "$answer" ]] ; then
-
+			
 		# log in and stay logged in
 		sudo -v
 		while true; do sudo -n true; sleep 60; kill -0 "$$"\
 			|| exit; done 2>/dev/null &
-
+			
 	fi
 }
 
@@ -133,7 +133,7 @@ install() {
 		 if [[ ! "$answer" ]] ; then
 			answer=skipped
 		fi
-
+		
 	fi
 }
 
@@ -141,7 +141,7 @@ install() {
 remove() {
 	mode="$1"
 	title "$mode"
-
+	
 	# check which folder to delete and ask to delete
 	if [[ "$mode" == $save_home ]] ; then
 		question "do you want to delete your home?"
@@ -155,10 +155,10 @@ remove() {
 	if [[ "$answer" ]] ; then
 		# get a list from $1
 		list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$mode"
-
+			
 		# pretty title
 		title 'delete these'
-
+			
 		# find everything except those listed in $1
 		# is there a way to just use ${list[@]} here?
 		deleted="$(find "${HOME}$library" -maxdepth 1\
@@ -180,13 +180,13 @@ remove() {
 			-not -name "${list[15]}"\
 			-not -name "${list[16]}"\
 			-not -name "." -not -name "..")"
-
+			
 		# confirm list
 		printf "$gry$deleted$rst\n\n"
 		title 'and keep these'
 		printf "$gry%s\n" "${list[@]}"
 		question ''
-	
+			
 		# permission granted
 		if [[ "$answer" ]] ; then
 			message 'deleting home directory..'
@@ -203,12 +203,12 @@ recreate() {
 	mode=$1
 	list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$mode"
 	title recreate
-	
+		
 	# ask permission
 	printf "$gry%s$rst\n" "${list[@]}"
 	echo ""
 	question "do you want to recreate these?"
-
+		
 	# permission granted
 	if [[ "$answer" ]] ; then
 		$test mkdir -p "${list[@]}" &&
@@ -230,7 +230,7 @@ copy() {
 		title "symlink dotfiles"
 		question "do you want to symlink your dotfiles?"
 	fi
-
+		
 	# permission granted
 	if [[ "$answer" ]] ; then
 		
@@ -239,31 +239,31 @@ copy() {
 		# separate the lines
 		for line in "${list[@]}"
 		do
-			
+				
 			# turn string into array
 			read -r -a entry <<< "$line"
-
+				
 			# check for titles
 			if [[ $line == title* ]] ; then
 				title=${line##*=}
 				title
-
+				
 			# check for messages	
 			elif [[ $line == message* ]] ; then
 				message="${line##*=}"
 				message
-
+				
 			# check for commands
 			elif [[ $line == bash* ]] ; then
 				command="${line##*bash }"
 				$test $command
-
+				
 			# ignore comments and blank lines
 			elif [[ ! "$line" == \#* ]] && [[ ! -z "$line" ]] ; then
-
+				
 				# answered yes..
 				if [[ "$answer" ]] ; then
-
+						
 					# define vars
 					if [[ "$mode" == $git_clones ]] ; then
 						source="https://github.com/${entry[0]}"
@@ -272,34 +272,34 @@ copy() {
 						source="$dots/${entry[0]}"
 						dest="${HOME}/${entry[1]}"
 					fi
-
+						
 					# ask for permission
 					echo "$source ->"
 					question "$dest"
 					if [[ "$answer" ]] ; then
-
+						
 						# ask to overwrite
 						if [[ -d "$dest" ]] || [[ -f "$dest" ]] ; then
 							question "$dest exists..  overwrite?"
-
+								
 							# overwrite
 							if [[ "$answer" ]] ; then
 								$test rm -rf "$dest"
 							fi
 						fi
-
+							
 						# tasks
 						# git_clones
 						if [[ "$mode" == $git_clones ]] ; then
 							$test git clone "$source" "$dest" &&
 							message "cloned repo"
-
+							
 						# dotfiles
 						elif [[ "$mode" == $dotfiles ]] ; then
 							$test ln -s "$source" "$dest" &&
 							message "created symlink"
 						fi
-
+							
 					# skip
 					# if we don't turn $answer back on then it skips all other questions too
 					else
@@ -309,7 +309,7 @@ copy() {
 						fi
 					fi 
 				else
-
+					
 				# skip
 				# if we don't turn $answer back on then it skips all other questions too
 				message "skipping.."
@@ -323,65 +323,76 @@ copy() {
 }
 
 update() {
-	title "update"
-	message "looking for updates.."
-
+		
 	# homebrew update
 	$test brew update
 	$test brew upgrade
-	$test brew clean
-
+	$test brew cleanup
+		
 	# python update
 	# get variables from list file
 	list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$python_packages"
-
+		
 	# separate the lines
 	for line in "${list[@]}"
 	do
 			
 		# turn string into array
 		read -r -a entry <<< "$line"
-
+			
 		# ignore commented or empty lines
 		if [[ ! "$line" == \#* ]] && [[ ! -z "$line" ]] ; then
-
+				
 			# pip3 install --upgrade pywal
 			$test ${entry[0]} ${entry[1]} --upgrade ${entry[2]}
 		fi
-
+			
 	done
-
+		
 	# github update
 	# get variables from list file
 	list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$git_clones"
-
+		
 	# separate the lines
 	for line in "${list[@]}"
 	do
-
+			
 		# turn string into array
 		read -r -a entry <<< "$line"
-
+			
 		# ignore my packages and commented or empty
 		if [[ ! "${entry[0]}" == $my_github* ]] && [[ ! "$line" == \#* ]] && [[ ! -z "$line" ]]
 		then
-
+			
 		# move to the directory and pull it
 		message "updating ${entry[0]}.."
-		$test cd "${entry[1]}"
+		$test cd "${HOME}/${entry[1]}" &&
 		$test git pull origin master
-
+			
 		fi
 	done
-
+	
 	# conclude
 	$test cd "${HOME}"
-	notify
+	notify-send "finished updating system"
 }
 
-notify() {
-	if [[ "$notify" ]] ; then
-		notify-send finished updating system
+backup() {
+	if [[ -d /Volumes/xanthia ]] ; then
+		SRC='/Users/zzzeyez'
+		DST='/Volumes/xanthia'
+
+		rsync -avrh --stats                                \
+			--log-file="${HOME}"/.backup.log               \
+			--exclude='/zzzeyez/downloads'                 \
+			--exclude='/zzzeyez/.cache'                    \
+			--exclude='/zzzeyez/Library'                   \
+			$SRC                                           \
+			$DST &&
+
+			# done
+			notify-send "finished syncing $SRC to $DST"
+
 	fi
 }
 
@@ -395,11 +406,14 @@ flags() {
 			# $test is slipped in before all commands
 			x) test=echo
 			;;
-			u) yes | remove "$save_home"
-			yes | recreate "$make_directories"
-			yes | copy "$dotfiles"
-			yes | update
-			yes | install "$macos_settings"
+			u)
+				title "update"
+				message "looking for updates.."
+				yes | remove "$save_home" > /dev/null
+				yes | recreate "$make_directories" > /dev/null
+				yes | copy "$dotfiles" > /dev/null
+				yes | update > /dev/null
+				backup > /dev/null
 			exit
 			;;
 		esac
@@ -420,4 +434,3 @@ copy "$dotfiles"
 
 
 # clear screenshots
-
