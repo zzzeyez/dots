@@ -33,20 +33,19 @@ keyboard shortcuts select styles or fetch all my colorschemes and wallpapers fro
 + (cmd + shift + d) save `new-roses` wallpaper to ~/pictures/wallpapers
 
 ### colorschemes
-+ (cmd + shift + w) disable [darkmode](https://github.com/zzzeyez/bin) and download + apply dark palette via [colorlovers](https://github.com/zzzeyez/colorlovers)
-+ (cmd + shift + e) enable `darkmode`, download + apply light `colorlovers` palette
++ (cmd + shift + w) disable [darkmode](https://github.com/zzzeyez/bin) and download + apply light palette via [colorlovers](https://github.com/zzzeyez/colorlovers)
++ (cmd + shift + e) enable `darkmode`, download + apply dark `colorlovers` palette
 + (cmd + shift + r) load random saved `colorlovers` palette
-+ (cmd + shift + s) saves `colorlovers` palette
++ (cmd + shift + s) save `colorlovers` palette
 
 ### menubar + notifications
 + (cmd + shift + x) load random [xanthia](https://github.com/zzzeyez/xanthia) + [pecan](https://github.com/zzzeyez/pecan) style
 + (cmd + shift + h) [toggle](https://github.com/zzzeyez/bin) `xanthia` + `pecan` (also applies `chunkwm` menubar offset via [wal-set](https://github.com/zzzeyez/bin))
 
 ## install
-i regularly reformat my laptop, run `dots.sh` and pick up where i left off
-
-**./dots.sh** install everything (asking for permission for each task)
+**./dots.sh** install everything, update system, backup to external, update this repo
 + `./install/brew_packages` list of homebrew packages
++ `./install/git_clones` list of github repos
 + `./install/macos_settings` list of macos settings
 + `./install/save_home` list of files to save if deleting home directory
 + `./install/save_library` list of files to save if deleting `~/Library`
