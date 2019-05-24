@@ -380,13 +380,15 @@ update() {
 backup() {
 	if [[ -d /Volumes/xanthia ]] ; then
 		SRC='/Users/zzzeyez'
-		DST='/Volumes/xanthia'
+		DST='/Volumes/xanthia/macbook'
 
-		rsync -avrh --stats                                \
+		$test rsync -avrh --stats                          \
+#			--delete-before                                \
 			--log-file="${HOME}"/.backup.log               \
 			--exclude='/zzzeyez/downloads'                 \
 			--exclude='/zzzeyez/.cache'                    \
 			--exclude='/zzzeyez/Library'                   \
+			--dry-run                                      \
 			$SRC                                           \
 			$DST &&
 
@@ -395,11 +397,14 @@ backup() {
 			diskutil umount xanthia &&
 			notify-send "finished syncing $SRC to $DST.  xanthia unmounted"
 
+	else
+		echo "xanthia was not found"
+		notify-send "xanthia was not found"
 	fi
 }
 
 flags() {
-	while getopts snxu opt; do
+	while getopts snxbu opt; do
 		case $opt in
 			s) screenshot ; exit
 			;;
@@ -407,6 +412,8 @@ flags() {
 			;;
 			# $test is slipped in before all commands
 			x) test=echo
+			;;
+			b) backup ; exit
 			;;
 			u)
 				title "update"

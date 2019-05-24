@@ -12,3 +12,4 @@ text
 .gitignore_global
 .tmux-better-mouse-mode
 .oh-my-zsh
+.dots
