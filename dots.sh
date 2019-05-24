@@ -390,8 +390,10 @@ backup() {
 			$SRC                                           \
 			$DST &&
 
-			# done
-			notify-send "finished syncing $SRC to $DST"
+			# unmount xanthia
+			notify-send "finished syncing $SRC to $DST" &
+			diskutil umount xanthia &&
+			notify-send "finished syncing $SRC to $DST.  xanthia unmounted"
 
 	fi
 }
