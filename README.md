@@ -22,7 +22,8 @@ keyboard shortcuts select styles or fetch all my colorschemes and wallpapers fro
 ### terminal programs
 + (caps-lock) -> alt-key (controls `tmux`, `irssi` `weechat` and `ncmpcpp`
 + (alt + arrows) switch windows (left/right for `tmux`, up/down for rest)
-+ (alt + enter) ctrl + b (so it functions as `tmux` leader)
++ (alt + enter) opens tmux windows/sessions depending on iTerm2 window status [tmx](https://github.com/zzzeyez/bin)
++ (alt + w) ^ opposite of that
 
 ### wallpapers
 + (cmd + 0) random [wallpaper](https://github.com/zzzeyez/bin) for current workspace
@@ -44,33 +45,18 @@ keyboard shortcuts select styles or fetch all my colorschemes and wallpapers fro
 ## install
 i regularly reformat my laptop, run `dots.sh` and pick up where i left off
 
-it (interactively) clones my github repositories to `~/scripts`, installs `homebrew`, installs my `brew` packages, python packages and (`oh-my-zsh` plugins.  it then symlinks all my dots from this repo to the default config locations and starts my `brew` services
-
 **./dots.sh** install everything (asking for permission for each task)
++ `./install/brew_packages` list of homebrew packages
++ `./install/macos_settings` list of macos settings
++ `./install/save_home` list of files to save if deleting home directory
++ `./install/save_library` list of files to save if deleting `~/Library`
++ `./install/make_directories` list of folders to recreate if deleting home
 
-**./install/brew_packages** list of homebrew packages
+~to enable workspace switching you will need to add the 5 workspaces (click the f5 key) and then enable the default shortcuts in system preferences -> keyboard -> shortcuts~ i have decided to switch to `chwmsa` to eliminate animations.  my old `.skhdrc` is still included.
 
-**./install/macos_settings** list of macos settings
-
-**./install/zsh_plugins** list of zsh plugins (installed to `~/.oh-my-zsh/custom/plugins`)
-
-**./install/save_home** list of files to save if deleting home directory
-
-**./install/save_library** list of files to save if deleting `~/Library`
-
-**./install/make_directories** list of folders to recreate if deleting home
-
-to enable workspace switching you will need to add the 5 workspaces (click the f5 key) and then enable the default shortcuts in system preferences -> keyboard -> shortcuts
-
-as is the case with all dotfiles: configs are a very personal thing and my workflow might not be what you prefer.  i suggest that you look through the install files and pick at which features you want.  or feel free to run `dots.sh` — it will walk you through the process and ask you which features you want
-
-## misc
-`weechat`, `irssi`, `ncmpcpp`, `wallpaper`, `colorlovers` and other programs that i'm forgetting to list all send notifications via `notify-send`.  `notify-send` is a linux program with lots of plugins available to trigger it.  i made [my own version](https://github.com/zzzeyez/xanthia) to mimic it on macos (complete with image support)
-
-`dots.sh -u` will take a screenshot.  it will save it to this repo, then copy both `/tmp/wallpaper.png` and `colors.json` here as well.  `dots.sh -y` will non-interactively delete everything (except those listed in `./install/save_home`) in `~/`, recreate the `~/` directories listed in `./install/make_directories`, recreate symlinks to dotfiles, update `brew` packages and reapply `./install/macos.sh` settings
 
 ## to do + issues i'm experiencing (maybe you can help)
-+ caps-lock -> alt-key bind reverts upon reset.  seeking new terminal method..
-+ custom `oh-my-zsh` theme is buggy (is this just how it is?)
++ ~caps-lock -> alt-key bind reverts upon reset~.  mapped bash script to iTerm2 hotkey
++ find way to use `defaults write` to hide the Finder sidebar
 + unable to `sudo echo` paths to `/etc/paths.d/paths`
-+ make `./install/brew.sh` and `./install/macos.sh` interactive
++ `tmux` does not allow binding alt-key with no leader.  currently mapping alt -> ctrl in `skhd`

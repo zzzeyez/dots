@@ -422,11 +422,12 @@ flags() {
 			u)
 				title "update"
 				message "looking for updates.."
-				yes | remove "$save_home" > /dev/null
-				yes | recreate "$make_directories" > /dev/null
-				yes | copy "$dotfiles" > /dev/null
-				yes | update > /dev/null
-				backup > /dev/null
+				notify-send "starting update"
+				yes | remove "$save_home"
+				yes | recreate "$make_directories"
+				yes | copy "$dotfiles"
+				yes | update
+				backup
 			exit
 			;;
 		esac
@@ -446,4 +447,3 @@ copy "$git_clones"
 copy "$dotfiles"
 
 
-# clear screenshots
