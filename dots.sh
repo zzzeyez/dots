@@ -3,6 +3,9 @@
 # symlink my dotfiles
 # get dotfiles directory, even if this script is symlinked
 
+# screenshot()
+wallpaper=/tmp/wallpaper.png
+
 # list files
 lists_directory=install
 
@@ -23,9 +26,11 @@ save_library=save_library
 # recreate()
 make_directories=make_directories
 
+# backup()
+SSD=xanthia
+backup_exclude=backup_exclude
+
 screenshot() {
-	wallpaper=/tmp/wallpaper.png
-		
 	# screenshot
 	screencapture "$dots/screenshot/screenshot.png"
 		
@@ -127,12 +132,11 @@ install() {
 	title "$mode"
 	question "do you want to install $mode?"
 	if [[ "$answer" ]] ; then
-		bash "$dots/$lists_directory/$mode"
-	else
-		message "skipping.."
-		 if [[ ! "$answer" ]] ; then
-			answer=skipped
-		fi
+		$test bash "$dots/$lists_directory/$mode"
+#	else
+#		 if [[ ! "$answer" ]] ; then
+#			answer=skipped
+#		fi
 		
 	fi
 }
@@ -158,70 +162,70 @@ remove() {
 			
 		# pretty title
 		title 'delete these'
-			
+		
+		# turn array into `find` format
+		for i in "${!list[@]}"
+		do
+			exclude[i]="-not -name ${list[i]}"
+		done
+
 		# find everything except those listed in $1
 		# is there a way to just use ${list[@]} here?
 		deleted="$(find "${HOME}$library" -maxdepth 1\
-			-not -name "${list[0]}"\
-			-not -name "${list[1]}"\
-			-not -name "${list[2]}"\
-			-not -name "${list[3]}"\
-			-not -name "${list[4]}"\
-			-not -name "${list[5]}"\
-			-not -name "${list[6]}"\
-			-not -name "${list[7]}"\
-			-not -name "${list[8]}"\
-			-not -name "${list[9]}"\
-			-not -name "${list[10]}"\
-			-not -name "${list[11]}"\
-			-not -name "${list[12]}"\
-			-not -name "${list[13]}"\
-			-not -name "${list[14]}"\
-			-not -name "${list[15]}"\
-			-not -name "${list[16]}"\
+			${exclude[@]}\
 			-not -name "." -not -name "..")"
 			
 		# confirm list
 		printf "$gry$deleted$rst\n\n"
 		title 'and keep these'
-		printf "$gry%s\n" "${list[@]}"
+		printf "$gry%s$rst\n" "${list[@]}"
 		question ''
 			
 		# permission granted
 		if [[ "$answer" ]] ; then
-			message 'deleting home directory..'
-			$test $sudo echo "$deleted" | awk '{system ("rm -rf \""$0"\"")}' &&
-			message "home has been deleted"
+			message 'deleting..'
+			$sudo echo "$deleted" | $test awk '{system ("rm -rf \""$0"\"")}' &&
+			message "finished"
 		else
 			message skipping..
 		fi
 
 		# DS Store
-		title DS_Store
-		question 'do you want to delete all your DS_Store files?'
-		if [[ "$answer" ]] ; then
-			 sudo find ${HOME}./  -not -name Library -name '*.DS_Store' -type f -delete
+		if [[ "$mode" = save_home ]] ; then
+			title DS_Store
+			question 'do you want to delete all your DS_Store files?'
+			if [[ "$answer" ]] ; then
+				 $test find ${HOME}/.  -not -name Library -name '*.DS_Store' -type f -delete &&
+				message finished
+			fi
 		fi
 	fi
 }
 
 # recreate folders in home director (sourced from $1)
 recreate() {
-	mode=$1
-	list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$mode"
 	title recreate
-		
-	# ask permission
-	printf "$gry%s$rst\n" "${list[@]}"
-	echo ""
-	question "do you want to recreate these?"
-		
+	question "do you want to rebuild your home?"
+
 	# permission granted
 	if [[ "$answer" ]] ; then
-		$test mkdir -p "${list[@]}" &&
-		message "directories created"
-	else
-		message "skipping.."
+		mode=$1
+		list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$mode"
+
+		# ask permission
+		printf "$gry%s$rst\n" "${list[@]}"
+		echo ""
+		question "do you want to recreate these?"
+
+		# permission granted
+		if [[ "$answer" ]] ; then
+			$test mkdir -p "${list[@]}" &&
+			message "directories created"
+		else
+
+			# denied
+			message "skipping.."
+		fi
 	fi
 }
 
@@ -385,29 +389,58 @@ update() {
 }
 
 backup() {
-	SRC='/Users/zzzeyez'
-	DST='/Volumes/xanthia'
-	title "xanthia"
-	message "backing up $SRC to $DST"
-	$test notify-send "backing up $SRC to $DST"
-
+	title backup
 	# check for ssd
-	if [[ -d /Volumes/xanthia ]] ; then
+	if [[ -d /Volumes/$SSD ]] ; then
+		
+		# ask permission
+		question 'do you want to backup your home?'
 
-		$test rsync -avrh --stats                          \
-			--delete                                       \
-			--log-file="${HOME}/.backup.log"               \
-			--exclude='/zzzeyez/downloads'                 \
-			--exclude='/zzzeyez/.cache'                    \
-			--exclude='/zzzeyez/Library'                   \
-			$SRC                                           \
-			$DST &&
+		#  permission granted
+		if [[ "$answer" ]] ; then
+			mode="$1"
 
-			# unmount xanthia
-			notify-send "finished syncing $SRC to $DST" &
-			$test diskutil umount xanthia &&
-			notify-send "finished syncing $SRC to $DST.  xanthia unmounted"
+			# create variables
+			SRC="${HOME}"
+			DST="/Volumes/$SSD"
 
+			# create array from file $1
+			list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$mode"
+			
+			# pretty title
+			message 'this will backup everything from home except:'
+			printf "$gry%s\n$rst" "${list[@]}"
+			question ''
+
+			# permission granted
+			if [[ "$answer" ]] ; then
+				$test message "backing up $SRC to $DST"
+				$test notify-send "backing up $SRC to $DST"
+
+				# append rsync flags
+				for i in "${!list[@]}"
+				do
+					exclude[i]="--exclude ${list[i]}"
+				done
+
+				# exclude those defined in file $1
+				# copy and clean (add --dry-run to beginning to test)
+				$test rsync -avrh --stats                          \
+					--delete                                       \
+					--log-file="${HOME}/downloads/.backup.log"     \
+					${exclude[@]}                                  \
+					$SRC                                           \
+					$DST &&
+
+				# unmount xanthia
+				message "could not unmount ssd.  finished syncing $SRC to $DST" &&
+				notify-send "could not unmount ssd.  finished syncing $SRC to $DST"
+				$test diskutil umount "$SSD" &&
+				message "$SSD unmounted.  finished syncing $SRC to $DST" &&
+				notify-send "$SSD unmounted.  finished syncing $SRC to $DST"
+
+			fi
+		fi
 	else
 		echo "xanthia was not found"
 		notify-send "xanthia was not found"
@@ -434,7 +467,7 @@ flags() {
 				yes | recreate "$make_directories"
 				yes | copy "$dotfiles"
 				yes | update
-				backup
+				yes | backup "$backup_exclude"
 			exit
 			;;
 		esac
@@ -452,5 +485,6 @@ install "$python_packages"
 install "$macos_settings"
 copy "$git_clones"
 copy "$dotfiles"
-
-
+# needs prompt
+# update
+backup "$backup_exclude"
