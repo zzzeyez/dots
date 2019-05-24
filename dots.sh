@@ -378,23 +378,27 @@ update() {
 }
 
 backup() {
+	SRC='/Users/zzzeyez'
+	DST='/Volumes/xanthia'
+	title "xanthia"
+	message "backing up $SRC to $DST"
+	$test notify-send "backing up $SRC to $DST"
+
+	# check for ssd
 	if [[ -d /Volumes/xanthia ]] ; then
-		SRC='/Users/zzzeyez'
-		DST='/Volumes/xanthia/macbook'
 
 		$test rsync -avrh --stats                          \
-#			--delete-before                                \
-			--log-file="${HOME}"/.backup.log               \
+			--delete                                       \
+			--log-file="${HOME}/.backup.log"               \
 			--exclude='/zzzeyez/downloads'                 \
 			--exclude='/zzzeyez/.cache'                    \
 			--exclude='/zzzeyez/Library'                   \
-			--dry-run                                      \
 			$SRC                                           \
 			$DST &&
 
 			# unmount xanthia
 			notify-send "finished syncing $SRC to $DST" &
-			diskutil umount xanthia &&
+			$test diskutil umount xanthia &&
 			notify-send "finished syncing $SRC to $DST.  xanthia unmounted"
 
 	else
