@@ -1,9 +1,18 @@
+# list of folders and files to save when deleting home directory
+# be sure to include the name of the directory these files exist in (your username)
+
+# home
 zzzeyez
 Library
-behaviors
 pictures
+
+# projects
+behaviors
 scripts
 text
+
+# dots
+.dots
 .oh-my-zsh
 .wine-thugpro
 .zsh_history
@@ -11,5 +20,3 @@ text
 .hushlogin
 .gitignore_global
 .tmux-better-mouse-mode
-.oh-my-zsh
-.dots

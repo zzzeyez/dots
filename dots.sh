@@ -164,21 +164,30 @@ remove() {
 		title 'delete these'
 		
 		# turn array into `find` format
-		for i in "${!list[@]}"
+		for line in "${!list[@]}"
 		do
-			exclude[i]="-not -name ${list[i]}"
+			# ignore commented and empty lines
+			if [[ ! "${list[line]}" == \#* ]] && [[ ! -z "${list[line]}" ]] ; then
+				exclude[line]="-not -name ${list[line]}"
+				include[line]="-or -name ${list[line]}"
+			fi
 		done
 
-		# find everything except those listed in $1
-		# is there a way to just use ${list[@]} here?
+		# create list of files found that are not listed in $1
 		deleted="$(find "${HOME}$library" -maxdepth 1\
 			${exclude[@]}\
+			-not -name "." -not -name "..")"
+			
+		# create list of files found that are also listed in $1
+		# can't start `find` with `-or` 'til -name has been ran
+		not_deleted="$(find "${HOME}$library" -maxdepth 1\
+			-name dummy ${include[@]}\
 			-not -name "." -not -name "..")"
 			
 		# confirm list
 		printf "$gry$deleted$rst\n\n"
 		title 'and keep these'
-		printf "$gry%s$rst\n" "${list[@]}"
+		printf "$gry$not_deleted$rst\n"
 		question ''
 			
 		# permission granted
@@ -212,14 +221,23 @@ recreate() {
 		mode=$1
 		list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$mode"
 
+		# turn array into `find` format
+		for line in "${!list[@]}"
+		do
+			# ignore commented and empty lines
+			if [[ ! "${list[line]}" == \#* ]] && [[ ! -z "${list[line]}" ]] ; then
+				directories[line]="${HOME}/${list[line]}"
+			fi
+		done
+
 		# ask permission
-		printf "$gry%s$rst\n" "${list[@]}"
+		printf "$gry%s$rst\n" "${directories[@]}"
 		echo ""
 		question "do you want to recreate these?"
 
 		# permission granted
 		if [[ "$answer" ]] ; then
-			$test mkdir -p "${list[@]}" &&
+			$test mkdir -p "${directories[@]}" &&
 			message "directories created"
 		else
 
@@ -290,7 +308,7 @@ copy() {
 					if [[ "$answer" ]] ; then
 						
 						# ask to overwrite
-						if [[ -d "$dest" ]] || [[ -f "$dest" ]] ; then
+						if [[ -d "$dest" ]] || [[ -f "$dest" ]] || [[ -L "$dest" ]] ; then
 							question "$dest exists..  overwrite?"
 								
 							# overwrite
@@ -354,8 +372,8 @@ update() {
 		# ignore commented or empty lines
 		if [[ ! "$line" == \#* ]] && [[ ! -z "$line" ]] ; then
 				
-			# pip3 install --upgrade pywal
-			$test ${entry[0]} ${entry[1]} --upgrade ${entry[2]}
+			# pip3 -q install --upgrade package
+			$test ${entry[0]} -q ${entry[1]} --upgrade ${entry[2]}
 		fi
 			
 	done
@@ -376,6 +394,7 @@ update() {
 		then
 			
 		# move to the directory and pull it
+		echo ""
 		message "updating ${entry[0]}.."
 		$test cd "${HOME}/${entry[1]}" &&
 		$test git pull origin master

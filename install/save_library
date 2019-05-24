@@ -1,2 +1,5 @@
+# list of files to save when deleting ~/Library
+# be sure to include the Library it's self
+
 Library
-Fonts
+fonts

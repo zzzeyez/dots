@@ -2,7 +2,7 @@
 # github.com/$1 ->                       ${HOME}/$2
 
 # my stuff
-zzzeyez/dots                             scripts/dots
+zzzeyez/dots                             .dots
 zzzeyez/bin                              scripts/bin
 zzzeyez/pecan                            scripts/pecan
 zzzeyez/xanthia                          scripts/xanthia

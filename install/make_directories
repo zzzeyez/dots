@@ -1,3 +1,4 @@
+# list of directories to create if missing
 pictures/screenshots
 behaviors
 .config/mopidy
