@@ -1,7 +1,13 @@
 # terminal
 # current capslock rebind method resets on reboot
 # so i'm doing this
-cmd - return : iterm2 & caps-lock
+cmd - return : open-app iterm2 & caps-lock
+# iterm2 reload
+alt - l : skhd -k "ctrl - l"
+# my program to open/close tmux windows depending on if it's running
+alt - return : tmx
+alt - o : tmx attach
+alt - w : tmx quit
 
 # tmux doesn't allow alt-key binds
 alt - b : skhd -k "ctrl - b"
@@ -14,21 +20,17 @@ alt - d : skhd -k "ctrl - d"
 alt - t : skhd -k "ctrl - t"
 alt - u : shkd -k "ctrl - u"
 
-#cmd - return [
-#	"iTerm2"       : tmx
-#	*              : iterm2 & caps-lock
-#]
-
 # safari
-cmd + shift - t : open -a Safari
-
-# iterm2 reload
-alt - l : skhd -k "ctrl - l"
-
-# my program to open/close tmux windows depending on if it's running
-alt - return : tmx
-alt - o : tmx attach
-alt - w : tmx quit
+cmd + shift - t : open -a Safari "file:///Users/zzzeyez/scripts/pollen/index.html"
+#alt - tab : skhd -k "ctrl - tab"
+alt - left [
+	"Safari"       : skhd -k "ctrl + shift - tab"
+	*              ~
+]
+alt - right [
+	"Safari"       : skhd -k "ctrl - tab"
+	*              ~
+]
 
 # wallpaper
 lcmd + shift - 0 : wallpaper -n ~/pictures/wallpapers
@@ -49,11 +51,12 @@ cmd + shift - s : colorlovers -nqs
 cmd + shift - q : night
 
 # bar
+cmd - h : default_macos
 cmd + shift - h : togglebar
 cmd + shift - x : pecan-style -l && wal-set
 
 # finder
-cmd + shift - n : open -a finder
+cmd + shift - n : open-app finder
 
 # screenshot
 cmd + shift - p : scr -n

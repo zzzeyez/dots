@@ -195,6 +195,13 @@ remove() {
 		else
 			message skipping..
 		fi
+
+		# DS Store
+		title DS_Store
+		question 'do you want to delete all your DS_Store files?'
+		if [[ "$answer" ]] ; then
+			 sudo find ${HOME}./  -not -name Library -name '*.DS_Store' -type f -delete
+		fi
 	fi
 }
 

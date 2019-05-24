@@ -1,0 +1,31 @@
+#!/bin/sh
+
+if [ $1 = "finder" ]; then
+	osascript <<-EOD
+		tell application "Finder"
+			set myW to make new Finder window
+			activate
+			set target of myW to home
+		end tell
+	EOD
+
+elif [ $1 = "safari" ]; then
+	{
+	osascript <<-EOD
+		tell application "Safari"
+			make new document with properties {URL:"file:///Users/zzzeyez/scripts/pollen/index.html"}
+			activate
+		end tell
+	EOD
+	} || open -a /Applications/Safari.app
+
+elif [ $1 = "iterm2" ]; then
+	i="$(ps cax | grep iTerm2)"
+
+	if [[ ! "$i" ]] ; then
+		open -a iTerm
+	else
+		osascript -e 'tell application "iTerm" to activate' -e 'tell application "System Events" to tell process "iTerm" to keystroke "n" using command down'
+			
+	fi
+fi
