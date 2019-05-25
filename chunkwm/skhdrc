@@ -1,11 +1,9 @@
 # terminal
-# current capslock rebind method resets on reboot
-# so i'm doing this
-cmd - return : open-app iterm2 & caps-lock
 # iterm2 reload
 alt - l : skhd -k "ctrl - l"
+cmd - return : open-app iterm2
 # my program to open/close tmux windows depending on if it's running
-alt - return : tmx
+alt - return : tmx new
 alt - o : tmx attach
 alt - w : tmx quit
 
@@ -41,22 +39,22 @@ cmd + shift - d : new-roses -ns ~/pictures/wallpapers
 
 # palette
 cmd + shift - r : colorlovers -nqr
-lcmd + shift - e : colorlovers -nq -b 191919
+lcmd + shift - e : colorlovers -nq -b 2a2a2a
 lcmd + shift - w : colorlovers -nq -b fefefe
 rcmd + shift - e : wal -i ~/pictures/wallpapers -q -o wal-set
 rcmd + shift - w : wal -i ~/pictures/wallpapers -l -q -o wal-set
 cmd + shift - s : colorlovers -nqs
 
 # nightmode
-cmd + shift - q : night
+#cmd + shift - q : night
 
 # bar
-cmd - h : default_macos
+cmd - h : toggleshadow
 cmd + shift - h : togglebar
 cmd + shift - x : pecan-style -l && wal-set
 
 # finder
-cmd + shift - n : open-app finder
+cmd + shift - f : open-app finder
 
 # screenshot
 cmd + shift - p : scr -n
@@ -89,6 +87,23 @@ cmd + shift - 2 : chunkc tiling::window --send-to-desktop 2; chunkc tiling::desk
 cmd + shift - 3 : chunkc tiling::window --send-to-desktop 3; chunkc tiling::desktop --focus 3
 cmd + shift - 4 : chunkc tiling::window --send-to-desktop 4; chunkc tiling::desktop --focus 4
 cmd + shift - 5 : chunkc tiling::window --send-to-desktop 5; chunkc tiling::desktop --focus 5
+# create desktop, move window and follow focus
+shift + cmd - return : chunkc tiling::desktop --create;\
+                       ids=$(chunkc tiling::query --desktops-for-monitor\
+                           $(chunkc tiling::query --monitor-for-desktop $(chunkc tiling::query --desktop id)));\
+                       chunkc tiling::window --send-to-desktop $(echo ${ids##* });\
+                       chunkc tiling::desktop --focus $(echo ${ids##* });\
+                       wallpaper -o ~/pictures/wallpapers
+# create desktop, follow focus
+shift + cmd - n      : chunkc tiling::desktop --create;\
+                       ids=$(chunkc tiling::query --desktops-for-monitor\
+                           $(chunkc tiling::query --monitor-for-desktop $(chunkc tiling::query --desktop id)));\
+                       chunkc tiling::desktop --focus $(echo ${ids##* });\
+                       wallpaper -o ~/pictures/wallpapers
+# destroy desktop
+shift + cmd - q :      ids=$(chunkc tiling::query --desktops-for-monitor \
+                           $(chunkc tiling::query --monitor-for-desktop $(chunkc tiling::query --desktop id)));\
+                       chunkc tiling::desktop --annihilate $(echo ${ids##* })
 
 # increase padding size
 #cmd - 0x18 : chunkc tiling::desktop -g inc

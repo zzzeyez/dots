@@ -34,13 +34,6 @@ chunkc set 1_desktop_offset_gap          0
 chunkc set 2_desktop_mode                float
 
 #
-# desktop 3
-chunkc set 3_desktop_offset_top          100
-chunkc set 3_desktop_offset_bottom       100
-chunkc set 3_desktop_offset_left         100
-chunkc set 3_desktop_offset_right        100
-
-#
 # bsp mode
 chunkc set bsp_spawn_left                0 
 chunkc set bsp_optimal_ratio             1
@@ -50,8 +43,8 @@ chunkc set bsp_split_ratio               0.588
 #
 # etc
 chunkc set window_focus_cycle            all
-chunkc set window_float_next             1
-chunkc set window_float_center           1
+chunkc set window_float_next             0
+chunkc set window_float_center           0
 chunkc set window_region_locked          0
 
 #
@@ -63,13 +56,13 @@ chunkc set mouse_resize_window \"shift 1\"
 # borders (requires `border.so`)
 chunkc set preselect_border_color        0xfff0f0f0
 chunkc set preselect_border_width        1
-chunkc set preselect_border_radius       6
+chunkc set preselect_border_radius       5
 chunkc set focused_border_color          0xaaffffff
-chunkc set focused_border_width          3
+chunkc set focused_border_width          9
 chunkc set focused_border_radius         6
-chunkc set focused_border_skip_floating  1
-chunkc set focused_border_outline        0
-chunkc set focused_border_skip_monocle   1
+chunkc set focused_border_skip_floating  0
+chunkc set focused_border_outline        1
+chunkc set focused_border_skip_monocle   0
 
 #
 # always floating
@@ -89,5 +82,6 @@ chunkc set focused_border_color          $NFOCUS
 chunkc core::plugin_dir /usr/local/opt/chunkwm/share/chunkwm/plugins
 chunkc core::load border.so
 chunkc core::load tiling.so
-#chunkc core::load ffm.so
-chunkc set mouse_follows_focus           off
+chunkc core::load ffm.so
+#chunkc core::load purify.so
+chunkc set mouse_follows_focus           on

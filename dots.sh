@@ -151,7 +151,7 @@ remove() {
 		question "do you want to delete your home?"
 	elif [[ "$mode" == $save_library ]] ; then
 		library="/Library"
-		question "do you want to delete ~/Library?"
+		question "do you want to delete ~/Library?  this will reboot you"
 		sudo=sudo
 	fi
 
@@ -207,6 +207,9 @@ remove() {
 				 $test find ${HOME}/.  -not -name Library -name '*.DS_Store' -type f -delete &&
 				message finished
 			fi
+		elif [[ "$mode" = save_library ]] ; then
+			message 'rebooting..'
+			sudo reboot
 		fi
 	fi
 }
@@ -466,17 +469,39 @@ backup() {
 	fi
 }
 
+help() {
+	title 'dots'
+	message '-s : screenshot + exit'
+	message '-r : apply settings for new user account'
+	message '-t : test mode (puts `echo` before commands)'
+	message '-b : backup to ssd'
+	message '-u : system upgrade'
+	echo
+}
+
 flags() {
-	while getopts snxbu opt; do
+	while getopts srtbu opt; do
 		case $opt in
 			s) screenshot ; exit
 			;;
-			n) notify=on
+			r) 
+				title "restore system settings"
+				message "this will restart your computer"
+				get_password
+				yes | remove "$save_home"
+				yes | recreate "$make_directories"
+				yes | copy "$dotfiles"
+				yes | install "$macos_settings"
+				brew services start skhd
+				brew services start chunkwm
+				brew services start mopidy
+				sudo reboot
+				exit
 			;;
 			# $test is slipped in before all commands
-			x) test=echo
+			t) test=echo
 			;;
-			b) backup ; exit
+			b) yes | backup "$backup_exclude" ; exit
 			;;
 			u)
 				title "update"
@@ -487,7 +512,7 @@ flags() {
 				yes | copy "$dotfiles"
 				yes | update
 				yes | backup "$backup_exclude"
-			exit
+				exit
 			;;
 		esac
 	done
@@ -495,6 +520,7 @@ flags() {
 
 setup
 flags $@
+help
 get_password
 remove "$save_home"
 remove "$save_library"
