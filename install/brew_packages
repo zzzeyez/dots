@@ -14,7 +14,7 @@ brew upgrade
 BREW_PREFIX=$(brew --prefix)
 
 # Install GNU core utilities (those that come with macOS are outdated).
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
+echo Don’t forget to add '$(brew --prefix coreutils)/libexec/gnubin' to '$PATH'
 brew install coreutils
 ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
 
@@ -45,6 +45,7 @@ brew install htop
 brew tap cjbassi/gotop
 brew install gotop
 brew install neofetch
+brew install fff
 brew install redshift
 brew install git
 brew install git-lfs
@@ -65,7 +66,7 @@ brew cask install font-fira-code
 
 # chunkwm
 brew tap koekeishiya/formulae
-brew install chunkwm
+brew install chunkwm --with-purify
 brew install --HEAD chunkwm
 brew install koekeishiya/formulae/skhd
 

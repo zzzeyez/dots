@@ -1,0 +1,23 @@
+#/usr/bin/env bash
+# sets config for `fff`
+
+# text editor
+export EDITOR="nvim"
+
+# trash
+export FFF_TRASH=~/.Trash
+
+# bookmarks (keys 1-9)
+export FFF_FAV1=~
+export FFF_FAV2=~/scripts
+export FFF_FAV3=~/pictures/wallpapers
+export FFF_FAV4=~/downloads
+export FFF_FAV5=/Volumes/xanthia
+
+# bindings
+export FFF_KEY_TO_TOP="off"
+export FFF_KEY_GO_DIR="g"
+export FFF_KEY_PARENT1="off"
+export FFF_KEY_HIDDEN="h"
+
+

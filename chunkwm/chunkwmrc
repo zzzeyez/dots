@@ -38,7 +38,7 @@ chunkc set 2_desktop_mode                float
 chunkc set bsp_spawn_left                0 
 chunkc set bsp_optimal_ratio             1
 chunkc set bsp_split_mode                optimal
-chunkc set bsp_split_ratio               0.588
+chunkc set bsp_split_ratio               0.500
 
 #
 # etc
@@ -82,6 +82,6 @@ chunkc set focused_border_color          $NFOCUS
 chunkc core::plugin_dir /usr/local/opt/chunkwm/share/chunkwm/plugins
 chunkc core::load border.so
 chunkc core::load tiling.so
-chunkc core::load ffm.so
+#chunkc core::load ffm.so
 #chunkc core::load purify.so
 chunkc set mouse_follows_focus           on

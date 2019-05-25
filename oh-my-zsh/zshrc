@@ -104,3 +104,15 @@ source $ZSH/custom/plugins/zsh-git-prompt/zshrc.sh
 if [[ -f ~/.cache/wal/sequences ]] ; then
 	(cat ~/.cache/wal/sequences &)
 fi
+
+# macfeh
+feh () {
+	open -b "drabweb.macfeh" "$@"
+}
+
+# fff
+f() {
+	source ${HOME}/.config/fff
+    fff "$@"
+    cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
+}

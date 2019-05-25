@@ -13,6 +13,7 @@ lists_directory=install
 brew_packages=brew_packages
 python_packages=python_packages
 macos_settings=macos_settings
+misc=misc
 
 # copy()
 my_github=zzzeyez
@@ -492,6 +493,7 @@ flags() {
 				yes | recreate "$make_directories"
 				yes | copy "$dotfiles"
 				yes | install "$macos_settings"
+				yes | install "$misc"
 				brew services start skhd
 				brew services start chunkwm
 				brew services start mopidy
@@ -528,6 +530,7 @@ recreate "$make_directories"
 install "$brew_packages"
 install "$python_packages"
 install "$macos_settings"
+install "$misc"
 copy "$git_clones"
 copy "$dotfiles"
 # needs prompt

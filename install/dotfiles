@@ -46,14 +46,27 @@ oh-my-zsh/zshrc .zshrc
 # can git-super-status not symlink?
 #oh-my-zsh/themes/zshrc.sh .oh-my-zsh/custom/plugins/zsh-git-prompt/zshrc.sh
 
+# fff
+title=fff
+misc/fff .config/fff
+
+# pecan + xanthia
+#title=pecan + xanthia
+#message='spaces in dir path aren't working here, skipping..'
+# spaces aren't working here (resolve symlink "ApplicationSupport" ?
+#bash mkdir -p Library/ApplicationSupport/Übersicht/widgets
+#../scripts/pecan Library/ApplicationSupport/Übersicht/widgets/pecan
+#../scripts/pecan/pecan-style ../../usr/local/bin/pecan-style
+#../scripts/xanthia Library/ApplicationSupport/Übersicht/widgets/xanthia
+
 # new-roses
 title=new-roses
-new-roses .config/new-roses
-../scripts/new-roses/new-roses ../../usr/local/bin/new-roses
+misc/new-roses .config/new-roses
+#../scripts/new-roses/new-roses ../../usr/local/bin/new-roses
 
 #colorlovers
-title=colorlovers
-../scripts/colorlovers/colorlovers ../../usr/local/bin/colorlovers
+#title=colorlovers
+#../scripts/colorlovers/colorlovers ../../usr/local/bin/colorlovers
 
 # git
 title=git
@@ -63,14 +76,6 @@ git/gitconfig .gitconfig
 # fonts
 title=fonts
 fonts Library/fonts
-
-# pecan + xanthia
-title=pecan + xanthia
-# spaces aren't working here (resolve symlink "ApplicationSupport" ?
-#bash mkdir -p Library/ApplicationSupport/Übersicht/widgets
-#../scripts/pecan Library/ApplicationSupport/Übersicht/widgets/pecan
-#../scripts/pecan/pecan-style ../../usr/local/bin/pecan-style
-#../scripts/xanthia Library/ApplicationSupport/Übersicht/widgets/xanthia
 
 # this file
 title=dots

@@ -167,7 +167,7 @@ defaults write -g com.apple.trackpad.scaling 7
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 # lower is faster
 defaults write NSGlobalDomain KeyRepeat -float 1.0
-defaults write NSGlobalDomain InitialKeyRepeat -int 11
+defaults write NSGlobalDomain InitialKeyRepeat -int 12
 
 ##
 # map caps-lock to alt-key (resets on reboot)

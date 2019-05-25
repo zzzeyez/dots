@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-open -b "drabweb.macfeh" "$@"
