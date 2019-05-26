@@ -1,3 +1,6 @@
+# wal colors
+(cat ~/.cache/wal/sequences &)
+
 # If you come from bash you might have to change your $PATH.
 #export PATH=$PATH:/usr/bin:/usr/local/bin
 
@@ -101,14 +104,9 @@ source $ZSH/custom/plugins/zsh-git-prompt/zshrc.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # wal
-if [[ -f ~/.cache/wal/sequences ]] ; then
-	(cat ~/.cache/wal/sequences &)
-fi
-
-# macfeh
-feh () {
-	open -b "drabweb.macfeh" "$@"
-}
+#if [[ -f ~/.cache/wal/sequences ]] ; then
+	#(cat ~/.cache/wal/sequences &)
+#fi
 
 # fff
 f() {

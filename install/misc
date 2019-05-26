@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # misc. install commands
-# hard-coded unfortunately
 
 # install new-roses
 ln -sf "${HOME}/scripts/new-roses/new-roses" "/usr/local/bin/new-roses"
@@ -15,5 +14,6 @@ ln -sf "${HOME}/scripts/pecan/pecan-style" "/usr/local/bin/pecan-style"
 ln -s "${HOME}/scripts/xanthia" "${HOME}/Library/Application Support/Übersicht/widgets/xanthia"
 
 # turn on chwmsa
-chunkwm --install-sa
+sudo chunkwm --install-sa
 pkill Dock
+

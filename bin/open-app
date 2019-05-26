@@ -6,6 +6,8 @@ if [ $1 = "finder" ]; then
 			set myW to make new Finder window
 			activate
 			set target of myW to home
+			set the sidebar width of every Finder window to 0
+			set toolbar visible of every Finder window to 0
 		end tell
 	EOD
 

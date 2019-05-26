@@ -60,8 +60,8 @@ CTEXT="$WHT" # color of entry text
 mkent "distro" "macOS"
 mkent "host" "new-roses"
 mkent "wm" "chunkwm"
-mkent "font" "curie"
-mkent "shell" "fish"
+mkent "font" "sf mono"
+mkent "shell" "zsh"
 
 # find the center of the screen
 COL=$(tput cols)

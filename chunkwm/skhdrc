@@ -92,14 +92,12 @@ shift + cmd - return : chunkc tiling::desktop --create;\
                        ids=$(chunkc tiling::query --desktops-for-monitor\
                            $(chunkc tiling::query --monitor-for-desktop $(chunkc tiling::query --desktop id)));\
                        chunkc tiling::window --send-to-desktop $(echo ${ids##* });\
-                       chunkc tiling::desktop --focus $(echo ${ids##* });\
-                       wallpaper -o ~/pictures/wallpapers
+                       chunkc tiling::desktop --focus $(echo ${ids##* })
 # create desktop, follow focus
 shift + cmd - n      : chunkc tiling::desktop --create;\
                        ids=$(chunkc tiling::query --desktops-for-monitor\
                            $(chunkc tiling::query --monitor-for-desktop $(chunkc tiling::query --desktop id)));\
-                       chunkc tiling::desktop --focus $(echo ${ids##* });\
-                       wallpaper -o ~/pictures/wallpapers
+                       chunkc tiling::desktop --focus $(echo ${ids##* })
 # destroy desktop
 shift + cmd - q :      ids=$(chunkc tiling::query --desktops-for-monitor \
                            $(chunkc tiling::query --monitor-for-desktop $(chunkc tiling::query --desktop id)));\

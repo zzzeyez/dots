@@ -17,7 +17,16 @@ export FFF_FAV5=/Volumes/xanthia
 # bindings
 export FFF_KEY_TO_TOP="off"
 export FFF_KEY_GO_DIR="g"
-export FFF_KEY_PARENT1="off"
-export FFF_KEY_HIDDEN="h"
 
+## directory color [0-9]
+export FFF_COL1=2
+
+# status color [0-9]
+export FFF_COL2=6
+
+# selection color [0-9] (copied/moved files)
+export FFF_COL3=6
+
+# cursor color [0-9]
+export FFF_COL4=1
 
