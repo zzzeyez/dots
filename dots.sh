@@ -494,9 +494,6 @@ flags() {
 				yes | copy "$dotfiles"
 				yes | install "$macos_settings"
 				yes | install "$misc"
-				brew services start skhd
-				brew services start chunkwm
-				brew services start mopidy
 				sudo reboot
 				exit
 			;;

@@ -76,6 +76,7 @@ brew install mopidy-scrobbler
 
 # cask
 brew tap caskroom/cask
+brew cask install the-unarchiver
 brew cask install iterm2
 brew cask install ubersicht
 

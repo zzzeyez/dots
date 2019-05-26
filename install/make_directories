@@ -1,4 +1,6 @@
 # list of directories to create if missing
+music
+movies
 behaviors
 .config/mopidy
 .cache

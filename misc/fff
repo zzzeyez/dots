@@ -22,7 +22,7 @@ export FFF_KEY_GO_DIR="g"
 export FFF_COL1=2
 
 # status color [0-9]
-export FFF_COL2=6
+export FFF_COL2=1
 
 # selection color [0-9] (copied/moved files)
 export FFF_COL3=6
