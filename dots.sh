@@ -30,6 +30,7 @@ make_directories=make_directories
 # backup()
 SSD=xanthia
 backup_exclude=backup_exclude
+songs=behaviors
 
 screenshot() {
 	# screenshot
@@ -417,7 +418,7 @@ backup() {
 	if [[ -d /Volumes/$SSD ]] ; then
 		
 		# ask permission
-		question 'do you want to backup your home?'
+		question "do you want to backup your files to $SSD?"
 
 		#  permission granted
 		if [[ "$answer" ]] ; then
@@ -426,6 +427,8 @@ backup() {
 			# create variables
 			SRC="${HOME}"
 			DST="/Volumes/$SSD"
+			SONG_SRC="${HOME}/$songs"
+			SONG_DST="/Volumes/$SSD"
 
 			# create array from file $1
 			list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$mode"
@@ -450,10 +453,15 @@ backup() {
 				# copy and clean (add --dry-run to beginning to test)
 				$test rsync -avrh --stats                          \
 					--delete                                       \
-					--log-file="${HOME}/downloads/.backup.log"     \
 					${exclude[@]}                                  \
 					$SRC                                           \
 					$DST &&
+
+				# music projects in separate directory
+				# no deleting though
+				$test rsync -avrh --stats                          \
+					$SONG_SRC                                   \
+					$SONG_DST &&
 
 				# unmount xanthia
 				message "could not unmount ssd.  finished syncing $SRC to $DST" &&
@@ -507,10 +515,11 @@ flags() {
 				message "looking for updates.."
 				notify-send "starting update"
 				yes | remove "$save_home"
+				yes | backup "$backup_exclude"
 				yes | recreate "$make_directories"
 				yes | copy "$dotfiles"
+				yes | install "$misc"
 				yes | update
-				yes | backup "$backup_exclude"
 				exit
 			;;
 		esac
@@ -533,3 +542,6 @@ copy "$dotfiles"
 # needs prompt
 # update
 backup "$backup_exclude"
+
+# to do
+# list files being backed up

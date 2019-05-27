@@ -16,7 +16,7 @@ set tabstop=4
 set shiftwidth=4
 
 " Notify on file save
-autocmd BufWritePost * silent ! notify-send '✔ % saved'
+autocmd BufWritePost * silent ! notify-send '% saved'
 
 " Enable true color for neovim
 let $NVIM_TUI_ENABLE_TRUE_COLOR = 0

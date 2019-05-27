@@ -59,10 +59,10 @@ chunkc set preselect_border_width        1
 chunkc set preselect_border_radius       5
 chunkc set focused_border_color          0xaaffffff
 chunkc set focused_border_width          5
-chunkc set focused_border_radius         6
-chunkc set focused_border_skip_floating  1
-chunkc set focused_border_outline        0
-chunkc set focused_border_skip_monocle   1
+chunkc set focused_border_radius         7
+chunkc set focused_border_skip_floating  0
+chunkc set focused_border_outline        1
+chunkc set focused_border_skip_monocle   0
 
 #
 # always floating
@@ -82,6 +82,6 @@ chunkc set focused_border_color          $NFOCUS
 chunkc core::plugin_dir /usr/local/opt/chunkwm/share/chunkwm/plugins
 chunkc core::load border.so
 chunkc core::load tiling.so
-#chunkc core::load ffm.so
+chunkc core::load ffm.so
 #chunkc core::load purify.so
 chunkc set mouse_follows_focus           on

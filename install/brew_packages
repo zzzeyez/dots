@@ -40,7 +40,7 @@ brew install tmux
 brew install weechat 
 #brew install irssi
 brew install ncmpcpp
-brew install ranger
+#brew install ranger
 brew install htop
 brew tap cjbassi/gotop
 brew install gotop
@@ -60,9 +60,9 @@ brew install wget
 brew install pidof
 
 # fonts
-brew tap caskroom/fonts
-brew cask install font-iosevka
-brew cask install font-fira-code
+#brew tap caskroom/fonts
+#brew cask install font-iosevka
+#brew cask install font-fira-code
 
 # chunkwm
 brew tap koekeishiya/formulae

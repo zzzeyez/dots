@@ -1,5 +1,5 @@
 # wal colors
-(cat ~/.cache/wal/sequences &)
+(cat ~/.cache/wal/sequences &>/dev/null)
 
 # If you come from bash you might have to change your $PATH.
 #export PATH=$PATH:/usr/bin:/usr/local/bin
@@ -113,4 +113,14 @@ f() {
 	source ${HOME}/.config/fff
     fff "$@"
     cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
+}
+
+# todo list
+todo() {
+	nvim "${HOME}/text/documents/todo"
+}
+
+# delete ds store files
+ds() {
+find "${1-.}" -name '.DS_Store' -type f -delete
 }

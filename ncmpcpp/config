@@ -12,7 +12,7 @@
 
 
 # display
-song_list_format = "$0%t $R$7%b $4%a"
+song_list_format = "$0%t$1 $R$7%b $4%a"
 # alternative -- song_columns_list_format = "(5)[]{}(55)[16]{t}"
 #song_columns_list_format = "(6)[green]{l} (28)[blue]{a} (29)[cyan]{b} (50)[white]{t}"
 song_status_format = "$3%t"

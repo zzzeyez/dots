@@ -8,25 +8,36 @@ ln -sf "${HOME}/scripts/new-roses/new-roses" "/usr/local/bin/new-roses"
 ln -sf "${HOME}/scripts/colorlovers/colorlovers" "/usr/local/bin/colorlovers"
 
 # install pecan + xanthia
+# remove old copies for good measure..
+# because if a dir exists then the symlink will sit it's self inside of the dir
+rm -rf "Library/Application Support/Übersicht/widgets/*"
 mkdir -p "Library/Application Support/Übersicht/widgets"
+rm "${HOME}/Library/Application Support/Übersicht/widgets/pecan"
 ln -s "${HOME}/scripts/pecan" "${HOME}/Library/Application Support/Übersicht/widgets/pecan"
 ln -sf "${HOME}/scripts/pecan/pecan-style" "/usr/local/bin/pecan-style"
+rm "${HOME}/Library/Application Support/Übersicht/widgets/xanthia"
 ln -s "${HOME}/scripts/xanthia" "${HOME}/Library/Application Support/Übersicht/widgets/xanthia"
 
 # ableton and melodyne insist on creating ~/music
+rm "${HOME}/music/ableton"
 ln -s "${HOME}/behaviors/ableton" "${HOME}/music/ableton"
+rm "${HOME}/music/celemony"
 ln -s "${HOME}/behaviors/celemony" "${HOME}/music/celemony"
 
 # kontakt will only search in ~/documents
+rm "${HOME}/documents/glassmarimba"
 ln -s "${HOME}/behaviors/packs/glassmarimba" "${HOME}/documents/glassmarimba"
 # might as well put reverbs there too ..
+rm "${HOME}/documents/h3000"
 ln -s "${HOME}/behaviors/packs/h3000" "${HOME}/documents/h3000"
 # and rhodes..
+rm "${HOME}/documents/rhodes"
 ln -s "${HOME}/behaviors/packs/rhodes" "${HOME}/documents/rhodes"
 
 # turn on chwmsa
-sudo chunkwm --install-sa
-pkill Dock
+echo '`chunkwm --install-sa` wants sudo.  skipping..'
+#sudo chunkwm --install-sa
+#pkill Dock
 
 # start background services
 brew services start skhd
