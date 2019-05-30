@@ -1,5 +1,0 @@
-#!/usr/bin/env/ bash
-
-export WINEPREFIX=~/.thugpro WINEARCH=win32
-cd "/Users/zzzeyez/.thugpro/drive_c/users/zzzeyez/Local Settings/Application Data/THUG Pro"
-/usr/local/bin/wine ./THUGProLauncher.exe &

@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-if [[ -d "${HOME}/library/Application Support/Übersicht/widgets/pecan" ]] ; then
-	rm "${HOME}/library/Application Support/Übersicht/widgets/pecan"
-else
-	ln -s "${HOME}/scripts/pecan" "${HOME}/library/Application Support/Übersicht/widgets/pecan"
-fi
