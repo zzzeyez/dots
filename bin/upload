@@ -37,7 +37,7 @@ file_upload() {
     printf '%s' "${url}"
     [ -t 1 ] && printf '\n'
     clip "${url}"
-	notify "✔ ${url} uploaded"
+	notify "${url} uploaded"
 }
 
 shorten_url() {

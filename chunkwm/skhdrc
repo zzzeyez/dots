@@ -38,8 +38,6 @@ cmd - t [
 	*              : open -a Safari "file:///Users/zzzeyez/scripts/pollen/index.html"
 ]
 
-# finder
-#cmd + shift - f : open-app finder
 
 # wallpaper
 lcmd + shift - 0 : wallpaper -n ~/pictures/wallpapers
@@ -64,7 +62,7 @@ rcmd + shift - w : wal -i ~/pictures/wallpapers -l -q -o wal-set
 cmd + shift - s : colorlovers -nqs
 
 # nightmode
-#cmd + shift - q : night
+cmd + shift - n : night
 
 # bar
 cmd - h : toggleshadow
@@ -80,7 +78,7 @@ cmd + shift - z : dots -ns
 cmd + shift - u : dots -u
 
 # thps
-rcmd + shift - 9 : bash ~/.bin/thugpro
+rcmd + shift - t : bash ~/.bin/thugpro
 
 # windows
 cmd - left : chunkc tiling::window --focus west
@@ -106,16 +104,17 @@ cmd + shift - 3 : chunkc tiling::window --send-to-desktop 3; chunkc tiling::desk
 cmd + shift - 4 : chunkc tiling::window --send-to-desktop 4; chunkc tiling::desktop --focus 4
 cmd + shift - 5 : chunkc tiling::window --send-to-desktop 5; chunkc tiling::desktop --focus 5
 # create desktop, move window and follow focus
-shift + cmd - return : chunkc tiling::desktop --create;\
-                       ids=$(chunkc tiling::query --desktops-for-monitor\
-                           $(chunkc tiling::query --monitor-for-desktop $(chunkc tiling::query --desktop id)));\
-                       chunkc tiling::window --send-to-desktop $(echo ${ids##* });\
-                       chunkc tiling::desktop --focus $(echo ${ids##* })
+shift + cmd - return : chunkc tiling::desktop --create
+                       #ids=$(chunkc tiling::query --desktops-for-monitor\
+                           #$(chunkc tiling::query --monitor-for-desktop \
+						   #$(chunkc tiling::query --desktop id)))
+                       #chunkc tiling::window --send-to-desktop $(echo ${ids##* });
+                       #chunkc tiling::desktop --focus $(echo ${ids##* })
 # create desktop, follow focus
-shift + cmd - n      : chunkc tiling::desktop --create;\
-                       ids=$(chunkc tiling::query --desktops-for-monitor\
-                           $(chunkc tiling::query --monitor-for-desktop $(chunkc tiling::query --desktop id)));\
-                       chunkc tiling::desktop --focus $(echo ${ids##* })
+#shift + cmd - n      : chunkc tiling::desktop --create;\
+                       #ids=$(chunkc tiling::query --desktops-for-monitor\
+                           #$(chunkc tiling::query --monitor-for-desktop $(chunkc tiling::query --desktop id)));\
+                       #chunkc tiling::desktop --focus $(echo ${ids##* })
 # destroy desktop
 shift + cmd - q :      ids=$(chunkc tiling::query --desktops-for-monitor \
                            $(chunkc tiling::query --monitor-for-desktop $(chunkc tiling::query --desktop id)));\

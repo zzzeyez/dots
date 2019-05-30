@@ -70,24 +70,24 @@ main()
     )
 
     for ((i = 0; i < ${#set1[@]}; i++)); do
-        x_offset="$((2 + (i * 4)))"
+        x_offset="$((0 + (i * 4)))"
         print_box "1" "1" "5" "9" "${set1[$i]}█"
     done
 
     for ((i = 0; i < ${#set2[@]}; i++)); do
-        x_offset="$((2 + (i * 4)))"
+        x_offset="$((0 + (i * 4)))"
         print_box "1" "9" "5" "10" "${set2[$i]}█"
     done
 
     for ((i = 0; i < ${#set3[@]}; i++)); do
-        x_offset="$((2 + (i * 5)))"
+        x_offset="$((0 + (i * 5)))"
         print_box "1" "10" "6" "12" "${set3[$i]}█"
     done
 
-    x_offset="$((2 + (i * 5)))"
+    x_offset="$((0 + (i * 5)))"
     print_box "1" "10" "14" "12" "${f[0]}█"
 
-    printf "%s\\n\\n" "${reset}"
+    printf "%s\\n" "${reset}"
 }
 
 main

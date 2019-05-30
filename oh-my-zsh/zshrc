@@ -1,5 +1,5 @@
 # wal colors
-(cat ~/.cache/wal/sequences &>/dev/null)
+(cat ~/.cache/wal/sequences)
 
 # If you come from bash you might have to change your $PATH.
 #export PATH=$PATH:/usr/bin:/usr/local/bin

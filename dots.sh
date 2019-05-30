@@ -31,6 +31,9 @@ make_directories=make_directories
 SSD=xanthia
 backup_exclude=backup_exclude
 songs=behaviors
+icloud="${HOME}/Library/Mobile Documents/com~apple~CloudDocs"
+mp3s="${HOME}/behaviors/mp3s"
+text="${HOME}/text"
 
 screenshot() {
 	# screenshot
@@ -414,6 +417,7 @@ update() {
 
 backup() {
 	title backup
+
 	# check for ssd
 	if [[ -d /Volumes/$SSD ]] ; then
 		
@@ -460,7 +464,8 @@ backup() {
 				# music projects in separate directory
 				# no deleting though
 				$test rsync -avrh --stats                          \
-					$SONG_SRC                                   \
+					--delete                                       \
+					$SONG_SRC                                      \
 					$SONG_DST &&
 
 				# unmount xanthia
@@ -474,7 +479,49 @@ backup() {
 		fi
 	else
 		echo "xanthia was not found"
+		echo ""
 		notify-send "xanthia was not found"
+	fi
+}
+
+cloud() {
+	title cloud
+
+	# check if icloud is available
+	if [[ -d "$icloud" ]] ; then
+		mode="$1"
+
+		# ask permission
+		echo "$mode ->"
+		question "$icloud"
+
+		# permission granted
+		if [[ "$answer" ]] ; then
+			
+			# convert aif to mp3
+			if [[ "$mode" == "$mp3s" ]] ; then
+				#find "$mode" -name "*.aif" -exec ffmpeg -i {} -acodec libmp3lame -ab 320k {}.mp3 &&
+				find "$mode" -name "*.aif" -exec bash -c 'ffmpeg -i "{}" -y -acodec libmp3lame -ab 320k "${0/.aif}.mp3"' {} \; &&
+				find "$mode" -name "*.aif" -delete &&
+				message "aif files converted to mp3"
+			fi
+			
+			$test rsync -avrh --stats                 \
+				--delete                              \
+				"$mode"                               \
+				"$icloud" &&
+
+			echo "" &&
+			title "${mode##*/}" &&
+			ls -a1 "$icloud/${mode##*/}" 
+			echo ""
+		fi
+
+	# icloud directory is missing
+	else
+		message "$icloud was not found"
+		echo ""
+		notify-send "$icloud was not found"
 	fi
 }
 
@@ -516,6 +563,8 @@ flags() {
 				notify-send "starting update"
 				yes | remove "$save_home"
 				yes | backup "$backup_exclude"
+				yes | cloud "$mp3s"
+				yes | cloud "$text"
 				yes | recreate "$make_directories"
 				yes | copy "$dotfiles"
 				yes | install "$misc"
@@ -542,6 +591,8 @@ copy "$dotfiles"
 # needs prompt
 # update
 backup "$backup_exclude"
+cloud "$mp3s"
+cloud "$text"
 
 # to do
 # list files being backed up

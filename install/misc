@@ -34,6 +34,9 @@ ln -s "${HOME}/behaviors/packs/h3000" "${HOME}/documents/h3000"
 rm "${HOME}/documents/rhodes"
 ln -s "${HOME}/behaviors/packs/rhodes" "${HOME}/documents/rhodes"
 
+# icloud in home dir
+ln -s "${HOME}/Library/Mobile Documents/com~apple~CloudDocs" "${HOME}/cloud"
+
 # turn on chwmsa
 echo '`chunkwm --install-sa` wants sudo.  skipping..'
 #sudo chunkwm --install-sa
