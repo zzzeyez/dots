@@ -3,7 +3,7 @@
 
 **wallpaper** by [Adrien Olichon](https://unsplash.com/@adrienolichon) ([wallpaper.png](screenshot/AdrienOlichon.png))
 
-**wallpaper 2** [by Anchor Lee](https://unsplash.com/@anchorlee) ([wallpaper.png](screenshot/AnchorLee.png))
+**wallpaper 2** by [Anchor Lee](https://unsplash.com/@anchorlee) ([wallpaper.png](screenshot/AnchorLee.png))
 
 **palette** by [DarkBlueMe4Ever](https://www.colourlovers.com/palette/2801382/Chlorinated_Dolphin) ([wal file](screenshot/ChlorinatedDolphin.json))
 
