@@ -17,6 +17,8 @@ song_list_format = "$0%t$1 $R$7%b $4%a"
 #song_columns_list_format = "(6)[green]{l} (28)[blue]{a} (29)[cyan]{b} (50)[white]{t}"
 song_status_format = "$3%t"
 playlist_display_mode = "classic"
+#browser_display_mode = "columns"
+#active_column_color = "1_5"
 enable_window_title = no
 song_window_title_format = "%a - %t"
 

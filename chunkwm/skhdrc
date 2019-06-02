@@ -78,7 +78,7 @@ cmd + shift - z : dots -ns
 cmd + shift - u : dots -u
 
 # thps
-rcmd + shift - t : bash ~/.bin/thugpro
+rcmd + shift - t : bash ~/scripts/bin/thugpro
 
 # windows
 cmd - left : chunkc tiling::window --focus west

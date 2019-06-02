@@ -431,8 +431,8 @@ backup() {
 			# create variables
 			SRC="${HOME}"
 			DST="/Volumes/$SSD"
-			SONG_SRC="${HOME}/$songs"
-			SONG_DST="/Volumes/$SSD"
+			#SONG_SRC="${HOME}/$songs"
+			#SONG_DST="/Volumes/$SSD"
 
 			# create array from file $1
 			list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$mode"
@@ -463,10 +463,10 @@ backup() {
 
 				# music projects in separate directory
 				# no deleting though
-				$test rsync -avrh --stats                          \
-					--delete                                       \
-					$SONG_SRC                                      \
-					$SONG_DST &&
+				#$test rsync -avrh --stats                          \
+					#--delete                                       \
+					#$SONG_SRC                                      \
+					#$SONG_DST &&
 
 				# unmount xanthia
 				message "could not unmount ssd.  finished syncing $SRC to $DST" &&
@@ -515,6 +515,7 @@ cloud() {
 			title "${mode##*/}" &&
 			ls -a1 "$icloud/${mode##*/}" 
 			echo ""
+			notify-send "files uploaded to icloud"
 		fi
 
 	# icloud directory is missing
@@ -568,7 +569,7 @@ flags() {
 				yes | recreate "$make_directories"
 				yes | copy "$dotfiles"
 				yes | install "$misc"
-				yes | update
+				#yes | update
 				exit
 			;;
 		esac

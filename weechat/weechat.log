@@ -1,35 +1,28 @@
-[2019-05-28 18:56:21] WeeChat 2.4 (compiled on May 28 2019 12:59:05)
-[2019-05-28 18:56:21] Reading configuration file sec.conf
-[2019-05-28 18:56:21] Reading configuration file weechat.conf
-[2019-05-28 18:56:21] Reading configuration file plugins.conf
-[2019-05-28 18:56:21] Reading configuration file charset.conf
-[2019-05-28 18:56:21] Reading configuration file logger.conf
-[2019-05-28 18:56:21] Reading configuration file exec.conf
-[2019-05-28 18:56:21] Reading configuration file trigger.conf
-[2019-05-28 18:56:21] Reading configuration file aspell.conf
-[2019-05-28 18:56:21] Reading configuration file alias.conf
-[2019-05-28 18:56:21] Reading configuration file buflist.conf
-[2019-05-28 18:56:21] Reading configuration file fifo.conf
-[2019-05-28 18:56:21] Reading configuration file xfer.conf
-[2019-05-28 18:56:21] Reading configuration file irc.conf
-[2019-05-28 18:56:21] Reading configuration file relay.conf
-[2019-05-28 18:56:21] Reading configuration file tcl.conf
-[2019-05-28 18:56:21] Reading configuration file python.conf
-[2019-05-28 18:56:21] Reading configuration file lua.conf
-[2019-05-28 18:56:21] Reading configuration file perl.conf
-[2019-05-28 18:56:21] Reading configuration file iset.conf
-[2019-05-28 18:56:21] Reading configuration file ruby.conf
-[2019-05-28 18:56:21] Reading configuration file script.conf
-[2019-05-28 18:56:21] Reading configuration file fset.conf
-[2019-05-28 18:56:21] irc: connecting to server irc.mzima.net/6667...
-[2019-05-28 18:56:21] irc: connecting to server irc.rizon.net/6667...
-[2019-05-28 18:56:21] irc: connecting to server irc.snoonet.org/6667...
-[2019-05-28 18:56:21] irc: connecting to server chat.freenode.net/6667...
-[2019-05-28 18:56:21] irc: connecting to server irc.scratch-network.net/6697 (SSL)...
-[2019-05-30 00:08:48] irc: connecting to server chat.freenode.net/6667...
-[2019-05-30 00:10:08] irc: connecting to server chat.freenode.net/6667...
-[2019-05-30 12:33:10] irc: connecting to server irc.scratch-network.net/6697 (SSL)...
-[2019-05-30 12:33:11] irc: connecting to server irc.rizon.net/6667...
-[2019-05-30 12:33:14] irc: connecting to server irc.mzima.net/6667...
-[2019-05-30 12:33:14] irc: connecting to server irc.snoonet.org/6667...
-[2019-05-30 12:33:15] irc: connecting to server chat.freenode.net/6667...
+[2019-05-30 19:15:41] WeeChat 2.4 (compiled on May 30 2019 19:22:14)
+[2019-05-30 19:15:41] Reading configuration file sec.conf
+[2019-05-30 19:15:41] Reading configuration file weechat.conf
+[2019-05-30 19:15:41] Reading configuration file plugins.conf
+[2019-05-30 19:15:41] Reading configuration file charset.conf
+[2019-05-30 19:15:41] Reading configuration file logger.conf
+[2019-05-30 19:15:41] Reading configuration file exec.conf
+[2019-05-30 19:15:41] Reading configuration file trigger.conf
+[2019-05-30 19:15:41] Reading configuration file aspell.conf
+[2019-05-30 19:15:41] Reading configuration file alias.conf
+[2019-05-30 19:15:41] Reading configuration file buflist.conf
+[2019-05-30 19:15:41] Reading configuration file fifo.conf
+[2019-05-30 19:15:41] Reading configuration file xfer.conf
+[2019-05-30 19:15:41] Reading configuration file irc.conf
+[2019-05-30 19:15:41] Reading configuration file relay.conf
+[2019-05-30 19:15:41] Reading configuration file tcl.conf
+[2019-05-30 19:15:41] Reading configuration file python.conf
+[2019-05-30 19:15:41] Reading configuration file lua.conf
+[2019-05-30 19:15:41] Reading configuration file perl.conf
+[2019-05-30 19:15:41] Reading configuration file iset.conf
+[2019-05-30 19:15:41] Reading configuration file ruby.conf
+[2019-05-30 19:15:41] Reading configuration file script.conf
+[2019-05-30 19:15:41] Reading configuration file fset.conf
+[2019-05-30 19:15:41] irc: connecting to server irc.mzima.net/6667...
+[2019-05-30 19:15:41] irc: connecting to server irc.rizon.net/6667...
+[2019-05-30 19:15:41] irc: connecting to server irc.snoonet.org/6667...
+[2019-05-30 19:15:41] irc: connecting to server chat.freenode.net/6667...
+[2019-05-30 19:15:41] irc: connecting to server irc.scratch-network.net/6697 (SSL)...
