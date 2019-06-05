@@ -36,7 +36,7 @@ defaults write NSGlobalDomain _HIHideMenuBar -bool true
 # Set highlight color to gray
 defaults write NSGlobalDomain AppleHighlightColor -string "0.564700 0.564700 0.564700"
 
-# set accent colors to grap
+# set accent colors to gray
 defaults write NSGlobalDomain AppleAccentColor -int -1
 
 # show battery percentage in menu bar
@@ -167,7 +167,7 @@ defaults write -g com.apple.trackpad.scaling 7
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 # lower is faster
 defaults write NSGlobalDomain KeyRepeat -float 1.0
-defaults write NSGlobalDomain InitialKeyRepeat -int 12
+defaults write NSGlobalDomain InitialKeyRepeat -int 13
 
 ##
 # map caps-lock to alt-key (resets on reboot)

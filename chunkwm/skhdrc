@@ -40,11 +40,11 @@ cmd - t [
 
 
 # wallpaper
-lcmd + shift - 0 : wallpaper -n ~/pictures/wallpapers
-lcmd - 0 : wallpaper -no ~/pictures/wallpapers
+cmd + shift - 0 : wallpaper ~/pictures/wallpapers
+lcmd - 0 : wallpaper -o ~/pictures/wallpapers
 cmd + shift - d : new-roses -ns ~/pictures/wallpapers
 # colors
-rcmd - 0 : wallpaper -o 8
+rcmd - 0 : wallpaper -o 0
 rcmd - 1 : wallpaper -o 1
 rcmd - 2 : wallpaper -o 2
 rcmd - 3 : wallpaper -o 3
@@ -52,6 +52,7 @@ rcmd - 4 : wallpaper -o 4
 rcmd - 5 : wallpaper -o 5
 rcmd - 6 : wallpaper -o 6
 rcmd - 7 : wallpaper -o 7
+rcmd - 8 : wallpaper -o 8
 
 # palette
 cmd + shift - r : colorlovers -nqr

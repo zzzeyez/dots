@@ -11,8 +11,8 @@ chunkwm/chunkwmrc .chunkwmrc
 chunkwm/skhdrc .skhdrc
 
 # irssi
-#title=irssi
-#irssi .irssi
+title=irssi
+irssi .irssi
 
 # iterm2
 title=iterm2

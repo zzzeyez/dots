@@ -62,7 +62,7 @@ servers = (
     port = "6667";
     use_tls = "no";
     tls_verify = "no";
-    autoconnect = "yes";
+    autoconnect = "no";
   },
   {
     address = "irc.underworld.no";
@@ -70,6 +70,7 @@ servers = (
     port = "6667";
     use_tls = "no";
     tls_verify = "no";
+    autoconnect = "yes";
   },
   {
     address = "irc.rizon.net";
@@ -82,6 +83,14 @@ servers = (
   {
     address = "irc.snoonet.org";
     chatnet = "Snoonet";
+    port = "6667";
+    use_tls = "no";
+    tls_verify = "no";
+    autoconnect = "yes";
+  },
+  {
+    address = "irc.scratch-network.net";
+    chatnet = "scratch-network";
     port = "6667";
     use_tls = "no";
     tls_verify = "no";
@@ -164,6 +173,11 @@ chatnets = {
     realname = "zzzeyez";
     max_modes = "4";
   };
+  "scratch-network" = {
+    type = "IRC";
+    nick = "zzzeyez";
+	autosendcmd = "/^msg nickserv IDENTIFY password;/^msg Drone enter #redacted zzzeyez Password1";
+  };
 };
 
 channels = (
@@ -177,6 +191,7 @@ channels = (
   { name = "#oftc"; chatnet = "OFTC"; autojoin = "No"; },
   { name = "silc"; chatnet = "SILC"; autojoin = "No"; },
   { name = "#indie"; chatnet = "EFnet"; autojoin = "yes"; },
+  { name = "#<5"; chatnet = "scratch-network"; autojoin = "yes"; },
   { name = "#rice"; chatnet = "rizon"; autojoin = "yes"; },
   { name = "#stopdrinking"; chatnet = "Snoonet"; autojoin = "yes"; }
 );
@@ -233,7 +248,7 @@ aliases = {
   WI = "WHOIS";
   WII = "WHOIS $0 $0";
   WL = "WINDOW LIST";
-  WN = "WINDOW NEW HIDDEN";
+  WN = "WINDOW NEXT";
   WQUERY = "QUERY -window";
   WW = "WHOWAS";
   1 = "WINDOW GOTO 1";
@@ -450,6 +465,10 @@ settings = {
 };
 ignores = (
   { level = "JOINS PARTS QUITS"; channels = ( "#indie" ); },
-  { level = "JOINS PARTS QUITS"; channels = ( "#stopdrinking" ); }, 
+  { level = "JOINS PARTS QUITS"; channels = ( "#stopdrinking" ); },
   { level = "JOINS PARTS QUITS"; channels = ( "#rice" ); }
+);
+keyboard = (
+  { key = "Tab"; id = "command"; data = "window next"; },
+  { key = "tab"; id = "command"; data = "window next"; }
 );

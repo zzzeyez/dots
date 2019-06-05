@@ -49,6 +49,7 @@ brew install fff
 brew install redshift
 brew install git
 brew install git-lfs
+brew install youtube-dl
 brew install imagemagick
 brew install jq
 brew install mpd

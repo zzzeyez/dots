@@ -360,59 +360,65 @@ copy() {
 }
 
 update() {
+	title 'update'
+	# ask permission
+	question 'do you want to update?'
+
+	if [[ "$answer" ]] ; then
+		# homebrew update
+		$test brew update
+		$test brew upgrade
+		$test brew cleanup
 		
-	# homebrew update
-	$test brew update
-	$test brew upgrade
-	$test brew cleanup
+		# python update
+		# get variables from list file
+		list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$python_packages"
 		
-	# python update
-	# get variables from list file
-	list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$python_packages"
-		
-	# separate the lines
-	for line in "${list[@]}"
-	do
+		# separate the lines
+		for line in "${list[@]}"
+		do
 			
-		# turn string into array
-		read -r -a entry <<< "$line"
+			# turn string into array
+			read -r -a entry <<< "$line"
 			
-		# ignore commented or empty lines
-		if [[ ! "$line" == \#* ]] && [[ ! -z "$line" ]] ; then
+			# ignore commented or empty lines
+			if [[ ! "$line" == \#* ]] && [[ ! -z "$line" ]] ; then
 				
-			# pip3 -q install --upgrade package
-			$test ${entry[0]} -q ${entry[1]} --upgrade ${entry[2]}
-		fi
+				# pip3 -q install --upgrade package
+				$test ${entry[0]} -q ${entry[1]} --upgrade ${entry[2]}
+			fi
 			
-	done
+		done
 		
-	# github update
-	# get variables from list file
-	list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$git_clones"
+		# github update
+		# get variables from list file
+		list=(); while read -r; do list+=("$REPLY"); done < "$dots/$lists_directory/$git_clones"
 		
-	# separate the lines
-	for line in "${list[@]}"
-	do
+		# separate the lines
+		for line in "${list[@]}"
+		do
 			
-		# turn string into array
-		read -r -a entry <<< "$line"
+			# turn string into array
+			read -r -a entry <<< "$line"
 			
-		# ignore my packages and commented or empty
-		if [[ ! "${entry[0]}" == $my_github* ]] && [[ ! "$line" == \#* ]] && [[ ! -z "$line" ]]
-		then
+			# ignore my packages and commented or empty
+			if [[ ! "${entry[0]}" == $my_github* ]] && [[ ! "$line" == \#* ]] && [[ ! -z "$line" ]]
+			then
 			
-		# move to the directory and pull it
-		echo ""
-		message "updating ${entry[0]}.."
-		$test cd "${HOME}/${entry[1]}" &&
-		$test git pull origin master
+			# move to the directory and pull it
+			echo ""
+			message "updating ${entry[0]}.."
+			$test cd "${HOME}/${entry[1]}" &&
+			$test git pull origin master
 			
-		fi
-	done
+			fi
+		done
 	
-	# conclude
-	$test cd "${HOME}"
-	notify-send "finished updating system"
+		# conclude
+		$test cd "${HOME}"
+		notify-send "finished updating system"
+
+	fi
 }
 
 backup() {
@@ -528,11 +534,11 @@ cloud() {
 
 help() {
 	title 'dots'
-	message '-s : screenshot + exit'
-	message '-r : apply settings for new user account'
-	message '-t : test mode (puts `echo` before commands)'
-	message '-b : backup to ssd'
-	message '-u : system upgrade'
+	echo '-s : screenshot + exit'
+	echo '-r : apply settings for new user account'
+	echo '-t : test mode (puts `echo` before commands)'
+	echo '-b : backup to ssd and icloud'
+	echo '-u : system upgrade'
 	echo
 }
 
@@ -570,6 +576,7 @@ flags() {
 				yes | copy "$dotfiles"
 				yes | install "$misc"
 				#yes | update
+				notify-send "finished system backup"
 				exit
 			;;
 		esac
@@ -589,8 +596,7 @@ install "$macos_settings"
 install "$misc"
 copy "$git_clones"
 copy "$dotfiles"
-# needs prompt
-# update
+update
 backup "$backup_exclude"
 cloud "$mp3s"
 cloud "$text"

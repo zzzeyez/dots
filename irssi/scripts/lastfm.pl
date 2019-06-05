@@ -52,11 +52,11 @@ Irssi::settings_add_str("lastfm", "lastfm_user", "");
 # displayed if the tag inside actually exists! Cool, huh!?
 
 #  *) Name is used instead of, the more logical IMO, track since that is what Last.fm reports in their .xml file that we parse.
-Irssi::settings_add_str("lastfm", "lastfm_output", 'np: %artist - %name');
+Irssi::settings_add_str("lastfm", "lastfm_output", '%artist - %name');
 Irssi::settings_add_str("lastfm", "lastfm_output_tab_complete", '');
 
 # If we should use /me instead of /say
-Irssi::settings_add_bool("lastfm", "lastfm_use_action", 0);
+Irssi::settings_add_bool("lastfm", "lastfm_use_action", 1);
 
 # If we should make the subtitution variable %player available which is very slow to fetch but nice to have.
 Irssi::settings_add_bool("lastfm", "lastfm_get_player", 0);

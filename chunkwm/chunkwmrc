@@ -31,10 +31,11 @@ chunkc set 1_desktop_mode                monocle
 
 #
 # desktop 2
-chunkc set 2_desktop_offset_top          232
-chunkc set 2_desktop_offset_bottom       232
-chunkc set 2_desktop_offset_left         230
-chunkc set 2_desktop_offset_right        230
+chunkc set 2_desktop_mode                float
+#chunkc set 2_desktop_offset_top          232
+#chunkc set 2_desktop_offset_bottom       232
+#chunkc set 2_desktop_offset_left         230
+#chunkc set 2_desktop_offset_right        230
 
 #
 # bsp mode
@@ -52,7 +53,7 @@ chunkc set window_region_locked          0
 
 #
 # key binds
-chunkc set mouse_move_window \"cmd 1\"
+chunkc set mouse_move_window \"alt 1\"
 chunkc set mouse_resize_window \"shift 1\"
 
 #
