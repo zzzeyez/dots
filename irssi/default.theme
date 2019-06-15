@@ -271,7 +271,8 @@ abstracts = {
   topicsbstart = "{sbstart $*}";
   topicsbend = "{sbend $*}";
 
-  prompt = "[$*] ";
+  #prompt = "[$*] ";
+  prompt = "";
 
   sb = " %c[%n$*%c]%n";
   sbmode = "(%c+%n$*)";
@@ -293,5 +294,5 @@ abstracts = {
   sb_act_hilight_color = "$0$1-%n";
 };
 formats = {
-  "fe-common/core" = { pubmsg = "{pubmsgnick $2 {pubnick \00311$0}}$1"; };
+  "fe-common/core" = { pubmsg = "{pubmsgnick $2 {pubnick \00306$0}}$1"; };
 };

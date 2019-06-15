@@ -176,7 +176,7 @@ chatnets = {
   "scratch-network" = {
     type = "IRC";
     nick = "zzzeyez";
-	autosendcmd = "/^msg nickserv IDENTIFY password;/^msg Drone enter #redacted zzzeyez Password1";
+    autosendcmd = "/^msg nickserv IDENTIFY password;/^msg Drone enter #redacted zzzeyez Password1";
   };
 };
 
@@ -455,20 +455,25 @@ settings = {
     user_name = "zzzeyez";
     nick = "zzzeyez";
   };
-  "fe-text" = { actlist_sort = "refnum"; };
+  "fe-text" = { actlist_sort = "refnum"; term_appkey_mode = "no"; };
   "fe-common/core" = {
     timestamps = "no";
     show_nickmode_empty = "no";
     use_status_window = "no";
   };
-  "perl/core/scripts" = { lastfm_user = "em3i3mei"; };
+  "perl/core/scripts" = { lastfm_user = "em3i3mei"; title_string = "$C"; };
+  "irc/core" = { skip_motd = "yes"; };
 };
 ignores = (
   { level = "JOINS PARTS QUITS"; channels = ( "#indie" ); },
   { level = "JOINS PARTS QUITS"; channels = ( "#stopdrinking" ); },
+  { level = "JOINS PARTS QUITS"; channels = ( "#<5" ); },
+  { level = "JOINS PARTS QUITS"; channels = ( "#redacted" ); },
   { level = "JOINS PARTS QUITS"; channels = ( "#rice" ); }
 );
 keyboard = (
-  { key = "Tab"; id = "command"; data = "window next"; },
-  { key = "tab"; id = "command"; data = "window next"; }
+  { key = "tab"; id = "word_completion"; data = ""; },
+  { key = "mdown"; id = "next_window"; data = ""; },
+  { key = "mup"; id = "previous_window"; data = ""; },
+  { key = "mtab"; id = "next_window"; data = ""; }
 );

@@ -36,8 +36,8 @@ title=wal
 wal .config/wal
 
 # weechat
-title=weechat
-weechat .weechat
+#title=weechat
+#weechat .weechat
 
 # oh-my-zsh
 title=oh-my-zsh

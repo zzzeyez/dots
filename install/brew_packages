@@ -37,8 +37,8 @@ fi;
 # my stuff
 brew install neovim
 brew install tmux
-brew install weechat 
-#brew install irssi
+#brew install weechat 
+brew install irssi
 brew install ncmpcpp
 #brew install ranger
 brew install htop
