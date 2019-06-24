@@ -3,7 +3,7 @@
 
 **wallpaper** by [Ben Blenner](https://unsplash.com/@benblenner) ([wallpaper.png](screenshot/BenBlennerhassett.png))
 
-**wallpaper 2** by [Samuel Scrimshaw](https://unsplash.com/@samscrim) ([wallpaper.png](screenshot/SamuelScrimshaw.png))
+**wallpaper 2** by [Kunj Parekh](https://unsplash.com/@kunjparekh) ([wallpaper.png](screenshot/KunjParekh.png))
 
 **palette** ([wal file](screenshot/SkyBlueDolphin.json))
 
