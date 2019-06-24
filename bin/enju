@@ -60,7 +60,7 @@ CTEXT="$WHT" # color of entry text
 mkent "distro" "macOS"
 mkent "host" "new-roses"
 mkent "wm" "chunkwm"
-mkent "font" "sf mono"
+mkent "font" "menlo"
 mkent "shell" "zsh"
 
 # find the center of the screen

@@ -12,10 +12,10 @@ chunkc set custom_bar_offset_right       0
 #
 # global
 chunkc set global_desktop_mode           bsp
-chunkc set global_desktop_offset_top     8
-chunkc set global_desktop_offset_bottom  8
-chunkc set global_desktop_offset_left    8
-chunkc set global_desktop_offset_right   8
+chunkc set global_desktop_offset_top     91
+chunkc set global_desktop_offset_bottom  91
+chunkc set global_desktop_offset_left    96
+chunkc set global_desktop_offset_right   96
 chunkc set global_desktop_offset_gap     8
 chunkc set desktop_padding_step_size     15.0
 chunkc set desktop_gap_step_size         1.0
@@ -23,19 +23,11 @@ chunkc set desktop_gap_step_size         1.0
 #
 # desktop 1
 chunkc set 1_desktop_mode                monocle
-#chunkc set 1_desktop_offset_top          0
-#chunkc set 1_desktop_offset_bottom       0
-#chunkc set 1_desktop_offset_left         0
-#chunkc set 1_desktop_offset_right        0
-#chunkc set 1_desktop_offset_gap          0
-
-#
-# desktop 2
-chunkc set 2_desktop_mode                float
-#chunkc set 2_desktop_offset_top          232
-#chunkc set 2_desktop_offset_bottom       232
-#chunkc set 2_desktop_offset_left         230
-#chunkc set 2_desktop_offset_right        230
+chunkc set 1_desktop_offset_top          0
+chunkc set 1_desktop_offset_bottom       0
+chunkc set 1_desktop_offset_left         0
+chunkc set 1_desktop_offset_right        0
+chunkc set 1_desktop_offset_gap          0
 
 #
 # bsp mode
@@ -53,8 +45,8 @@ chunkc set window_region_locked          0
 
 #
 # key binds
-chunkc set mouse_move_window \"alt 1\"
-chunkc set mouse_resize_window \"shift 1\"
+chunkc set mouse_move_window \"shift 1\"
+chunkc set mouse_resize_window \"ctrl 1\"
 
 #
 # borders (requires `border.so`)

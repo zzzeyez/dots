@@ -56,7 +56,7 @@ Irssi::settings_add_str("lastfm", "lastfm_output", 'np: %artist - %name');
 Irssi::settings_add_str("lastfm", "lastfm_output_tab_complete", '');
 
 # If we should use /me instead of /say
-Irssi::settings_add_bool("lastfm", "lastfm_use_action", 0);
+Irssi::settings_add_bool("lastfm", "lastfm_use_action", 1);
 
 # If we should make the subtitution variable %player available which is very slow to fetch but nice to have.
 Irssi::settings_add_bool("lastfm", "lastfm_get_player", 0);
