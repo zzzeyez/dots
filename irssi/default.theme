@@ -271,8 +271,8 @@ abstracts = {
   topicsbstart = "{sbstart $*}";
   topicsbend = "{sbend $*}";
 
-  #prompt = "[$*] ";
-  prompt = "";
+  prompt = "[$*] ";
+  #prompt = "";
 
   sb = " %c[%n$*%c]%n";
   sbmode = "(%c+%n$*)";

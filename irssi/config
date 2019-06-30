@@ -1,18 +1,10 @@
 servers = (
   {
     address = "chat.freenode.net";
-    chatnet = "Freenode";
+    chatnet = "freenode";
     port = "6697";
     use_tls = "yes";
     tls_verify = "yes";
-    autoconnect = "no";
-  },
-  {
-    address = "irc.scratch-network.net";
-    chatnet = "scratch-network";
-    port = "6667";
-    use_tls = "no";
-    tls_verify = "no";
     autoconnect = "no";
   },
   {
@@ -54,23 +46,14 @@ servers = (
 );
 
 chatnets = {
-  "scratch-network" = {
-    type = "IRC";
-    nick = "zzzeyez";
-    autosendcmd = "/^msg nickserv IDENTIFY password;/^msg Drone enter #redacted zzzeyez Password1";
-  };
-  Freenode = { type = "IRC"; };
+  freenode = { type = "IRC"; };
   rizon = { type = "IRC"; };
   red = { type = "IRC"; };
   snoonet = { type = "IRC"; };
   efnet = { type = "IRC"; };
 };
 
-channels = (
-  { name = "#<5"; chatnet = "scratch-network"; autojoin = "yes"; }
-);
-
-aliases = { exit = "quit"; };
+aliases = { exit = "quit"; wc = "window close";};
 
 statusbar = {
 
