@@ -108,7 +108,7 @@ source $ZSH/custom/plugins/zsh-git-prompt/zshrc.sh
 	#(cat ~/.cache/wal/sequences &)
 #fi
 
-# fff
+# fff file manager
 f() {
 	source ${HOME}/.config/fff
     fff "$@"
@@ -122,5 +122,12 @@ todo() {
 
 # delete ds store files
 ds() {
-find "${1-.}" -name '.DS_Store' -type f -delete
+	find "${1-.}" -name '.DS_Store' -type f -delete
+}
+
+# play thugpro
+thugpro() {
+	export WINEPREFIX=/Users/zzzeyez/.thugpro WINEARCH=win32
+	cd /Users/zzzeyez/.thugpro/drive_c/users/zzzeyez/Local\ Settings/Application\ Data/THUG\ Pro &&
+	wine ./THUGProLauncher.exe
 }

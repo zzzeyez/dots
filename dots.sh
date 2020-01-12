@@ -575,7 +575,7 @@ flags() {
 				yes | recreate "$make_directories"
 				yes | copy "$dotfiles"
 				yes | install "$misc"
-				#yes | update
+				yes | update
 				notify-send "finished system backup"
 				exit
 			;;
