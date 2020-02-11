@@ -8,6 +8,12 @@ servers = (
     autoconnect = "no";
   },
   {
+    address = "mail.akropolys.com";
+    chatnet = "bitlbee";
+    port = "6667";
+    autoconnect = "yes";
+  }
+  {
     address = "foxbnc.co.uk";
     chatnet = "red";
     port = "9001";
@@ -51,9 +57,17 @@ chatnets = {
   red = { type = "IRC"; };
   snoonet = { type = "IRC"; };
   efnet = { type = "IRC"; };
+  bitlbee = {
+    type = "IRC"; 
+	autosendcmd = "/^msg nickserv identify password;wait 2000";
+  };
 };
 
-aliases = { exit = "quit"; wc = "window close";};
+aliases = { 
+  exit = "quit";
+  wc = "window close";
+  list = "/^msg &bitlbee chat list discord";
+};
 
 statusbar = {
 
@@ -174,6 +188,10 @@ ignores = (
   { level = "JOINS PARTS QUITS"; channels = ( "#<5" ); },
   { level = "JOINS PARTS QUITS"; channels = ( "#redacted" ); },
   { level = "JOINS PARTS QUITS"; channels = ( "#rice" ); }
+  { level = "JOINS PARTS QUITS"; channels = ( "#sanders-general" ); }
+  { level = "JOINS PARTS QUITS"; channels = ( "#thugpro-general" ); }
+  { level = "JOINS PARTS QUITS"; channels = ( "#unixporn-showcase" ); }
+  { level = "JOINS PARTS QUITS"; channels = ( "#mircart" ); }
 );
 keyboard = (
   { key = "tab"; id = "word_completion"; data = ""; },

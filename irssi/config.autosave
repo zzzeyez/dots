@@ -1,0 +1,217 @@
+servers = (
+  {
+    address = "chat.freenode.net";
+    chatnet = "freenode";
+    port = "6697";
+    use_tls = "yes";
+    tls_verify = "yes";
+    autoconnect = "no";
+  },
+  {
+    address = "im.bitlbee.org";
+    chatnet = "bitlbee";
+    port = "6697";
+    use_ssl = "yes";
+    ssl_verify = "yes";
+    password = "3.5.1+20170130+master+0-g262a82b-git";
+    use_tls = "yes";
+    autoconnect = "yes";
+  },
+  {
+    address = "foxbnc.co.uk";
+    chatnet = "red";
+    port = "9001";
+    password = "zzzeyez/red:password";
+    use_tls = "yes";
+    tls_verify = "no";
+    autoconnect = "yes";
+  },
+  {
+    address = "foxbnc.co.uk";
+    chatnet = "snoonet";
+    port = "9001";
+    password = "zzzeyez/snoonet:password";
+    use_tls = "yes";
+    tls_verify = "no";
+    autoconnect = "yes";
+  },
+  {
+    address = "foxbnc.co.uk";
+    chatnet = "rizon";
+    port = "9001";
+    password = "zzzeyez/rizon:password";
+    use_tls = "yes";
+    tls_verify = "no";
+    autoconnect = "yes";
+  },
+  {
+    address = "foxbnc.co.uk";
+    chatnet = "efnet";
+    port = "9001";
+    password = "zzzeyez/efnet:password";
+    use_tls = "yes";
+    tls_verify = "no";
+    autoconnect = "yes";
+  }
+);
+
+chatnets = {
+  freenode = { type = "IRC"; };
+  rizon = { type = "IRC"; };
+  red = { type = "IRC"; };
+  snoonet = { type = "IRC"; };
+  efnet = { type = "IRC"; };
+  chatnets = {
+    bitlbee = {
+      type = "IRC";
+      autosendcmd = "/msg nickserv identify password";
+    };
+    type = "IRC";
+  };
+
+  aliases = { exit = "quit"; wc = "window close"; type = "IRC"; };
+
+  statusbar = {
+
+    items = {
+
+      barstart = "{sbstart}";
+      barend = "{sbend}";
+
+      topicbarstart = "{topicsbstart}";
+      topicbarend = "{topicsbend}";
+
+      time = "{sb $Z}";
+      user = "{sb {sbnickmode $cumode}$N{sbmode $usermode}{sbaway $A}}";
+
+      window = "{sb $winref:$tag/$itemname{sbmode $M}}";
+      window_empty = "{sb $winref{sbservertag $tag}}";
+
+      prompt = "{prompt $[.15]itemname}";
+      prompt_empty = "{prompt $winname}";
+
+      topic = " $topic";
+      topic_empty = " Irssi v$J - http://www.irssi.org";
+
+      lag = "{sb Lag: $0-}";
+      act = "{sb Act: $0-}";
+      more = "-- more --";
+    };
+
+    default = {
+
+      window = {
+
+        disabled = "yes";
+        type = "window";
+        placement = "bottom";
+        position = "1";
+        visible = "active";
+
+        items = {
+          barstart = { priority = "100"; };
+          time = { };
+          user = { };
+          window = { };
+          window_empty = { };
+          lag = { priority = "-1"; };
+          act = { priority = "10"; };
+          more = { priority = "-1"; alignment = "right"; };
+          barend = { priority = "100"; alignment = "right"; };
+        };
+      };
+
+      window_inact = {
+
+        type = "window";
+        placement = "bottom";
+        position = "1";
+        visible = "inactive";
+
+        items = {
+          barstart = { priority = "100"; };
+          window = { };
+          window_empty = { };
+          more = { priority = "-1"; alignment = "right"; };
+          barend = { priority = "100"; alignment = "right"; };
+        };
+      };
+
+      prompt = {
+
+        type = "root";
+        placement = "bottom";
+        position = "100";
+        visible = "always";
+
+        items = {
+          prompt = { priority = "-1"; };
+          prompt_empty = { priority = "-1"; };
+          input = { priority = "10"; };
+        };
+      };
+
+      topic = {
+
+        type = "root";
+        placement = "top";
+        position = "1";
+        visible = "always";
+
+        items = {
+          topicbarstart = { priority = "100"; };
+          topic = { };
+          topic_empty = { };
+          topicbarend = { priority = "100"; alignment = "right"; };
+        };
+        disabled = "yes";
+      };
+    };
+    type = "IRC";
+  };
+  settings = {
+    core = {
+      real_name = "zzzeyez";
+      user_name = "zzzeyez";
+      nick = "zzzeyez";
+    };
+    "fe-text" = { actlist_sort = "refnum"; term_appkey_mode = "no"; };
+    "fe-common/core" = {
+      timestamps = "no";
+      show_nickmode_empty = "no";
+      use_status_window = "no";
+      show_names_on_join = "no";
+    };
+    "perl/core/scripts" = { 
+      lastfm_user = "em3i3mei";
+      title_string = "$C";
+    };
+    "irc/core" = { skip_motd = "yes"; };
+    type = "IRC";
+  };
+  ignores = (
+    { level = "JOINS PARTS QUITS"; channels = ( "#indie" ); },
+    { level = "JOINS PARTS QUITS"; channels = ( "#stopdrinking" ); },
+    { level = "JOINS PARTS QUITS"; channels = ( "#<5" ); },
+    { level = "JOINS PARTS QUITS"; channels = ( "#redacted" ); },
+    { level = "JOINS PARTS QUITS"; channels = ( "#rice" ); },
+    type = "IRC"
+  );
+  keyboard = (
+    { key = "tab"; id = "word_completion"; data = ""; },
+    { key = "mdown"; id = "next_window"; data = ""; },
+    { key = "mup"; id = "previous_window"; data = ""; },
+    { key = "mtab"; id = "next_window"; data = ""; },
+    type = "IRC"
+  );
+  logs = { type = "IRC"; };
+  bitlbee = { type = "IRC"; };
+};
+settings = {
+  core = { 
+    real_name = "zzzeyez";
+    user_name = "zzzeyez";
+    nick = "zzzeyez";
+  };
+  "fe-text" = { actlist_sort = "refnum"; };
+};
