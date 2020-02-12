@@ -1,38 +1,27 @@
 # terminal
-# iterm2 reload
-alt - l : skhd -k "ctrl - l"
-cmd - return : open-app iterm2 & caps-lock
+cmd - return : open-app iterm2
 # my program to open/close tmux windows depending on if it's running
-alt - return : tmx new
-alt - o : tmx attach
-alt - w : tmx quit
+ctrl - return : tmx new
+ctrl - o : tmx attach
+#ctrl - w : tmx quit
 
 # tmux doesn't allow alt-key binds
-alt - b : skhd -k "ctrl - b"
-alt - c : skhd -k "ctrl - c"
-alt - h : skhd -k "ctrl - h"
-alt - q : skhd -k "ctrl - q"
-alt - n : skhd -k "ctrl - n"
-alt - r : skhd -k "ctrl - r"
-alt - d : skhd -k "ctrl - d"
-alt - t : skhd -k "ctrl - t"
-alt - u : shkd -k "ctrl - u"
+#alt - b : skhd -k "ctrl - b"
+#alt - c : skhd -k "ctrl - c"
+#alt - h : skhd -k "ctrl - h"
+#alt - q : skhd -k "ctrl - q"
+#alt - n : skhd -k "ctrl - n"
+#alt - r : skhd -k "ctrl - r"
+#alt - d : skhd -k "ctrl - d"
+#alt - t : skhd -k "ctrl - t"
+#alt - u : shkd -k "ctrl - u"
+#tmux won't map C-Tab
+ctrl - tab [
+	"iTerm2"       : skhd -k "ctrl - l"
+	*              ~
+]
 
 # safari
-#cmd - t : open -a Safari "file:///Users/zzzeyez/scripts/pollen/index.html"
-#alt - tab : skhd -k "ctrl - tab"
-alt - left [
-	"Safari"       : skhd -k "ctrl + shift - tab"
-	*              ~
-]
-alt - tab [
-	"Safari"       : skhd -k "ctrl - tab"
-	*              ~
-]
-alt - right [
-	"Safari"       : skhd -k "ctrl - tab"
-	*              ~
-]
 cmd - f [
 	"Safari"       ~
 	*              : open-app finder
@@ -41,7 +30,6 @@ cmd - t [
 	"Safari"       ~
 	*              : open -a Safari "file:///Users/zzzeyez/scripts/pollen/index.html"
 ]
-
 
 # wallpaper
 cmd + shift - 0 : wallpaper -n ~/pictures/wallpapers
@@ -78,10 +66,6 @@ cmd + shift - x : pecan-style -l && wal-set
 cmd + shift - p : scr -n
 cmd - p : scr -nu
 
-# dotfiles
-cmd + shift - z : dots -ns
-cmd + shift - u : dots -u
-
 # thps
 rcmd + shift - t : bash ~/scripts/bin/thugpro
 
@@ -97,7 +81,9 @@ cmd + shift - right : chunkc tiling::window --warp east
 
 # workspaces
 cmd - tab : chunkc tiling::desktop --focus next
+ctrl - right : chunkc tiling::desktop --focus next
 cmd - 0x32 : chunkc tiling::desktop --focus prev
+ctrl - left : chunkc tiling::desktop --focus prev
 cmd - 1 : chunkc tiling::desktop --focus 1
 cmd - 2 : chunkc tiling::desktop --focus 2
 cmd - 3 : chunkc tiling::desktop --focus 3
