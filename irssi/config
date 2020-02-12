@@ -189,6 +189,9 @@ ignores = (
   { level = "JOINS PARTS QUITS"; channels = ( "#redacted" ); },
   { level = "JOINS PARTS QUITS"; channels = ( "#rice" ); }
   { level = "JOINS PARTS QUITS"; channels = ( "#sanders-general" ); }
+  { level = "JOINS PARTS QUITS"; channels = ( "#sanders-primary" ); }
+  { level = "JOINS PARTS QUITS"; channels = ( "#bit-music" ); }
+  { level = "JOINS PARTS QUITS"; channels = ( "#bit-general" ); }
   { level = "JOINS PARTS QUITS"; channels = ( "#thugpro-general" ); }
   { level = "JOINS PARTS QUITS"; channels = ( "#unixporn-showcase" ); }
   { level = "JOINS PARTS QUITS"; channels = ( "#mircart" ); }
