@@ -28,7 +28,7 @@ cmd - f [
 ]
 cmd - t [
 	"Safari"       ~
-	*              : open -a Safari "file:///Users/zzzeyez/scripts/pollen/index.html"
+	*              : open -a Safari #"file:///Users/zzzeyez/scripts/pollen/index.html"
 ]
 
 # wallpaper

@@ -198,8 +198,8 @@ ignores = (
 );
 keyboard = (
   { key = "tab"; id = "word_completion"; data = ""; },
-  { key = "mdown"; id = "next_window"; data = ""; },
-  { key = "mup"; id = "previous_window"; data = ""; },
+  { key = "mright"; id = "next_window"; data = ""; },
+  { key = "mleft"; id = "previous_window"; data = ""; },
   { key = "mtab"; id = "next_window"; data = ""; }
 );
 logs = { };
