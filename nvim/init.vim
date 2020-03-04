@@ -2,14 +2,16 @@ set shell=/bin/bash
 set clipboard+=unnamedplus
 
 " bindings
-let mapleader = ";"
+map ; :
+" noremap ;; ;
+" nnoremap ; :
+" nnoremap : ;
+" vnoremap ; :
+" vnoremap : ;
+let mapleader = ";;"
 map <Space> <Leader>
 " make executable
-nmap <silent> <leader>x :!chmod +x %<CR> 
-" repaste plugin
-map r <Leader>r
-" nerdcommenter plugin
-map c <Leader>c<space>
+" nmap <silent> <leader>x :!chmod +x %<CR> 
 " autoindent
 map <tab> =
 
@@ -19,7 +21,10 @@ set tabstop=4
 set shiftwidth=4
 
 " Notify on file save
-autocmd BufWritePost * silent ! notify-send '% saved'
+" autocmd BufWritePost * silent ! notify-send '% saved'
+
+" auto-chmod files with a shebang
+autocmd BufWritePost * if getline(1) =~ '^#!' && !executable(expand('%:p')) | silent execute '!chmod +x -- '.shellescape(@%) | endif
 
 " Enable true color for neovim
 let $NVIM_TUI_ENABLE_TRUE_COLOR = 0
@@ -83,19 +88,32 @@ set noswapfile
 " do ":PlugInstall" to install plugins
 call plug#begin('~/.config/nvim/bundle')
 Plug 'zirrostig/vim-repaste'
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
 Plug 'easymotion/vim-easymotion'
 Plug 'danro/rename.vim'
+Plug 'preservim/nerdtree'
 call plug#end()
 
 " nerdcommenter
 filetype plugin on
+map c <Leader>c<space>
+Plug 'scrooloose/nerdcommenter'
+let NERDSpaceDelims = 1
+let NERDDefaultAlign = 'left'
+let NERDCommentEmptyLines = 1
+let NERDToggleCheckAllLines = 1
 
 " vim-repaste
 let g:RePaste_DeleteRegister = "r"
+map r <Leader>r
 
 " Goyo + Limelight
 autocmd! User GoyoEnter Limelight
@@ -112,7 +130,6 @@ nmap <silent> <leader>dj <Plug>(coc-implementation)
 
 " prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-cabbrev prettier Prettier
 nmap <silent> <leader>p :Prettier<CR>
 
 " vim-easymotion (f for line, F for word)
@@ -120,5 +137,13 @@ map  <Leader>F <Plug>(easymotion-bd-w)
 nmap <Leader>F <Plug>(easymotion-overwin-w)
 map <Leader>f <Plug>(easymotion-bd-jk)
 nmap <Leader>f <Plug>(easymotion-overwin-line)
+
+" nerdtree
+cabbrev tree NERDTreeToggle
+nmap <silent> <leader>o :NERDTreeToggle<CR>
+let NERDTreeMinimalUI = 0
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | quit | endif
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
 
 colorscheme wal

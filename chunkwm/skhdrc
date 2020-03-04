@@ -20,8 +20,8 @@ cmd - t [
 ]
 
 # wallpaper
-cmd + shift - 0 : wallpaper -n ~/pictures/wallpapers
-lcmd - 0 : wallpaper -no ~/pictures/wallpapers
+cmd + shift - 0 : wallpaper ~/pictures/wallpapers
+lcmd - 0 : wallpaper -o ~/pictures/wallpapers
 cmd + shift - d : new-roses -ns ~/pictures/wallpapers
 # colors
 rcmd - 0 : wallpaper -o 0

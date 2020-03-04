@@ -79,12 +79,4 @@ keyboard shortcuts select styles or fetch all my colorschemes and wallpapers fro
 
 - find way to use `defaults write` to hide the Finder sidebar
 - unable to `sudo echo` paths to `/etc/paths.d/paths`
-- add Goyo + Limelight to installation
 - clean fonts directory
-- add node.js install `curl -sL install-node.now.sh/lts | bash`
-- install `coc.nvim`
-- add npm nvim install `npm install -g neovim`
-- add bash language server `npm i -g bash-language-server`
-- install `fzf`
-- install `tree`
-- install `Prettier`, `vim.easymotion` and `rename.vim`

@@ -59,11 +59,15 @@ brew install mpc
 brew install sassc
 brew install wget
 brew install pidof
+brew install fzf
+brew install tree
+brew install rmtrash
 
-# fonts
-#brew tap caskroom/fonts
-#brew cask install font-iosevka
-#brew cask install font-fira-code
+# install node + npm packages
+#curl -sL install-node.now.sh/lts | bash
+brew install yarn
+npm install -g neovim
+npm i -g bash-language-server
 
 # chunkwm
 brew tap koekeishiya/formulae

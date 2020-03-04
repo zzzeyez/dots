@@ -115,6 +115,11 @@ f() {
     cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
 }
 
+# rm to trash
+rm() {
+	rmtrash "$@"
+}
+
 # todo list
 todo() {
 	nvim "${HOME}/text/documents/todo"

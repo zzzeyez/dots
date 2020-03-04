@@ -17,6 +17,8 @@ let g:colors_name = 'wal'
 
 " set t_Co=16
 hi Normal ctermbg=NONE ctermfg=7
+" coc.nvim
+"hi Quote ctermbg=6 guifg=1
 " this is tab-line
 hi NonText ctermbg=NONE ctermfg=8
 hi Comment ctermbg=NONE ctermfg=6

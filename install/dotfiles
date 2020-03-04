@@ -27,6 +27,10 @@ ncmpcpp/mopidy.conf .config/mopidy/mopidy.conf
 title=neovim
 nvim .config/nvim
 
+# coc
+title=coc
+coc .config/coc
+
 # tmux
 title=tmux
 tmux/tmux.conf .tmux.conf
