@@ -1,20 +1,8 @@
 # terminal
 cmd - return : open-app iterm2
-# my program to open/close tmux windows depending on if it's running
 ctrl - return : tmx new
 ctrl - o : tmx attach
-#ctrl - w : tmx quit
 
-# tmux doesn't allow alt-key binds
-#alt - b : skhd -k "ctrl - b"
-#alt - c : skhd -k "ctrl - c"
-#alt - h : skhd -k "ctrl - h"
-#alt - q : skhd -k "ctrl - q"
-#alt - n : skhd -k "ctrl - n"
-#alt - r : skhd -k "ctrl - r"
-#alt - d : skhd -k "ctrl - d"
-#alt - t : skhd -k "ctrl - t"
-#alt - u : shkd -k "ctrl - u"
 #tmux won't map C-Tab
 ctrl - tab [
 	"iTerm2"       : skhd -k "ctrl - l"
@@ -60,7 +48,6 @@ cmd + shift - n : night
 # bar
 cmd - h : toggleshadow
 cmd + shift - h : togglebar
-cmd + shift - x : pecan-style -l && wal-set
 
 # screenshot
 cmd + shift - p : scr -n
@@ -69,15 +56,8 @@ cmd - p : scr -nu
 # thps
 rcmd + shift - t : bash ~/scripts/bin/thugpro
 
-# windows
-cmd - left : chunkc tiling::window --focus west
-cmd - down : chunkc tiling::window --focus south
-cmd - up : chunkc tiling::window --focus north
-cmd - right : chunkc tiling::window --focus east
-cmd + shift - left : chunkc tiling::window --warp west
-cmd + shift - down : chunkc tiling::window --warp south
-cmd + shift - up : chunkc tiling::window --warp north
-cmd + shift - right : chunkc tiling::window --warp east
+# fullscreen
+cmd + shift - f : chunkc tiling::window --toggle native-fullscreen
 
 # workspaces
 cmd - tab : chunkc tiling::desktop --focus next
@@ -111,17 +91,3 @@ shift + cmd - return : chunkc tiling::desktop --create;\
 shift + cmd - q :      ids=$(chunkc tiling::query --desktops-for-monitor \
                            $(chunkc tiling::query --monitor-for-desktop $(chunkc tiling::query --desktop id)));\
                        chunkc tiling::desktop --annihilate $(echo ${ids##* })
-
-# increase padding size
-#cmd - 0x18 : chunkc tiling::desktop -g inc
-cmd + shift - 0x1B : chunkc tiling::desktop -p inc
-cmd + shift - 0x18 : chunkc tiling::desktop -p dec
-#cmd + shift - 0x1B : chunkc tiling::desktop -g dec
-
-# toggle window native fullscreen
-cmd + shift - f : chunkc tiling::window --toggle native-fullscreen
-#cmd + shift - f : chunkc tiling::window --toggle fullscreen
-
-# float / unfloat window and center on screen
-cmd + shift - space : chunkc tiling::window --toggle float;\
-chunkc tiling::window --grid-layout 4:4:1:1:2:2

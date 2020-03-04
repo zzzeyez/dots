@@ -195,11 +195,12 @@ ignores = (
   { level = "JOINS PARTS QUITS"; channels = ( "#thugpro-general" ); }
   { level = "JOINS PARTS QUITS"; channels = ( "#unixporn-showcase" ); }
   { level = "JOINS PARTS QUITS"; channels = ( "#mircart" ); }
+  { level = "JOINS PARTS QUITS"; channels = ( "#opr-admin" ); }
+  { level = "JOINS PARTS QUITS"; channels = ( "#opr" ); }
 );
 keyboard = (
   { key = "tab"; id = "word_completion"; data = ""; },
-  { key = "mright"; id = "next_window"; data = ""; },
-  { key = "mleft"; id = "previous_window"; data = ""; },
-  { key = "mtab"; id = "next_window"; data = ""; }
+  { key = "mdown"; id = "next_window"; data = ""; },
+  { key = "mup"; id = "previous_window"; data = ""; },
 );
 logs = { };

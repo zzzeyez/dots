@@ -2,6 +2,7 @@ set shell=/bin/bash
 set clipboard+=unnamedplus
 
 " bindings
+let mapleader = ";"
 map <Space> <Leader>
 " repaste plugin
 map r <Leader>r
@@ -20,9 +21,6 @@ autocmd BufWritePost * silent ! notify-send '% saved'
 
 " Enable true color for neovim
 let $NVIM_TUI_ENABLE_TRUE_COLOR = 0
-
-" Enables cursor similar to gui programs
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 
 " enable mouse wheel (iterm2)
 :set mouse=a 
@@ -81,6 +79,9 @@ set noswapfile
 call plug#begin('~/.config/nvim/bundle')
 Plug 'zirrostig/vim-repaste'
 Plug 'scrooloose/nerdcommenter'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " nerdcommenter
@@ -88,5 +89,18 @@ filetype plugin on
 
 " vim-repaste
 let g:RePaste_DeleteRegister = "r"
+
+" Goyo + Limelight
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+cabbrev goyo Goyo 40%x60%
+cabbrev goyo! Goyo!
+
+"coc.nvim`
+nmap <silent> <leader>dd <Plug>(coc-definition)
+nmap <silent> <leader>dr <Plug>(coc-references)
+nmap <silent> <leader>dj <Plug>(coc-implementation)
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+cabbrev prettier Prettier
 
 colorscheme wal
