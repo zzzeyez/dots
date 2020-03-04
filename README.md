@@ -87,3 +87,4 @@ keyboard shortcuts select styles or fetch all my colorschemes and wallpapers fro
 - add bash language server `npm i -g bash-language-server`
 - install `fzf`
 - install `tree`
+- install `Prettier`, `vim.easymotion` and `rename.vim`

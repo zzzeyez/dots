@@ -4,6 +4,8 @@ set clipboard+=unnamedplus
 " bindings
 let mapleader = ";"
 map <Space> <Leader>
+" make executable
+nmap <silent> <leader>x :!chmod +x %<CR> 
 " repaste plugin
 map r <Leader>r
 " nerdcommenter plugin
@@ -40,6 +42,9 @@ set lazyredraw
 
 " tab line
 " set list lcs=tab:\▏\ 
+
+" allow cursor to go to end of line
+set ve+=onemore
 
 " Enable cursor line position tracking:
 set nocursorcolumn
@@ -82,6 +87,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'easymotion/vim-easymotion'
+Plug 'danro/rename.vim'
 call plug#end()
 
 " nerdcommenter
@@ -95,12 +102,23 @@ autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 cabbrev goyo Goyo 40%x60%
 cabbrev goyo! Goyo!
+nmap <silent> <leader>g :Goyo 40%x60%<CR>
+nmap <silent> <leader>G :Goyo!<CR>
 
-"coc.nvim`
+" coc.nvim
 nmap <silent> <leader>dd <Plug>(coc-definition)
 nmap <silent> <leader>dr <Plug>(coc-references)
 nmap <silent> <leader>dj <Plug>(coc-implementation)
+
+" prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 cabbrev prettier Prettier
+nmap <silent> <leader>p :Prettier<CR>
+
+" vim-easymotion (f for line, F for word)
+map  <Leader>F <Plug>(easymotion-bd-w)
+nmap <Leader>F <Plug>(easymotion-overwin-w)
+map <Leader>f <Plug>(easymotion-bd-jk)
+nmap <Leader>f <Plug>(easymotion-overwin-line)
 
 colorscheme wal
