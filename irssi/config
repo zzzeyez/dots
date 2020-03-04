@@ -12,7 +12,7 @@ servers = (
     chatnet = "bitlbee";
     port = "6667";
     autoconnect = "yes";
-  }
+  },
   {
     address = "foxbnc.co.uk";
     chatnet = "red";
@@ -58,12 +58,12 @@ chatnets = {
   snoonet = { type = "IRC"; };
   efnet = { type = "IRC"; };
   bitlbee = {
-    type = "IRC"; 
-	autosendcmd = "/^msg nickserv identify password;wait 2000";
+    type = "IRC";
+    autosendcmd = "/^msg nickserv identify password;wait 2000";
   };
 };
 
-aliases = { 
+aliases = {
   exit = "quit";
   wc = "window close";
   list = "/^msg &bitlbee chat list discord";
@@ -187,20 +187,24 @@ ignores = (
   { level = "JOINS PARTS QUITS"; channels = ( "#stopdrinking" ); },
   { level = "JOINS PARTS QUITS"; channels = ( "#<5" ); },
   { level = "JOINS PARTS QUITS"; channels = ( "#redacted" ); },
-  { level = "JOINS PARTS QUITS"; channels = ( "#rice" ); }
-  { level = "JOINS PARTS QUITS"; channels = ( "#sanders-general" ); }
-  { level = "JOINS PARTS QUITS"; channels = ( "#sanders-primary" ); }
-  { level = "JOINS PARTS QUITS"; channels = ( "#bit-music" ); }
-  { level = "JOINS PARTS QUITS"; channels = ( "#bit-general" ); }
-  { level = "JOINS PARTS QUITS"; channels = ( "#thugpro-general" ); }
-  { level = "JOINS PARTS QUITS"; channels = ( "#unixporn-showcase" ); }
-  { level = "JOINS PARTS QUITS"; channels = ( "#mircart" ); }
-  { level = "JOINS PARTS QUITS"; channels = ( "#opr-admin" ); }
+  { level = "JOINS PARTS QUITS"; channels = ( "#rice" ); },
+  { level = "JOINS PARTS QUITS"; channels = ( "#sanders-general" ); },
+  { level = "JOINS PARTS QUITS"; channels = ( "#sanders-primary" ); },
+  { level = "JOINS PARTS QUITS"; channels = ( "#bit-music" ); },
+  { level = "JOINS PARTS QUITS"; channels = ( "#bit-general" ); },
+  { level = "JOINS PARTS QUITS"; channels = ( "#thugpro-general" ); },
+  { 
+    level = "JOINS PARTS QUITS";
+    channels = ( "#unixporn-showcase" );
+  },
+  { level = "JOINS PARTS QUITS"; channels = ( "#mircart" ); },
+  { level = "JOINS PARTS QUITS"; channels = ( "#opr-admin" ); },
   { level = "JOINS PARTS QUITS"; channels = ( "#opr" ); }
 );
 keyboard = (
   { key = "tab"; id = "word_completion"; data = ""; },
   { key = "mdown"; id = "next_window"; data = ""; },
   { key = "mup"; id = "previous_window"; data = ""; },
+  { key = "meta-[M"; id = "command"; data = "mouse_xterm "; }
 );
 logs = { };

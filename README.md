@@ -86,3 +86,4 @@ keyboard shortcuts select styles or fetch all my colorschemes and wallpapers fro
 - add npm nvim install `npm install -g neovim`
 - add bash language server `npm i -g bash-language-server`
 - install `fzf`
+- install `tree`
