@@ -28,10 +28,10 @@ preservim/nerdtree                          .config/nvim/bundle/nerdtree
 junegunn/goyo.vim                           .config/nvim/bundle/goyo.vim
 junegunn/limelight.vim                      .config/nvim/bundle/limelight.vim
 neoclide/coc.nvim                           .config/nvim/bundle/coc.nvim
-#neoclide/coc-tsserver                       .config/nvim/bundle/coc-tsserver
-#neoclide/coc-css                            .config/nvim/bundle/coc-css
-#neoclide/coc-json                           .config/nvim/bundle/coc-json
-#neoclide/coc-html                           .config/nvim/bundle/coc-html
-#neoclide/coc-prettier                       .config/nvim/bundle/coc-prettier
-easymotion/vim-easymotion                   .config/nvim/bundle/vim-easymotion
+# neoclide/coc-tsserver                       .config/nvim/bundle/coc-tsserver
+# neoclide/coc-css                            .config/nvim/bundle/coc-css
+# neoclide/coc-json                           .config/nvim/bundle/coc-json
+# neoclide/coc-html                           .config/nvim/bundle/coc-html
+# neoclide/coc-prettier                       .config/nvim/bundle/coc-prettier
+# easymotion/vim-easymotion                   .config/nvim/bundle/vim-easymotion
 danro/rename.vim                            .config/nvim/bundle/rename.vim

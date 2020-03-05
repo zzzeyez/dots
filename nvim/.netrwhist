@@ -1,5 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/zzzeyez/scripts/dots'
-let g:netrw_dirhist_2='/Users/zzzeyez/Library/Application Support/tracesOf.Uebersicht'
-let g:netrw_dirhist_3='/Users/zzzeyez/scripts/xanthia/scss'
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/Users/zzzeyez'
+let g:netrw_dirhist_2='/Users'
+let g:netrw_dirhist_1='/Users/zzzeyez'
+let g:netrw_dirhist_0='/Users/zzzeyez/.dots'
+let g:netrw_dirhist_9='/Users/zzzeyez/.dots/nvim'
+let g:netrw_dirhist_8='/Users/zzzeyez'
+let g:netrw_dirhist_7='/Users/zzzeyez/.dots'
+let g:netrw_dirhist_6='/Users/zzzeyez/.dots/nvim'
+let g:netrw_dirhist_5='/Users/zzzeyez'
+let g:netrw_dirhist_4='/Users/zzzeyez/.dots'

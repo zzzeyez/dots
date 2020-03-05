@@ -120,6 +120,15 @@ rm() {
 	rmtrash "$@"
 }
 
+# cd + ls
+autoload -U add-zsh-hook
+add-zsh-hook -Uz chpwd (){ ls -a; }
+
+# exit
+;q() {
+	exit
+}
+
 # todo list
 todo() {
 	nvim "${HOME}/text/documents/todo"

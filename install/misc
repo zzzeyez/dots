@@ -47,9 +47,3 @@ echo '`chunkwm --install-sa` wants sudo.  skipping..'
 #brew services start skhd
 brew services start chunkwm
 brew services start mopidy
-
-# install node + npm packages
-#curl -sL install-node.now.sh/lts | bash
-brew install yarn
-npm install -g neovim
-npm i -g bash-language-server

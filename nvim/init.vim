@@ -1,13 +1,9 @@
 set shell=/bin/bash
 set clipboard+=unnamedplus
 
+
 " bindings
 map ; :
-" noremap ;; ;
-" nnoremap ; :
-" nnoremap : ;
-" vnoremap ; :
-" vnoremap : ;
 let mapleader = ";;"
 map <Space> <Leader>
 " make executable
@@ -37,7 +33,7 @@ set title
 set titlestring=%t
 
 " Turn on linenumbers
-set number
+set number relativenumber
 
 " Hide ruler
 set noruler
@@ -45,7 +41,7 @@ set noruler
 " Don't redraw screen as often
 set lazyredraw
 
-" tab line
+" draw tab line
 " set list lcs=tab:\▏\ 
 
 " allow cursor to go to end of line
@@ -92,12 +88,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-"Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
-"Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-"Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-"Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
-Plug 'easymotion/vim-easymotion'
 Plug 'danro/rename.vim'
 Plug 'preservim/nerdtree'
 call plug#end()
@@ -105,7 +95,6 @@ call plug#end()
 " nerdcommenter
 filetype plugin on
 map c <Leader>c<space>
-Plug 'scrooloose/nerdcommenter'
 let NERDSpaceDelims = 1
 let NERDDefaultAlign = 'left'
 let NERDCommentEmptyLines = 1
@@ -118,10 +107,8 @@ map r <Leader>r
 " Goyo + Limelight
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
-cabbrev goyo Goyo 40%x60%
-cabbrev goyo! Goyo!
-nmap <silent> <leader>g :Goyo 40%x60%<CR>
-nmap <silent> <leader>G :Goyo!<CR>
+nmap <silent> ;g :Goyo<CR>
+nmap <silent> ;G :Goyo!<CR>
 
 " coc.nvim
 nmap <silent> <leader>dd <Plug>(coc-definition)
@@ -130,20 +117,19 @@ nmap <silent> <leader>dj <Plug>(coc-implementation)
 
 " prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-nmap <silent> <leader>p :Prettier<CR>
-
-" vim-easymotion (f for line, F for word)
-map  <Leader>F <Plug>(easymotion-bd-w)
-nmap <Leader>F <Plug>(easymotion-overwin-w)
-map <Leader>f <Plug>(easymotion-bd-jk)
-nmap <Leader>f <Plug>(easymotion-overwin-line)
+nmap <silent> ;p :Prettier <CR>
 
 " nerdtree
-cabbrev tree NERDTreeToggle
-nmap <silent> <leader>o :NERDTreeToggle<CR>
-let NERDTreeMinimalUI = 0
+nmap <silent> ;o :NERDTreeToggle <CR>A
+let NERDTreeMinimalUI = 1
+let NERDTreeQuitOnOpen = 1
+let NERDTreeShowHidden = 1
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | quit | endif
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
+let NERDTreeHighlightCursorline = 0
+let g:NERDTreeMouseMode = 2
+autocmd FileType nerdtree nmap <buffer> <right> o
+autocmd FileType nerdtree nmap <buffer> <left> o
 
 colorscheme wal
