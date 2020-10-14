@@ -16,7 +16,7 @@ cmd - f [
 ]
 cmd - t [
 	"Safari"       ~
-	*              : open -a Safari #"file:///Users/zzzeyez/scripts/pollen/index.html"
+	*              : open -a Safari
 ]
 
 # wallpaper
@@ -60,9 +60,9 @@ rcmd + shift - t : bash ~/scripts/bin/thugpro
 cmd + shift - f : chunkc tiling::window --toggle native-fullscreen
 
 # workspaces
-cmd - tab : chunkc tiling::desktop --focus next
+# cmd - tab : chunkc tiling::desktop --focus next
 ctrl - right : chunkc tiling::desktop --focus next
-cmd - 0x32 : chunkc tiling::desktop --focus prev
+# cmd - 0x32 : chunkc tiling::desktop --focus prev
 ctrl - left : chunkc tiling::desktop --focus prev
 cmd - 1 : chunkc tiling::desktop --focus 1
 cmd - 2 : chunkc tiling::desktop --focus 2

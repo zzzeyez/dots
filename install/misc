@@ -46,4 +46,8 @@ echo '`chunkwm --install-sa` wants sudo.  skipping..'
 # start background services
 #brew services start skhd
 brew services start chunkwm
-brew services start mopidy
+# brew services start mopidy
+
+# load colorscheme
+colorlovers -l Skittles
+tic "${HOME}/.config/xterm-256color-italic.terminfo"

@@ -30,3 +30,14 @@ export FFF_COL3=6
 # cursor color [0-9]
 export FFF_COL4=1
 
+# File format.
+# Customize the item string.
+# Format ('%f' is the current file): "str%fstr"
+# Example (Add a tab before files): FFF_FILE_FORMAT="\t%f"
+export FFF_FILE_FORMAT="%f"
+
+# Mark format.
+# Customize the marked item string.
+# Format ('%f' is the current file): "str%fstr"
+# Example (Add a ' >' before files): FFF_MARK_FORMAT="> %f"
+export FFF_MARK_FORMAT=" %f*"

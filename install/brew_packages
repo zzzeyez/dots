@@ -34,8 +34,11 @@ if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
   chsh -s "${BREW_PREFIX}/bin/bash";
 fi;
 
+
 # my stuff
-brew install neovim
+# brew install neovim
+brew tap jason0x43/homebrew-neovim-nightly
+brew cask install neovim-nightly
 brew install tmux
 #brew install weechat 
 brew install irssi
@@ -68,6 +71,9 @@ brew install rmtrash
 brew install yarn
 npm install -g neovim
 npm i -g bash-language-server
+
+# python3
+brew install python3
 
 # chunkwm
 brew tap koekeishiya/formulae

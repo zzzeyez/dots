@@ -17,6 +17,7 @@ let g:colors_name = 'wal'
 
 " set t_Co=16
 hi Normal ctermbg=NONE ctermfg=7
+
 " coc.nvim
 "hi Quote ctermbg=6 guifg=1
 " this is tab-line
@@ -40,9 +41,8 @@ hi TabLine ctermbg=NONE ctermfg=8
 hi TabLineFill ctermbg=NONE ctermfg=8
 hi TabLineSel ctermbg=4 ctermfg=8
 hi TermCursorNC ctermbg=3 ctermfg=0
-hi VertSplit ctermbg=8 ctermfg=0
 hi Title ctermbg=NONE ctermfg=4
-hi CursorLine ctermbg=NONE ctermfg=NONE cterm=NONE
+hi CursorLine ctermbg=8 ctermfg=NONE cterm=NONE
 hi LineNr ctermbg=NONE ctermfg=8
 hi CursorLineNr ctermbg=NONE ctermfg=7
 hi helpLeadBlank ctermbg=NONE ctermfg=7
@@ -72,7 +72,7 @@ hi ModeMsg ctermbg=NONE ctermfg=2
 hi MoreMsg ctermbg=NONE ctermfg=2
 hi Question ctermbg=NONE ctermfg=4
 hi WarningMsg ctermbg=8 ctermfg=0
-hi Cursor ctermbg=NONE ctermfg=8
+hi Cursor ctermbg=7 ctermfg=8
 hi Structure ctermbg=NONE ctermfg=5
 hi CursorColumn ctermbg=8 ctermfg=7
 hi ModeMsg ctermbg=NONE ctermfg=6
@@ -182,8 +182,6 @@ hi cPreCondit ctermbg=NONE ctermfg=5
 hi SignifySignAdd ctermbg=NONE ctermfg=2
 hi SignifySignChange ctermbg=NONE ctermfg=4
 hi SignifySignDelete ctermbg=NONE ctermfg=1
-hi NERDTreeDirSlash ctermbg=NONE ctermfg=4
-hi NERDTreeExecFile ctermbg=NONE ctermfg=7
 hi ALEErrorSign ctermbg=NONE ctermfg=1
 hi ALEWarningSign ctermbg=NONE ctermfg=3
 hi ALEError ctermbg=NONE ctermfg=1

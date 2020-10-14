@@ -121,12 +121,17 @@ rm() {
 }
 
 # cd + ls
-autoload -U add-zsh-hook
-add-zsh-hook -Uz chpwd (){ ls -a; }
+# autoload -U add-zsh-hook
+# add-zsh-hook -Uz chpwd (){ ls -a; }
 
 # exit
 ;q() {
 	exit
+}
+
+# nvim
+;nv() {
+	nvim "$@"
 }
 
 # todo list
@@ -145,3 +150,4 @@ thugpro() {
 	cd /Users/zzzeyez/.thugpro/drive_c/users/zzzeyez/Local\ Settings/Application\ Data/THUG\ Pro &&
 	wine ./THUGProLauncher.exe
 }
+export TERM=xterm-256color-italic

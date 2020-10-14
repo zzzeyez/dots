@@ -603,3 +603,4 @@ cloud "$text"
 
 # to do
 # list files being backed up
+# include python packages in brew_packages (like npm)

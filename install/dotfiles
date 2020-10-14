@@ -34,6 +34,7 @@ coc .config/coc
 # tmux
 title=tmux
 tmux/tmux.conf .tmux.conf
+tmux/xterm-256color-italic.terminfo .config/xterm-256color-italic.terminfo
 
 # wal
 title=wal

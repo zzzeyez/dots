@@ -33,5 +33,6 @@ neoclide/coc.nvim                           .config/nvim/bundle/coc.nvim
 # neoclide/coc-json                           .config/nvim/bundle/coc-json
 # neoclide/coc-html                           .config/nvim/bundle/coc-html
 # neoclide/coc-prettier                       .config/nvim/bundle/coc-prettier
+wfxr/minimap.vim                            .config/nvim/bundle/wfxr/minimap.vim
 # easymotion/vim-easymotion                   .config/nvim/bundle/vim-easymotion
 danro/rename.vim                            .config/nvim/bundle/rename.vim

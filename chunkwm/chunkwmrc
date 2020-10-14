@@ -32,7 +32,7 @@ chunkc set window_region_locked          0
 
 #
 # key binds
-chunkc set mouse_move_window \"shift 1\"
+chunkc set mouse_move_window \"ctrl 1\"
 chunkc set mouse_resize_window \"ctrl 1\"
 
 #

@@ -1,9 +1,14 @@
 {
   "dependencies": {
-    "coc-css": ">=1.2.2",
-    "coc-html": ">=1.2.3",
-    "coc-json": ">=1.2.5",
-    "coc-prettier": ">=1.1.11",
-    "coc-tsserver": ">=1.4.9"
+    "coc-css": ">=1.2.3",
+    "coc-html": ">=1.2.4",
+    "coc-json": ">=1.2.6",
+    "coc-prettier": ">=1.1.12",
+    "coc-snippets": ">=2.1.26",
+    "coc-tsserver": ">=1.5.1"
+  },
+  "prettier": {
+    "tabWidth": 4,
+    "useTabs": true
   }
 }

@@ -15,9 +15,12 @@ text
 # dots
 .dots
 .oh-my-zsh
-.thugpro
 .zsh_history
 .ncmpcpp
 .hushlogin
 .gitignore_global
 .tmux-better-mouse-mode
+
+# games
+.thugpro
+.origin

@@ -164,10 +164,10 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
 ##
 # higher is faster
 defaults write -g com.apple.trackpad.scaling 7
-defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool true
 # lower is faster
 defaults write NSGlobalDomain KeyRepeat -float 1.0
-defaults write NSGlobalDomain InitialKeyRepeat -int 13
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 ##
 # map caps-lock to alt-key (resets on reboot)
@@ -371,7 +371,7 @@ defaults write com.apple.Safari SuppressSearchSuggestions -bool true
 # defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 
 # Set Safari’s home page to `about:blank` for faster loading
-defaults write com.apple.Safari HomePage -string "file://${HOME}/scripts/pollen/index.html"
+defaults write com.apple.Safari HomePage -string "file://${HOME}/scripts/always-floating/index.html"
 defaults write com.apple.Safari NewTabBehavior 0
 defaults write com.apple.Safari NewWindowBehavior 0
 
