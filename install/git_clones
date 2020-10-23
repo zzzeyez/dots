@@ -33,6 +33,13 @@ neoclide/coc.nvim                           .config/nvim/bundle/coc.nvim
 # neoclide/coc-json                           .config/nvim/bundle/coc-json
 # neoclide/coc-html                           .config/nvim/bundle/coc-html
 # neoclide/coc-prettier                       .config/nvim/bundle/coc-prettier
-wfxr/minimap.vim                            .config/nvim/bundle/wfxr/minimap.vim
+nvim-treesitter/nvim-treesitter             .config/nvim/bundle/nvim-treesitter
+neovim/nvim-lspconfig                       .config/nvim/bundle/nvim-lspconfig
+nvim-lua/completion-nvim                    .config/nvim/bundle/completion-nvim
+nvim-lua/diagnostic-nvim                    .config/nvim/bundle/diagnostic-nvim
+prettier/vim-prettier                       .config/nvim/bundle/vim-prettier
+# nvim-treesitter/completion-treesitter       .config/nvim/bundle/completion-treesitter
+wfxr/minimap.vim                            .config/nvim/bundle/minimap.vim
 # easymotion/vim-easymotion                   .config/nvim/bundle/vim-easymotion
 danro/rename.vim                            .config/nvim/bundle/rename.vim
+mhinz/vim-startify                          .config/nvim/bundle/vim-startify

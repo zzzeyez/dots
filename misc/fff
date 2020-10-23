@@ -1,6 +1,8 @@
 #/usr/bin/env bash
 # sets config for `fff`
 
+export FFF_OPENER="ql"
+
 # text editor
 export EDITOR="nvim"
 
@@ -22,7 +24,7 @@ export FFF_KEY_GO_DIR="g"
 export FFF_COL1=2
 
 # status color [0-9]
-export FFF_COL2=1
+export FFF_COL2=0
 
 # selection color [0-9] (copied/moved files)
 export FFF_COL3=6
@@ -41,3 +43,76 @@ export FFF_FILE_FORMAT="%f"
 # Format ('%f' is the current file): "str%fstr"
 # Example (Add a ' >' before files): FFF_MARK_FORMAT="> %f"
 export FFF_MARK_FORMAT=" %f*"
+
+### Moving around.
+
+# Go to child directory.
+export FFF_KEY_CHILD1="l"
+export FFF_KEY_CHILD2=$'\e[C' # Right Arrow
+export FFF_KEY_CHILD3=""      # Enter / Return
+
+# Go to parent directory.
+export FFF_KEY_PARENT1="h"
+export FFF_KEY_PARENT2=$'\e[D' # Left Arrow
+export FFF_KEY_PARENT3=$'\177' # Backspace
+export FFF_KEY_PARENT4=$'\b'   # Backspace (Older terminals)
+
+# Go to previous directory.
+export FFF_KEY_PREVIOUS="off"
+
+# Search.
+export FFF_KEY_SEARCH="/"
+
+# Spawn a shell.
+export FFF_KEY_SHELL="!"
+
+# Scroll down.
+export FFF_KEY_SCROLL_DOWN1="j"
+export FFF_KEY_SCROLL_DOWN2=$'\e[B' # Down Arrow
+
+# Scroll up.
+export FFF_KEY_SCROLL_UP1="k"
+export FFF_KEY_SCROLL_UP2=$'\e[A'   # Up Arrow
+
+# Go to top and bottom.
+export FFF_KEY_TO_TOP="g"
+export FFF_KEY_TO_BOTTOM="G"
+
+# Go to dirs.
+export FFF_KEY_GO_DIR="off"
+export FFF_KEY_GO_HOME="~"
+export FFF_KEY_GO_TRASH="off"
+export FFF_KEY_REFRESH="r"
+
+### File operations.
+
+export FFF_KEY_YANK="off"
+export FFF_KEY_MOVE="off"
+export FFF_KEY_TRASH="off"
+export FFF_KEY_LINK="off"
+export FFF_KEY_BULK_RENAME="off"
+
+export FFF_KEY_YANK_ALL="off"
+export FFF_KEY_MOVE_ALL="off"
+export FFF_KEY_TRASH_ALL="off"
+export FFF_KEY_LINK_ALL="off"
+export FFF_KEY_BULK_RENAME_ALL="off"
+
+export FFF_KEY_PASTE="off"
+export FFF_KEY_CLEAR="off"
+
+export FFF_KEY_RENAME="off"
+export FFF_KEY_MKDIR="off"
+export FFF_KEY_MKFILE="off"
+export FFF_KEY_IMAGE="off" # display image with w3m-img
+
+### Miscellaneous
+
+# Show file attributes.
+export FFF_KEY_ATTRIBUTES="off"
+
+# Toggle executable flag.
+export FFF_KEY_EXECUTABLE="off"
+
+# Toggle hidden files.
+export FFF_KEY_HIDDEN="."

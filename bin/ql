@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# open files with quicklook or feh
+
+case $(file -b "$@") in
+  'JPEG '*)
+    feh "$@"
+    ;;
+  'PNG '*)
+    feh "$@"
+    ;;
+  *)
+	qlmanage -p "$@" >& /dev/null &
+    ;;
+esac

@@ -1,2 +1,4 @@
 [user]
 	email = zzzeyez@gmail.com
+[pull]
+	rebase = false

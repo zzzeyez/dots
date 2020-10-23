@@ -71,6 +71,7 @@ brew install rmtrash
 brew install yarn
 npm install -g neovim
 npm i -g bash-language-server
+npm install -g prettier
 
 # python3
 brew install python3
@@ -79,7 +80,9 @@ brew install python3
 brew tap koekeishiya/formulae
 brew install chunkwm --with-purify
 brew install --HEAD chunkwm
+killall skhd
 brew install koekeishiya/formulae/skhd
+skhd & disown
 
 # mopidy
 brew tap mopidy/mopidy

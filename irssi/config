@@ -7,12 +7,12 @@ servers = (
     tls_verify = "yes";
     autoconnect = "no";
   },
-  {
-    address = "mail.akropolys.com";
-    chatnet = "bitlbee";
-    port = "6667";
-    autoconnect = "yes";
-  },
+  /* { */
+  /*   address = "mail.akropolys.com"; */
+  /*   chatnet = "bitlbee"; */
+  /*   port = "6667"; */
+  /*   autoconnect = "yes"; */
+  /* }, */
   {
     address = "foxbnc.co.uk";
     chatnet = "red";
