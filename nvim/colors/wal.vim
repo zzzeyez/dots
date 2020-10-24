@@ -18,8 +18,6 @@ let g:colors_name = 'wal'
 " set t_Co=16
 hi Normal ctermbg=NONE ctermfg=7
 
-" coc.nvim
-"hi Quote ctermbg=6 guifg=1
 " this is tab-line
 hi NonText ctermbg=NONE ctermfg=8
 hi Comment ctermbg=NONE ctermfg=6
@@ -186,6 +184,24 @@ hi ALEErrorSign ctermbg=NONE ctermfg=1
 hi ALEWarningSign ctermbg=NONE ctermfg=3
 hi ALEError ctermbg=NONE ctermfg=1
 hi ALEWarning ctermbg=NONE ctermfg=3
+
+
+" hide splits
+hi VertSplit cterm=NONE ctermfg=0 ctermbg=0
+" hide empty line
+hi! EndOfBuffer ctermbg=0 ctermfg=0 guibg=0 guifg=0
+" minimap
+hi MinimapCurrentLine ctermfg=1 ctermbg=NONE
+let g:minimap_highlight = 'MinimapCurrentLine'
+" dim bg windows
+hi InactiveWindow ctermfg=8 ctermbg=NONE
+set winhighlight=NormalNC:InactiveWindow
+
+" italics
+hi Directory cterm=italic
+hi Comment cterm=italic
+hi String cterm=italic
+hi Statement cterm=italic
 
 " }}}
 

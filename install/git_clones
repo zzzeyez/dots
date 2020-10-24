@@ -22,24 +22,13 @@ MenkeTechnologies/zsh-very-colorful-manuals .oh-my-zsh/custom/plugins/zsh-very-c
 NHDaly/tmux-better-mouse-mode               .tmux-better-mouse-mode
 
 # nvim plugins
-zirrostig/vim-repaste                       .config/nvim/bundle/vim-repaste
-preservim/nerdcommenter                     .config/nvim/bundle/nerdcommenter
-preservim/nerdtree                          .config/nvim/bundle/nerdtree
-junegunn/goyo.vim                           .config/nvim/bundle/goyo.vim
-junegunn/limelight.vim                      .config/nvim/bundle/limelight.vim
-neoclide/coc.nvim                           .config/nvim/bundle/coc.nvim
-# neoclide/coc-tsserver                       .config/nvim/bundle/coc-tsserver
-# neoclide/coc-css                            .config/nvim/bundle/coc-css
-# neoclide/coc-json                           .config/nvim/bundle/coc-json
-# neoclide/coc-html                           .config/nvim/bundle/coc-html
-# neoclide/coc-prettier                       .config/nvim/bundle/coc-prettier
-nvim-treesitter/nvim-treesitter             .config/nvim/bundle/nvim-treesitter
-neovim/nvim-lspconfig                       .config/nvim/bundle/nvim-lspconfig
-nvim-lua/completion-nvim                    .config/nvim/bundle/completion-nvim
-nvim-lua/diagnostic-nvim                    .config/nvim/bundle/diagnostic-nvim
-prettier/vim-prettier                       .config/nvim/bundle/vim-prettier
-# nvim-treesitter/completion-treesitter       .config/nvim/bundle/completion-treesitter
-wfxr/minimap.vim                            .config/nvim/bundle/minimap.vim
-# easymotion/vim-easymotion                   .config/nvim/bundle/vim-easymotion
-danro/rename.vim                            .config/nvim/bundle/rename.vim
-mhinz/vim-startify                          .config/nvim/bundle/vim-startify
+neovim/nvim-lspconfig                       .config/nvim/pack/plugins/start/nvim-lspconfig
+nvim-lua/completion-nvim                    .config/nvim/pack/plugins/start/completion-nvim
+nvim-lua/diagnostic-nvim                    .config/nvim/pack/plugins/start/diagnostic-nvim
+tjdevries/nlua.nvim                         .config/nvim/pack/plugins/start/nlua.nvim
+dylanaraps/fff.vim                          .config/nvim/pack/plugins/start/fff.vim
+junegunn/limelight.vim                      .config/nvim/pack/plugins/start/limelight.vim
+wfxr/minimap.vim                            .config/nvim/pack/plugins/start/minimap.vim
+mhartington/formatter.nvim                  .config/nvim/pack/plugins/start/formatter.nvim
+nvim-treesitter/nvim-treesitter             .config/nvim/pack/plugins/start/nvim-treesitter
+noahares/nvim-commenter                     .config/nvim/pack/plugins/start/nvim-commenter
