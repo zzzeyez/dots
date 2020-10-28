@@ -28,3 +28,6 @@
 [submodule "nvim/pack/plugins/start/nvim-commenter"]
 	path = nvim/pack/plugins/start/nvim-commenter
 	url = https://github.com/noahares/nvim-commenter
+[submodule "nvim/pack/plugins/start/nvim-fzy"]
+	path = nvim/pack/plugins/start/nvim-fzy
+	url = https://github.com/mfussenegger/nvim-fzy.git

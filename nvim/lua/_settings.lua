@@ -12,6 +12,7 @@ g.python_host_prog = '/usr/local/bin/python'
 g.python3_host_prog = '/usr/local/bin/python3.8'
 o.mouse = "a"
 o.backspace = "indent,start"
+g.autochdir = true
 
 -- interface
 vim.api.nvim_command("colorscheme wal")
@@ -22,10 +23,13 @@ wo.cursorcolumn = false
 o.termguicolors = false
 o.title = true
 o.titlestring = "%t"
-o.number = true
+--o.number = true
 o.ruler = false
+o.list = true
+--vim.api.nvim_command("set list")
+--vim.api.nvim_command("set listchars=tab:!·,trail:·")
 -- o.lazyredraw = true
--- o.list = "lcs=tab:\┊\ "
+--g.listchars = "tab:|"
 -- o.fillchars = "vert:\ "
 o.updatetime = 50
 o.hidden = true

@@ -10,7 +10,7 @@ export EDITOR="nvim"
 export FFF_TRASH=~/.Trash
 
 # bookmarks (keys 1-9)
-export FFF_FAV1=~
+export FFF_FAV1=~/.dots
 export FFF_FAV2=~/scripts
 export FFF_FAV3=~/pictures/wallpapers
 export FFF_FAV4=~/downloads

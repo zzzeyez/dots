@@ -192,10 +192,9 @@ hi VertSplit cterm=NONE ctermfg=0 ctermbg=0
 hi! EndOfBuffer ctermbg=0 ctermfg=0 guibg=0 guifg=0
 " minimap
 hi MinimapCurrentLine ctermfg=1 ctermbg=NONE
+hi MinimapBase ctermfg=8 ctermbg=NONE
 let g:minimap_highlight = 'MinimapCurrentLine'
-" dim bg windows
-hi InactiveWindow ctermfg=8 ctermbg=NONE
-set winhighlight=NormalNC:InactiveWindow
+let g:minimap_base_highlight = 'MinimapBase'
 
 " italics
 hi Directory cterm=italic

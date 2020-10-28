@@ -7,7 +7,7 @@ bin .bin
 
 # chunkwm + skhd
 title=chunkwm + skhd
-chunkwm/chunkwmrc .chunkwmrc
+# chunkwm/chunkwmrc .chunkwmrc
 chunkwm/skhdrc .skhdrc
 
 # irssi
@@ -19,9 +19,9 @@ title=iterm2
 iterm2/com.googlecode.iterm2.plist Library/Preferences/com.googlecode.iterm2.plist
 
 # ncmpcpp
-title=ncmpcpp + mpd
-ncmpcpp .ncmpcpp
-ncmpcpp/mopidy.conf .config/mopidy/mopidy.conf
+# title=ncmpcpp + mpd
+# ncmpcpp .ncmpcpp
+# ncmpcpp/mopidy.conf .config/mopidy/mopidy.conf
 
 # neovim
 title=neovim
@@ -81,5 +81,3 @@ fonts Library/fonts
 # this file
 title=dots
 dots.sh ../../usr/local/bin/dots
-
-

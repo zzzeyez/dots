@@ -46,7 +46,7 @@ cmd + shift - s : colorlovers -nqs
 cmd + shift - n : night
 
 # bar
-cmd - h : toggleshadow
+# cmd - h : toggleshadow
 cmd + shift - h : togglebar
 
 # screenshot
@@ -57,37 +57,37 @@ cmd - p : scr -nu
 rcmd + shift - t : bash ~/scripts/bin/thugpro
 
 # fullscreen
-cmd + shift - f : chunkc tiling::window --toggle native-fullscreen
+# cmd + shift - f : chunkc tiling::window --toggle native-fullscreen
 
 # workspaces
 # cmd - tab : chunkc tiling::desktop --focus next
-ctrl - right : chunkc tiling::desktop --focus next
+# ctrl - right : chunkc tiling::desktop --focus next
 # cmd - 0x32 : chunkc tiling::desktop --focus prev
-ctrl - left : chunkc tiling::desktop --focus prev
-cmd - 1 : chunkc tiling::desktop --focus 1
-cmd - 2 : chunkc tiling::desktop --focus 2
-cmd - 3 : chunkc tiling::desktop --focus 3
-cmd - 4 : chunkc tiling::desktop --focus 4
-cmd - 5 : chunkc tiling::desktop --focus 5
-cmd - 6 : chunkc tiling::desktop --focus 6
-cmd - 7 : chunkc tiling::desktop --focus 7
-cmd - 8 : chunkc tiling::desktop --focus 8
-cmd - 9 : chunkc tiling::desktop --focus 9
-cmd + shift - 1 : chunkc tiling::window --send-to-desktop 1; chunkc tiling::desktop --focus 1
-cmd + shift - 2 : chunkc tiling::window --send-to-desktop 2; chunkc tiling::desktop --focus 2
-cmd + shift - 3 : chunkc tiling::window --send-to-desktop 3; chunkc tiling::desktop --focus 3
-cmd + shift - 4 : chunkc tiling::window --send-to-desktop 4; chunkc tiling::desktop --focus 4
-cmd + shift - 5 : chunkc tiling::window --send-to-desktop 5; chunkc tiling::desktop --focus 5
-cmd + shift - 6 : chunkc tiling::window --send-to-desktop 5; chunkc tiling::desktop --focus 6
-cmd + shift - 7 : chunkc tiling::window --send-to-desktop 5; chunkc tiling::desktop --focus 7
-cmd + shift - 8 : chunkc tiling::window --send-to-desktop 5; chunkc tiling::desktop --focus 8
-cmd + shift - 9 : chunkc tiling::window --send-to-desktop 5; chunkc tiling::desktop --focus 9
+# ctrl - left : chunkc tiling::desktop --focus prev
+# cmd - 1 : chunkc tiling::desktop --focus 1
+# cmd - 2 : chunkc tiling::desktop --focus 2
+# cmd - 3 : chunkc tiling::desktop --focus 3
+# cmd - 4 : chunkc tiling::desktop --focus 4
+# cmd - 5 : chunkc tiling::desktop --focus 5
+# cmd - 6 : chunkc tiling::desktop --focus 6
+# cmd - 7 : chunkc tiling::desktop --focus 7
+# cmd - 8 : chunkc tiling::desktop --focus 8
+# cmd - 9 : chunkc tiling::desktop --focus 9
+# cmd + shift - 1 : chunkc tiling::window --send-to-desktop 1; chunkc tiling::desktop --focus 1
+# cmd + shift - 2 : chunkc tiling::window --send-to-desktop 2; chunkc tiling::desktop --focus 2
+# cmd + shift - 3 : chunkc tiling::window --send-to-desktop 3; chunkc tiling::desktop --focus 3
+# cmd + shift - 4 : chunkc tiling::window --send-to-desktop 4; chunkc tiling::desktop --focus 4
+# cmd + shift - 5 : chunkc tiling::window --send-to-desktop 5; chunkc tiling::desktop --focus 5
+# cmd + shift - 6 : chunkc tiling::window --send-to-desktop 5; chunkc tiling::desktop --focus 6
+# cmd + shift - 7 : chunkc tiling::window --send-to-desktop 5; chunkc tiling::desktop --focus 7
+# cmd + shift - 8 : chunkc tiling::window --send-to-desktop 5; chunkc tiling::desktop --focus 8
+# cmd + shift - 9 : chunkc tiling::window --send-to-desktop 5; chunkc tiling::desktop --focus 9
 # create desktop, follow focus
-shift + cmd - return : chunkc tiling::desktop --create;\
-					   ids=$(chunkc tiling::query --desktops-for-monitor\
-						   $(chunkc tiling::query --monitor-for-desktop $(chunkc tiling::query --desktop id)));\
-					   chunkc tiling::desktop --focus $(echo ${ids##* })
+# shift + cmd - return : chunkc tiling::desktop --create;\
+# 					   ids=$(chunkc tiling::query --desktops-for-monitor\
+# 						   $(chunkc tiling::query --monitor-for-desktop $(chunkc tiling::query --desktop id)));\
+# 					   chunkc tiling::desktop --focus $(echo ${ids##* })
 # destroy desktop
-shift + cmd - q :      ids=$(chunkc tiling::query --desktops-for-monitor \
-                           $(chunkc tiling::query --monitor-for-desktop $(chunkc tiling::query --desktop id)));\
-                       chunkc tiling::desktop --annihilate $(echo ${ids##* })
+# shift + cmd - q :      ids=$(chunkc tiling::query --desktops-for-monitor \
+#                            $(chunkc tiling::query --monitor-for-desktop $(chunkc tiling::query --desktop id)));\
+#                        chunkc tiling::desktop --annihilate $(echo ${ids##* })

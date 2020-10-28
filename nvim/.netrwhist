@@ -1,12 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/Users/zzzeyez/.origin'
+let g:netrw_dirhist_7='/Users/zzzeyez/scripts/pecan/scss'
+let g:netrw_dirhist_6='/Users/zzzeyez'
+let g:netrw_dirhist_5='/Users/zzzeyez/behaviors'
 let g:netrw_dirhist_4='/Users/zzzeyez/.dots/.git'
 let g:netrw_dirhist_3='/Users/zzzeyez'
 let g:netrw_dirhist_2='/Users'
 let g:netrw_dirhist_1='/Users/zzzeyez'
 let g:netrw_dirhist_0='/Users/zzzeyez/.dots'
 let g:netrw_dirhist_9='/Users/zzzeyez/.dots/nvim'
-let g:netrw_dirhist_8='/Users/zzzeyez'
-let g:netrw_dirhist_7='/Users/zzzeyez/.dots'
-let g:netrw_dirhist_6='/Users/zzzeyez/.dots/nvim'
-let g:netrw_dirhist_5='/Users/zzzeyez'

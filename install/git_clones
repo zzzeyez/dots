@@ -17,6 +17,7 @@ zsh-users/zsh-autosuggestions               .oh-my-zsh/custom/plugins/zsh-syntax
 zsh-users/zsh-syntax-highlighting           .oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 starcraftman/zsh-git-prompt                 .oh-my-zsh/custom/plugins/zsh-git-prompt
 MenkeTechnologies/zsh-very-colorful-manuals .oh-my-zsh/custom/plugins/zsh-very-colorful-manuals
+romkatv/powerlevel10k                       .oh-my-zsh/custom/plugins/powerlevel10k
 
 # tmux-better-mouse-mode
 NHDaly/tmux-better-mouse-mode               .tmux-better-mouse-mode
@@ -31,4 +32,4 @@ junegunn/limelight.vim                      .config/nvim/pack/plugins/start/lime
 wfxr/minimap.vim                            .config/nvim/pack/plugins/start/minimap.vim
 mhartington/formatter.nvim                  .config/nvim/pack/plugins/start/formatter.nvim
 nvim-treesitter/nvim-treesitter             .config/nvim/pack/plugins/start/nvim-treesitter
-noahares/nvim-commenter                     .config/nvim/pack/plugins/start/nvim-commenter
+mfussenegger/nvim-fzy                       .config/nvim/pack/plugins/start/nvim-fzy

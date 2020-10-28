@@ -1,5 +1,7 @@
 # wal colors
 (cat ~/.cache/wal/sequences)
+# Source the pywal colors.
+source ~/.cache/wal/colors.sh
 
 # If you come from bash you might have to change your $PATH.
 #export PATH=$PATH:/usr/bin:/usr/local/bin
@@ -7,17 +9,15 @@
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="zzzeyez"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# ZSH_THEME="zzzeyez"
+#
+# p10k
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+source ~/.oh-my-zsh/custom/plugins/powerlevel10k/powerlevel10k.zsh-theme
+# [[ ! -f ~/.oh-my-zsh/custom/themes/.p10k.zsh ]] || source ~/.oh-my-zsh/custom/themes/.p10k.zsh
+# [[ ! -f ~/.oh-my-zsh/custom/themes/p10k.zsh ]] || source ~/.oh-my-zsh/custom/themes/p10k.zsh
+source ~/.oh-my-zsh/custom/themes/.p10k.zsh
+source ~/.oh-my-zsh/custom/themes/p10k.zsh
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -108,6 +108,11 @@ source $ZSH/custom/plugins/zsh-git-prompt/zshrc.sh
 	#(cat ~/.cache/wal/sequences &)
 #fi
 
+# ls
+ls() {
+  exa --oneline -a "$PWD"
+}
+
 # fff file manager
 f() {
 	source ${HOME}/.config/fff
@@ -130,8 +135,15 @@ rm() {
 }
 
 # nvim
-;nv() {
-	nvim "$@"
+n() {
+  nvim "$@"
+}
+
+# cd fzf
+c() {
+  # workaround because canceling commands does `cd ~`
+  FZYDIR="$(fd --hidden --type directory --exclude /.cache --exclude /Library --exclude /.thugpro --exclude /.origin . ~ | fzy)"
+  cd "$FZYDIR"
 }
 
 # todo list
@@ -150,4 +162,8 @@ thugpro() {
 	cd /Users/zzzeyez/.thugpro/drive_c/users/zzzeyez/Local\ Settings/Application\ Data/THUG\ Pro &&
 	wine ./THUGProLauncher.exe
 }
+
 export TERM=xterm-256color-italic
+
+# remove right padding
+ZLE_RPROMPT_INDENT=0

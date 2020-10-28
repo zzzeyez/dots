@@ -42,7 +42,7 @@ brew cask install neovim-nightly
 brew install tmux
 #brew install weechat 
 brew install irssi
-brew install ncmpcpp
+#brew install ncmpcpp
 #brew install ranger
 brew install htop
 brew tap cjbassi/gotop
@@ -52,19 +52,22 @@ brew install fff
 brew install redshift
 brew install git
 brew install git-lfs
-brew install youtube-dl
+#brew install youtube-dl
 brew install imagemagick
 brew install jq
-brew install mpd
-brew tap mopidy/mopidy
-brew install mopidy
+#brew install mpd
+#brew tap mopidy/mopidy
+#brew install mopidy
 brew install mpc
 brew install sassc
 brew install wget
 brew install pidof
-brew install fzf
+#brew install fzf
 brew install tree
 brew install rmtrash
+brew install exa
+brew install romkatv/powerlevel10k/powerlevel10k
+brew install fd
 
 # install node + npm packages
 #curl -sL install-node.now.sh/lts | bash
@@ -77,16 +80,12 @@ npm install -g prettier
 brew install python3
 
 # chunkwm
-brew tap koekeishiya/formulae
-brew install chunkwm --with-purify
-brew install --HEAD chunkwm
+#brew tap koekeishiya/formulae
+#brew install chunkwm --with-purify
+#brew install --HEAD chunkwm
 killall skhd
 brew install koekeishiya/formulae/skhd
 skhd & disown
-
-# mopidy
-brew tap mopidy/mopidy
-brew install mopidy-scrobbler
 
 # cask
 brew tap caskroom/cask
