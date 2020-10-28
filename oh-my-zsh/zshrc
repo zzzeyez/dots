@@ -109,9 +109,9 @@ source $ZSH/custom/plugins/zsh-git-prompt/zshrc.sh
 #fi
 
 # ls
-ls() {
-  exa --oneline -a "$PWD"
-}
+# ls() {
+#   exa --oneline -a "$@"
+# }
 
 # fff file manager
 f() {
