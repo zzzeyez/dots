@@ -27,10 +27,11 @@ o.titlestring = "%t"
 o.ruler = false
 o.list = true
 --vim.api.nvim_command("set list")
---vim.api.nvim_command("set listchars=tab:!·,trail:·")
+--vim.api.nvim_command([[set listchars=tab:!·,trail:·]])
 -- o.lazyredraw = true
---g.listchars = "tab:|"
--- o.fillchars = "vert:\ "
+o.list = true
+g.listchars = [[tab:|]]
+o.fillchars = [[vert: ]]
 o.updatetime = 50
 o.hidden = true
 wo.wrap = false
