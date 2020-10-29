@@ -22,15 +22,15 @@ keyboard shortcuts select styles or fetch all my colorschemes and wallpapers fro
 
 ### terminal programs
 
-- (ctrl + tab) switch windows (left/right for `tmux`)
-- (alt + enter) opens tmux windows/sessions depending on iTerm2 window status [tmx](https://github.com/zzzeyez/bin)
-- (alt + w) ^ opposite of that
+- (ctrl + tab) switch `tmux` windows
+- (ctrl + enter) opens tmux windows/sessions depending on iTerm2 window status [tmx](https://github.com/zzzeyez/bin)
+- (ctrl + w) ^ opposite of that
 
 ### wallpapers
 
 - (cmd + 0) random [wallpaper](https://github.com/zzzeyez/bin) for current workspace
 - (cmd + shift + 0) random `wallpaper` for all workspaces
-- (rcmd + 0) `wal` palette solid color as `wallpaper`
+- (rcmd + 0-8) `wal` palette solid color as `wallpaper`
 - (rcmd + shift + 0) download unsplash.com wallpaper via [new-roses](https://github.com/zzzeyez/new-roses)
 - (cmd + shift + d) save `new-roses` wallpaper to ~/pictures/wallpapers
 
@@ -43,7 +43,6 @@ keyboard shortcuts select styles or fetch all my colorschemes and wallpapers fro
 
 ### menubar + notifications
 
-- (cmd + shift + x) load random [xanthia](https://github.com/zzzeyez/xanthia) + [pecan](https://github.com/zzzeyez/pecan) style
 - (cmd + shift + h) [toggle](https://github.com/zzzeyez/bin) `xanthia` + `pecan` (also applies `chunkwm` menubar offset via [wal-set](https://github.com/zzzeyez/bin))
 
 ## install
@@ -61,4 +60,3 @@ keyboard shortcuts select styles or fetch all my colorschemes and wallpapers fro
 
 - find way to use `defaults write` to hide the Finder sidebar
 - unable to `sudo echo` paths to `/etc/paths.d/paths`
-- clean fonts directory
