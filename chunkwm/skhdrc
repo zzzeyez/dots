@@ -20,6 +20,7 @@ cmd - t [
 ]
 
 # wallpaper
+fast : wallpaper -o ~/pictures/wallpapers
 cmd + shift - 0 : wallpaper ~/pictures/wallpapers
 lcmd - 0 : wallpaper -o ~/pictures/wallpapers
 cmd + shift - d : new-roses -ns ~/pictures/wallpapers
@@ -35,6 +36,7 @@ rcmd - 7 : wallpaper -o 7
 rcmd - 8 : wallpaper -o 8
 
 # palette
+play : colorlovers -nqr
 cmd + shift - r : colorlovers -nqr
 lcmd + shift - e : colorlovers -nq -b 202020
 lcmd + shift - w : colorlovers -nq -b fefefe
@@ -47,7 +49,7 @@ cmd + shift - n : night
 
 # bar
 # cmd - h : toggleshadow
-cmd + shift - h : togglebar
+cmd - h : togglebar
 
 # screenshot
 cmd + shift - p : scr -n

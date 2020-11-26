@@ -187,9 +187,9 @@ hi ALEWarning ctermbg=NONE ctermfg=3
 
 
 " hide splits
-hi VertSplit cterm=NONE ctermfg=0 ctermbg=0
+hi VertSplit cterm=NONE ctermfg=0 ctermbg=NONE
 " hide empty line
-hi! EndOfBuffer ctermbg=0 ctermfg=0 guibg=0 guifg=0
+hi! EndOfBuffer ctermbg=NONE ctermfg=0
 " minimap
 hi MinimapCurrentLine ctermfg=1 ctermbg=NONE
 hi MinimapBase ctermfg=8 ctermbg=NONE

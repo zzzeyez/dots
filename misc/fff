@@ -24,7 +24,7 @@ export FFF_KEY_GO_DIR="g"
 export FFF_COL1=2
 
 # status color [0-9]
-export FFF_COL2=0
+export FFF_COL2=6
 
 # selection color [0-9] (copied/moved files)
 export FFF_COL3=6
@@ -86,9 +86,9 @@ export FFF_KEY_REFRESH="r"
 
 ### File operations.
 
-export FFF_KEY_YANK="off"
-export FFF_KEY_MOVE="off"
-export FFF_KEY_TRASH="off"
+export FFF_KEY_YANK="y"
+export FFF_KEY_MOVE="m"
+export FFF_KEY_TRASH="d"
 export FFF_KEY_LINK="off"
 export FFF_KEY_BULK_RENAME="off"
 
@@ -98,13 +98,13 @@ export FFF_KEY_TRASH_ALL="off"
 export FFF_KEY_LINK_ALL="off"
 export FFF_KEY_BULK_RENAME_ALL="off"
 
-export FFF_KEY_PASTE="off"
+export FFF_KEY_PASTE="p"
 export FFF_KEY_CLEAR="off"
 
 export FFF_KEY_RENAME="off"
-export FFF_KEY_MKDIR="off"
-export FFF_KEY_MKFILE="off"
-export FFF_KEY_IMAGE="off" # display image with w3m-img
+export FFF_KEY_MKDIR="n"
+export FFF_KEY_MKFILE="t"
+export FFF_KEY_IMAGE="i" # display image with w3m-img
 
 ### Miscellaneous
 
@@ -112,7 +112,7 @@ export FFF_KEY_IMAGE="off" # display image with w3m-img
 export FFF_KEY_ATTRIBUTES="off"
 
 # Toggle executable flag.
-export FFF_KEY_EXECUTABLE="off"
+export FFF_KEY_EXECUTABLE="x"
 
 # Toggle hidden files.
 export FFF_KEY_HIDDEN="."

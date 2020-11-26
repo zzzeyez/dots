@@ -16,13 +16,13 @@ g.autochdir = true
 
 -- interface
 vim.api.nvim_command("colorscheme wal")
-wo.cursorline = true
+wo.cursorline = false
 wo.number = true
 wo.relativenumber = false
 wo.cursorcolumn = false
 o.termguicolors = false
 o.title = true
-o.titlestring = "%t"
+o.titlestring = "%t %y"
 --o.number = true
 o.ruler = false
 o.list = true
@@ -57,6 +57,7 @@ o.ignorecase = true
 o.smartcase = true
 
 -- backup, undo, swap options
+vim.api.nvim_command("set noswapfile")
 o.undofile = false
 o.backup = false
 o.writebackup = false

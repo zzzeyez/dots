@@ -13,7 +13,7 @@ zzzeyez/new-roses                           scripts/new-roses
 zzzeyez/colorlovers                         scripts/colorlovers
 
 # zsh plugins
-zsh-users/zsh-autosuggestions               .oh-my-zsh/custom/plugins/zsh-syntax-autosuggestions
+zsh-users/zsh-autosuggestions               .oh-my-zsh/custom/plugins/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting           .oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 starcraftman/zsh-git-prompt                 .oh-my-zsh/custom/plugins/zsh-git-prompt
 MenkeTechnologies/zsh-very-colorful-manuals .oh-my-zsh/custom/plugins/zsh-very-colorful-manuals
@@ -33,3 +33,4 @@ wfxr/minimap.vim                            .config/nvim/pack/plugins/start/mini
 mhartington/formatter.nvim                  .config/nvim/pack/plugins/start/formatter.nvim
 nvim-treesitter/nvim-treesitter             .config/nvim/pack/plugins/start/nvim-treesitter
 mfussenegger/nvim-fzy                       .config/nvim/pack/plugins/start/nvim-fzy
+noahares/nvim-commenter                     .config/nvim/pack/plugins/start/nvim-commenter

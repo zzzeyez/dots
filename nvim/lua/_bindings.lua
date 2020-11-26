@@ -18,8 +18,12 @@ map("n", "<A-Up>", "<Cmd>bprev<CR>", opts)
 map("n", ";o", ":F %:p:h<CR>", opts)
 
 -- nvim-fzy
---fzy = require('fzy')
-map("n", "f", "<Cmd>lua fzy.execute('fd --hidden --exclude /library --exclude /.origin --exclude /.thugpro --exclude /.cache . ~', fzy.sinks.edit_file)<CR>", opts)
+map(
+  "n",
+  "f",
+  "<Cmd>lua fzy.execute('fd --hidden --exclude /library --exclude /.origin --exclude /.thugpro --exclude /.cache . ~', fzy.sinks.edit_file)<CR>",
+  opts
+)
 map("n", "b", "<Cmd>lua fzy.actions.buffers()<CR>", opts)
 
 -- nvim-lsp
