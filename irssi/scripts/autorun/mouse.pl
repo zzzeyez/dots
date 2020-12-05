@@ -1,4 +1,4 @@
-# See http://wouter.coekaerts.be/site/irssi/mouse
+#See http://wouter.coekaerts.be/site/irssi/mouse
 # based on irssi mouse patch by mirage: http://darksun.com.pt/mirage/irssi/
 
 # Copyright (C) 2005-2009  Wouter Coekaerts <wouter@coekaerts.be>

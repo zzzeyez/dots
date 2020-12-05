@@ -11,10 +11,10 @@ typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
 
 # right
 typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-  load
-  ram
-  wifi
-  newline
+#   load
+#   ram
+#   wifi
+#   newline
   command_execution_time
 )
 
@@ -34,12 +34,13 @@ typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=7
 typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION="${USER}"
 
 # dir
-typeset -g POWERLEVEL9K_DIR_BACKGROUND=4
+typeset -g POWERLEVEL9K_DIR_BACKGROUND=3
 typeset -g POWERLEVEL9K_DIR_FOREGROUND=0
 typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=0
 typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=0
+typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=false
 typeset -g POWERLEVEL9K_DIR_CLASSES=(
-  '~(|/*)' HOME ''
+  '~(|/*)' HOME ' '
 )
 
 # vcs (git)

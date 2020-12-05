@@ -75,8 +75,17 @@ fzycol() {
   fzycol="$(ls ~/.config/wal/colorschemes/colorlovers | fzy)" && colorlovers -nl "$(echo $fzycol | cut -f 1 -d '.')"
 }
 
+# search & destroy
+fzykill() {
+  ps aux | fzy | awk '{ print $2 }' | xargs kill
+}
+
 # iterm2italics fix
 export TERM=xterm-256color-italic
 
+# nvim man page
+export MANPAGER='nvim +Man!'
+
 # remove right padding
 ZLE_RPROMPT_INDENT=0
+

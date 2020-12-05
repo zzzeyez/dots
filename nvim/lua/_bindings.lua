@@ -1,6 +1,9 @@
 local map = require("utils").map
 local opts = {noremap = true, silent = true}
 
+-- leader
+vim.g.mapleader = " "
+
 -- ;
 map("n", ";", ":", {})
 
@@ -39,8 +42,12 @@ map("n", "[c", ":PrevDiagnosticCycle<CR>", opts)
 map("n", "]c", ":NextDiagnosticCycle<CR>", opts)
 
 -- commenter
-map("n", "c", ":SingleCommenterToggle<CR>", opts)
-map("n", "C", ":MultiCommenterToggle<CR>", opts)
+--vim.api.nvim_command("nnoremap <M-;> :call NERDComment(0,"toggle")<CR>")
+--vim.api.nvim_command("vnoremap <M-;> :call NERDComment(0,"toggle")<CR>")
+--vim.api.nvim_command("let g:NERDCreateDefaultMappings = 1")
+--map("v", "c", ":call NERDComment(0,"toggle")<CR>", opts)
+--map("n", "C", ":MultiCommenterToggle<CR>", opts)
+--vim.api.nvim_set_keymap("n", "c", "<Leader>c<Space>", {noremap = true, silent = true})
 
 -- formatter
 map("n", ";p", ":Format<CR>", opts)

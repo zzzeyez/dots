@@ -1,0 +1,93 @@
+# terminal
+# current capslock rebind method resets on reboot
+# so i'm doing this
+cmd - return : iterm2 & caps-lock
+
+# tmux doesn't allow alt-key binds with no leader
+alt - b : skhd -k "ctrl - b"
+alt - c : skhd -k "ctrl - c"
+alt - h : skhd -k "ctrl - h"
+alt - q : skhd -k "ctrl - q"
+alt - r : skhd -k "ctrl - r"
+alt - t : skhd -k "ctrl - t"
+alt - return : terminal
+alt - w : terminal exit
+
+# iterm2 reload
+alt - r : skhd -k "ctrl - l"
+
+# wallpaper
+lcmd + shift - 0 : wallpaper -n ~/pictures/wallpapers
+lcmd - 0 : wallpaper -no ~/pictures/wallpapers
+rcmd + shift - 0 : wallpaper -n 6
+rcmd - 0 : wallpaper -n 8
+cmd + shift - d : new-roses -ns ~/pictures/wallpapers
+
+# palette
+cmd + shift - r : colorlovers -nqr
+cmd + shift - e : colorlovers -nq -b 191919
+lcmd + shift - w : colorlovers -nq -b fefefe
+rcmd + shift - w : wal -i ~/pictures/wallpapers -q -o wal-set
+cmd + shift - s : colorlovers -nqs
+
+# nightmode
+cmd + shift - q : night
+
+# bar
+cmd + shift - h : togglebar
+cmd + shift - x : pecan-style -l && wal-set
+
+# finder
+cmd + shift - n : open -a finder
+
+# screenshot
+cmd + shift - p : scr -n
+cmd - p : scr -nu
+
+# dotfiles
+cmd + shift - z : dots -ns
+cmd + shift - u : dots -y && notify-send "system cleaned and updated"
+
+# focus window
+cmd - left : chunkc tiling::window --focus west
+cmd - down : chunkc tiling::window --focus south
+cmd - up : chunkc tiling::window --focus north
+cmd - right : chunkc tiling::window --focus east
+
+# move window
+cmd + shift - left : chunkc tiling::window --warp west
+cmd + shift - down : chunkc tiling::window --warp south
+cmd + shift - up : chunkc tiling::window --warp north
+cmd + shift - right : chunkc tiling::window --warp east
+
+# alt tab
+cmd - tab : skhd -k "ctrl - right"
+cmd - 0x32 : skhd -k "ctrl - left"
+
+# switch to desktop
+cmd - 1 : skhd -k "ctrl - 1"
+cmd - 2 : skhd -k "ctrl - 2"
+cmd - 3 : skhd -k "ctrl - 3"
+cmd - 4 : skhd -k "ctrl - 4"
+cmd - 5 : skhd -k "ctrl - 5"
+
+# send window to desktop
+cmd + shift - 1 : chunkc tiling::window --send-to-desktop 1; skhd -k "ctrl - 1"
+cmd + shift - 2 : chunkc tiling::window --send-to-desktop 2; skhd -k "ctrl - 2"
+cmd + shift - 3 : chunkc tiling::window --send-to-desktop 3; skhd -k "ctrl - 3"
+cmd + shift - 4 : chunkc tiling::window --send-to-desktop 4; skhd -k "ctrl - 4"
+cmd + shift - 5 : chunkc tiling::window --send-to-desktop 5; skhd -k "ctrl - 5"
+
+# increase padding size
+#cmd - 0x18 : chunkc tiling::desktop -g inc
+cmd + shift - 0x1B : chunkc tiling::desktop -p inc
+cmd + shift - 0x18 : chunkc tiling::desktop -p dec
+#cmd + shift - 0x1B : chunkc tiling::desktop -g dec
+
+# toggle window native fullscreen
+cmd + shift - f : chunkc tiling::window --toggle native-fullscreen
+#cmd + shift - f : chunkc tiling::window --toggle fullscreen
+
+# float / unfloat window and center on screen
+cmd + shift - space : chunkc tiling::window --toggle float;\
+chunkc tiling::window --grid-layout 4:4:1:1:2:2

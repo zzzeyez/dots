@@ -5,10 +5,11 @@
 title=bin
 bin .bin
 
-# chunkwm + skhd
-title=chunkwm + skhd
+# yabai + skhd
+title=yabai + skhd
 # chunkwm/chunkwmrc .chunkwmrc
-chunkwm/skhdrc .skhdrc
+yabai/yabairc .yabairc
+yabai/skhdrc .skhdrc
 
 # irssi
 title=irssi

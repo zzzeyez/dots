@@ -2,9 +2,9 @@
 "wallpaper": "None",
 "alpha": "100",
 "special": { 
-"background": "1c1f27", 
-"foreground": "e8e8e8", 
-"cursor": "e8e8e8" 
+"background": "#1c1f27", 
+"foreground": "#e8e8e8", 
+"cursor": "#e8e8e8" 
 }, 
 "colors": { 
 "color0": "#1c1f27", 

@@ -37,8 +37,9 @@ fi;
 
 # my stuff
 # brew install neovim
-brew tap jason0x43/homebrew-neovim-nightly
-brew cask install neovim-nightly
+#brew tap jason0x43/homebrew-neovim-nightly
+#brew cask install neovim-nightly
+brew install neovim --HEAD
 brew install tmux
 #brew install weechat 
 brew install irssi
@@ -65,9 +66,9 @@ brew install pidof
 #brew install fzf
 brew install tree
 brew install rmtrash
-brew install exa
 brew install romkatv/powerlevel10k/powerlevel10k
 brew install fd
+brew install koekeishiya/formulae/krp
 
 # install node + npm packages
 #curl -sL install-node.now.sh/lts | bash
@@ -79,10 +80,9 @@ npm install -g prettier
 # python3
 brew install python3
 
-# chunkwm
-#brew tap koekeishiya/formulae
-#brew install chunkwm --with-purify
-#brew install --HEAD chunkwm
+# yabai
+brew install koekeishiya/formulae/yabai
+sudo yabai --install-sa
 killall skhd
 brew install koekeishiya/formulae/skhd
 skhd & disown

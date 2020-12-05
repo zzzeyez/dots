@@ -1,0 +1,98 @@
+# terminal
+cmd - return : open-app iterm2
+ctrl - return : tmx new
+ctrl - o : tmx attach
+
+#tmux won't map C-Tab or C-`
+ctrl - tab [
+	"iTerm2"       : skhd -k "ctrl - l"
+	*              ~
+]
+ctrl - 0x32 [
+	"iTerm2"       : skhd -k "ctrl - k"
+	*              ~
+]
+
+# safari
+cmd - f [
+	"Safari"       ~
+	*              : open-app finder
+]
+cmd - t [
+	"Safari"       ~
+	*              : open -a Safari
+]
+
+# wallpaper
+fast : wallpaper -o ~/pictures/wallpapers
+cmd + shift - 0 : wallpaper ~/pictures/wallpapers
+lcmd - 0 : wallpaper -o ~/pictures/wallpapers
+cmd + shift - d : new-roses -ns ~/pictures/wallpapers
+# colors
+rcmd - 0 : wallpaper -o 0
+rcmd - 1 : wallpaper -o 1
+rcmd - 2 : wallpaper -o 2
+rcmd - 3 : wallpaper -o 3
+rcmd - 4 : wallpaper -o 4
+rcmd - 5 : wallpaper -o 5
+rcmd - 6 : wallpaper -o 6
+rcmd - 7 : wallpaper -o 7
+rcmd - 8 : wallpaper -o 8
+
+# palette
+play : colorlovers -nqr
+cmd + shift - r : colorlovers -nqr
+lcmd + shift - e : colorlovers -nq -b 202020
+lcmd + shift - w : colorlovers -nq -b fefefe
+rcmd + shift - e : wal -i ~/pictures/wallpapers -q -o wal-set
+rcmd + shift - w : wal -i ~/pictures/wallpapers -l -q -o wal-set
+cmd + shift - s : colorlovers -nqs
+
+# nightmode
+cmd + shift - n : night
+
+# bar
+# cmd - h : toggleshadow
+cmd - h : togglebar
+
+# screenshot
+cmd + shift - p : scr -n
+cmd - p : scr -nu
+
+# thps
+rcmd + shift - t : bash ~/scripts/bin/thugpro
+
+# fullscreen
+# cmd + shift - f : chunkc tiling::window --toggle native-fullscreen
+
+############################
+# yabai                    #
+############################
+
+# create & destroy
+shift + ctrl - return : yabai -m space --create
+shift + ctrl - backspace : yabai -m space --destroy
+
+# toggle
+ctrl - space : yabai -m space --layout bsp
+shift + ctrl - space : yabai -m space --layout float
+ctrl - f : yabai -m window --toggle native-fullscreen
+
+# move
+ctrl - left : yabai -m space --focus prev
+ctrl - right : yabai -m space --focus next
+alt - 0x32 : yabai -m window --focus prev
+alt - tab : yabai -m window --focus next
+ctrl - 1 : yabai -m space --focus 1
+ctrl - 2 : yabai -m space --focus 2
+ctrl - 3 : yabai -m space --focus 3
+ctrl - 4 : yabai -m space --focus 4
+ctrl - 5 : yabai -m space --focus 5
+shift + ctrl - left : yabai -m window --space prev; yabai -m space --focus prev
+shift + ctrl - right : yabai -m window --space next; yabai -m space --focus next
+shift + ctrl - 1 : yabai -m window --space 1; yabai -m space --focus 1
+shift + ctrl - 2 : yabai -m window --space 2; yabai -m space --focus 2
+shift + ctrl - 3 : yabai -m window --space 3; yabai -m space --focus 3
+shift + ctrl - 4 : yabai -m window --space 4; yabai -m space --focus 4
+shift + ctrl - 5 : yabai -m window --space 5; yabai -m space --focus 5
+

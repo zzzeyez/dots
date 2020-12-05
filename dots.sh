@@ -543,7 +543,7 @@ help() {
 }
 
 flags() {
-	while getopts srtbu opt; do
+	while getopts srtbud opt; do
 		case $opt in
 			s) screenshot ; exit
 			;;
@@ -568,15 +568,26 @@ flags() {
 				title "update"
 				message "looking for updates.."
 				notify-send "starting update"
-				yes | remove "$save_home"
+#				yes | remove "$save_home"
 				yes | backup "$backup_exclude"
 				yes | cloud "$mp3s"
 				yes | cloud "$text"
-				yes | recreate "$make_directories"
-				yes | copy "$dotfiles"
+#				yes | recreate "$make_directories"
+#				yes | copy "$dotfiles"
 				yes | install "$misc"
 				yes | update
 				notify-send "finished system backup"
+				exit
+			;;
+      d)
+				title "clean"
+				message "cleaning home"
+				notify-send "cleaning home"
+				remove "$save_home"
+				yes | recreate "$make_directories"
+				yes | copy "$dotfiles"
+				yes | install "$misc"
+				notify-send "finished cleaning home"
 				exit
 			;;
 		esac

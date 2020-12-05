@@ -33,4 +33,5 @@ wfxr/minimap.vim                            .config/nvim/pack/plugins/start/mini
 mhartington/formatter.nvim                  .config/nvim/pack/plugins/start/formatter.nvim
 nvim-treesitter/nvim-treesitter             .config/nvim/pack/plugins/start/nvim-treesitter
 mfussenegger/nvim-fzy                       .config/nvim/pack/plugins/start/nvim-fzy
-noahares/nvim-commenter                     .config/nvim/pack/plugins/start/nvim-commenter
+preservim/nerdcommenter                     .config/nvim/pack/plugins/start/nerdcommenter
+zirrostig/vim-repaste                       .config/nvim/pack/plugins/start/vim-repaste

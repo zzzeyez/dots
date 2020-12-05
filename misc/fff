@@ -101,7 +101,7 @@ export FFF_KEY_BULK_RENAME_ALL="off"
 export FFF_KEY_PASTE="p"
 export FFF_KEY_CLEAR="off"
 
-export FFF_KEY_RENAME="off"
+export FFF_KEY_RENAME="r"
 export FFF_KEY_MKDIR="n"
 export FFF_KEY_MKFILE="t"
 export FFF_KEY_IMAGE="i" # display image with w3m-img

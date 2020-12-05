@@ -1,0 +1,22 @@
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+# default
+yabai -m config layout float
+yabai -m config top_padding    40
+yabai -m config bottom_padding 20
+yabai -m config left_padding   20
+yabai -m config right_padding  20
+yabai -m config window_gap     20
+
+# space 1
+yabai -m config --space 1 layout bsp
+yabai -m config --space 1 top_padding 20
+yabai -m config --space 1 bottom_padding 0
+yabai -m config --space 1 left_padding   0
+yabai -m config --space 1 right_padding  0
+yabai -m config --space 1 window_gap 0
+
+# options
+yabai -m config mouse_modifier ctrl
+yabai -m config window_shadow off

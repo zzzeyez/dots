@@ -7,16 +7,6 @@ local on_attach = function(client)
   completion.on_attach(client)
 
   local opts = {noremap = true, silent = true}
-  utils.map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  utils.map("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  utils.map("n", "ga", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  utils.map("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  utils.map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  utils.map("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  utils.map("n", "gr", "<cmd>lua require'telescope.builtin'.lsp_references()<CR>", opts)
-  utils.map("n", "<leader>ld", "<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>", opts)
-  utils.map("n", "[c", "<cmd> lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-  utils.map("n", "]c", "<cmd> lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 
   vim.api.nvim_command("autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()")
 

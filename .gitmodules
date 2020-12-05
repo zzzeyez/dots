@@ -31,3 +31,9 @@
 [submodule "nvim/pack/plugins/start/nvim-fzy"]
 	path = nvim/pack/plugins/start/nvim-fzy
 	url = https://github.com/mfussenegger/nvim-fzy.git
+[submodule "nvim/pack/plugins/start/vim-repaste"]
+	path = nvim/pack/plugins/start/vim-repaste
+	url = https://github.com/zirrostig/vim-repaste.git
+[submodule "nvim/pack/plugins/start/nerdcommenter"]
+	path = nvim/pack/plugins/start/nerdcommenter
+	url = https://github.com/preservim/nerdcommenter.git
