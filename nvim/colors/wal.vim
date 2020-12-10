@@ -189,7 +189,7 @@ hi ALEWarning ctermbg=NONE ctermfg=3
 " hide splits
 hi VertSplit cterm=NONE ctermfg=NONE ctermbg=NONE
 " hide empty line tilde
-hi! EndOfBuffer ctermbg=NONE ctermfg=NONE
+hi! EndOfBuffer ctermbg=NONE ctermfg=0
 " minimap
 hi MinimapCurrentLine ctermfg=1 ctermbg=NONE
 hi MinimapBase ctermfg=8 ctermbg=NONE

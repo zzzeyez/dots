@@ -81,7 +81,7 @@ export FFF_KEY_TO_BOTTOM="G"
 # Go to dirs.
 export FFF_KEY_GO_DIR="off"
 export FFF_KEY_GO_HOME="~"
-export FFF_KEY_GO_TRASH="off"
+export FFF_KEY_GO_TRASH="z"
 export FFF_KEY_REFRESH="r"
 
 ### File operations.

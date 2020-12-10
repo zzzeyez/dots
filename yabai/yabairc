@@ -3,15 +3,15 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 # default
 yabai -m config layout float
-yabai -m config top_padding    40
-yabai -m config bottom_padding 20
-yabai -m config left_padding   20
-yabai -m config right_padding  20
-yabai -m config window_gap     20
+yabai -m config top_padding    46
+yabai -m config bottom_padding 10
+yabai -m config left_padding   10
+yabai -m config right_padding  10
+yabai -m config window_gap     10
 
 # space 1
 yabai -m config --space 1 layout bsp
-yabai -m config --space 1 top_padding 20
+yabai -m config --space 1 top_padding 36
 yabai -m config --space 1 bottom_padding 0
 yabai -m config --space 1 left_padding   0
 yabai -m config --space 1 right_padding  0
@@ -20,3 +20,7 @@ yabai -m config --space 1 window_gap 0
 # options
 yabai -m config mouse_modifier ctrl
 yabai -m config window_shadow off
+
+# rules
+yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^Unshaky$" manage=off

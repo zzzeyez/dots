@@ -81,8 +81,8 @@ ctrl - f : yabai -m window --toggle native-fullscreen
 # move
 ctrl - left : yabai -m space --focus prev
 ctrl - right : yabai -m space --focus next
-alt - 0x32 : yabai -m window --focus prev
-alt - tab : yabai -m window --focus next
+alt - left : yabai -m window --focus prev
+alt - right : yabai -m window --focus next
 ctrl - 1 : yabai -m space --focus 1
 ctrl - 2 : yabai -m space --focus 2
 ctrl - 3 : yabai -m space --focus 3
@@ -95,4 +95,3 @@ shift + ctrl - 2 : yabai -m window --space 2; yabai -m space --focus 2
 shift + ctrl - 3 : yabai -m window --space 3; yabai -m space --focus 3
 shift + ctrl - 4 : yabai -m window --space 4; yabai -m space --focus 4
 shift + ctrl - 5 : yabai -m window --space 5; yabai -m space --focus 5
-

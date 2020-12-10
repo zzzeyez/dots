@@ -43,7 +43,7 @@ brew install neovim --HEAD
 brew install tmux
 #brew install weechat 
 brew install irssi
-#brew install ncmpcpp
+brew install ncmpcpp
 #brew install ranger
 brew install htop
 brew tap cjbassi/gotop
@@ -56,9 +56,9 @@ brew install git-lfs
 #brew install youtube-dl
 brew install imagemagick
 brew install jq
-#brew install mpd
-#brew tap mopidy/mopidy
-#brew install mopidy
+brew install mpd
+brew tap mopidy/mopidy
+brew install mopidy
 brew install mpc
 brew install sassc
 brew install wget

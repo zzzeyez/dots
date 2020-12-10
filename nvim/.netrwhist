@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/Users/zzzeyez/.dots/ncmpcpp'
+let g:netrw_dirhist_2='/Users/zzzeyez/.ncmpcpp'
+let g:netrw_dirhist_1='/Users/zzzeyez/.config/mopidy'

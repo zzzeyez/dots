@@ -2,4 +2,6 @@
 # python packages (enter install command)
 
 pip3 install pywal
-pip install Mopidy-Tidal
+sudo python3 -m pip install --upgrade git+https://github.com/tehkillerbee/mopidy-tidal.git@master
+sudo python3 -m pip install Mopidy-Tidal
+sudo python3 -m pip install mopidy-scrobbler

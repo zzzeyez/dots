@@ -1,50 +1,51 @@
-[2019-06-04 21:44:49] WeeChat 2.4 (compiled on May 30 2019 19:22:14)
-[2019-06-04 21:44:49] Reading configuration file sec.conf
-[2019-06-04 21:44:49] Reading configuration file weechat.conf
-[2019-06-04 21:44:49] Reading configuration file plugins.conf
-[2019-06-04 21:44:49] Reading configuration file charset.conf
-[2019-06-04 21:44:49] Reading configuration file logger.conf
-[2019-06-04 21:44:49] Reading configuration file exec.conf
-[2019-06-04 21:44:49] Reading configuration file trigger.conf
-[2019-06-04 21:44:49] Reading configuration file aspell.conf
-[2019-06-04 21:44:49] Reading configuration file alias.conf
-[2019-06-04 21:44:49] Reading configuration file buflist.conf
-[2019-06-04 21:44:49] Reading configuration file fifo.conf
-[2019-06-04 21:44:49] Reading configuration file xfer.conf
-[2019-06-04 21:44:49] Reading configuration file irc.conf
-[2019-06-04 21:44:49] Reading configuration file relay.conf
-[2019-06-04 21:44:49] Reading configuration file tcl.conf
-[2019-06-04 21:44:49] Reading configuration file python.conf
-[2019-06-04 21:44:49] Reading configuration file lua.conf
-[2019-06-04 21:44:49] Reading configuration file perl.conf
-[2019-06-04 21:44:49] Reading configuration file iset.conf
-[2019-06-04 21:44:49] Reading configuration file ruby.conf
-[2019-06-04 21:44:49] Reading configuration file script.conf
-[2019-06-04 21:44:49] Reading configuration file fset.conf
-[2019-06-04 21:44:49] irc: connecting to server irc.mzima.net/6667...
-[2019-06-04 21:44:49] irc: connecting to server irc.rizon.net/6667...
-[2019-06-04 21:44:49] irc: connecting to server irc.snoonet.org/6667...
-[2019-06-04 21:44:49] irc: connecting to server chat.freenode.net/6667...
-[2019-06-04 21:44:49] irc: connecting to server irc.scratch-network.net/6697 (SSL)...
-[2019-06-04 22:01:48] Writing configuration file plugins.conf
-[2019-06-04 22:01:48] Writing configuration file ruby.conf
-[2019-06-04 22:01:48] Writing configuration file logger.conf
-[2019-06-04 22:01:48] Writing configuration file exec.conf
-[2019-06-04 22:01:48] Writing configuration file iset.conf
-[2019-06-04 22:01:48] Writing configuration file perl.conf
-[2019-06-04 22:01:48] Writing configuration file irc.conf
-[2019-06-04 22:01:48] Writing configuration file alias.conf
-[2019-06-04 22:01:48] Writing configuration file lua.conf
-[2019-06-04 22:01:48] Writing configuration file fifo.conf
-[2019-06-04 22:01:48] Writing configuration file fset.conf
-[2019-06-04 22:01:48] Writing configuration file trigger.conf
-[2019-06-04 22:01:48] Writing configuration file aspell.conf
-[2019-06-04 22:01:48] Writing configuration file buflist.conf
-[2019-06-04 22:01:48] Writing configuration file script.conf
-[2019-06-04 22:01:48] Writing configuration file charset.conf
-[2019-06-04 22:01:48] Writing configuration file python.conf
-[2019-06-04 22:01:48] Writing configuration file xfer.conf
-[2019-06-04 22:01:48] Writing configuration file tcl.conf
-[2019-06-04 22:01:48] Writing configuration file relay.conf
-[2019-06-04 22:01:48] Writing configuration file weechat.conf
-[2019-06-04 22:01:48] Writing configuration file sec.conf
+[2020-12-09 19:02:14] WeeChat 3.0 (compiled on Dec  3 2020 02:33:35)
+[2020-12-09 19:02:14] Reading configuration file sec.conf
+[2020-12-09 19:02:14] Reading configuration file weechat.conf
+[2020-12-09 19:02:14] Reading configuration file plugins.conf
+[2020-12-09 19:02:14] Reading configuration file charset.conf
+[2020-12-09 19:02:14] Reading configuration file logger.conf
+[2020-12-09 19:02:14] Reading configuration file exec.conf
+[2020-12-09 19:02:14] Reading configuration file trigger.conf
+[2020-12-09 19:02:14] Writing configuration file spell.conf (default options)
+[2020-12-09 19:02:14] Reading configuration file spell.conf
+[2020-12-09 19:02:14] Reading configuration file alias.conf
+[2020-12-09 19:02:14] Reading configuration file buflist.conf
+[2020-12-09 19:02:14] Reading configuration file fifo.conf
+[2020-12-09 19:02:14] Reading configuration file xfer.conf
+[2020-12-09 19:02:14] Reading configuration file irc.conf
+[2020-12-09 19:02:14] Reading configuration file relay.conf
+[2020-12-09 19:02:14] Reading configuration file tcl.conf
+[2020-12-09 19:02:14] Reading configuration file python.conf
+[2020-12-09 19:02:14] Reading configuration file lua.conf
+[2020-12-09 19:02:14] Reading configuration file perl.conf
+[2020-12-09 19:02:14] Reading configuration file iset.conf
+[2020-12-09 19:02:14] Reading configuration file ruby.conf
+[2020-12-09 19:02:14] Reading configuration file script.conf
+[2020-12-09 19:02:14] Reading configuration file fset.conf
+[2020-12-09 19:02:14] irc: connecting to server irc.mzima.net/6667...
+[2020-12-09 19:02:14] irc: connecting to server irc.rizon.net/6667...
+[2020-12-09 19:02:14] irc: connecting to server irc.snoonet.org/6667...
+[2020-12-09 19:02:14] irc: connecting to server chat.freenode.net/6667...
+[2020-12-09 19:02:14] irc: connecting to server irc.scratch-network.net/6697 (SSL)...
+[2020-12-09 19:10:34] Writing configuration file plugins.conf
+[2020-12-09 19:10:34] Writing configuration file ruby.conf
+[2020-12-09 19:10:34] Writing configuration file logger.conf
+[2020-12-09 19:10:34] Writing configuration file exec.conf
+[2020-12-09 19:10:34] Writing configuration file iset.conf
+[2020-12-09 19:10:34] Writing configuration file perl.conf
+[2020-12-09 19:10:34] Writing configuration file irc.conf
+[2020-12-09 19:10:34] Writing configuration file alias.conf
+[2020-12-09 19:10:34] Writing configuration file lua.conf
+[2020-12-09 19:10:34] Writing configuration file fifo.conf
+[2020-12-09 19:10:34] Writing configuration file spell.conf
+[2020-12-09 19:10:34] Writing configuration file fset.conf
+[2020-12-09 19:10:34] Writing configuration file trigger.conf
+[2020-12-09 19:10:34] Writing configuration file buflist.conf
+[2020-12-09 19:10:34] Writing configuration file script.conf
+[2020-12-09 19:10:34] Writing configuration file charset.conf
+[2020-12-09 19:10:34] Writing configuration file python.conf
+[2020-12-09 19:10:34] Writing configuration file xfer.conf
+[2020-12-09 19:10:34] Writing configuration file tcl.conf
+[2020-12-09 19:10:34] Writing configuration file relay.conf
+[2020-12-09 19:10:34] Writing configuration file weechat.conf
+[2020-12-09 19:10:34] Writing configuration file sec.conf

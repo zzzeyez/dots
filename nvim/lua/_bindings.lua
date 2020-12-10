@@ -42,12 +42,8 @@ map("n", "[c", ":PrevDiagnosticCycle<CR>", opts)
 map("n", "]c", ":NextDiagnosticCycle<CR>", opts)
 
 -- commenter
---vim.api.nvim_command("nnoremap <M-;> :call NERDComment(0,"toggle")<CR>")
---vim.api.nvim_command("vnoremap <M-;> :call NERDComment(0,"toggle")<CR>")
---vim.api.nvim_command("let g:NERDCreateDefaultMappings = 1")
---map("v", "c", ":call NERDComment(0,"toggle")<CR>", opts)
---map("n", "C", ":MultiCommenterToggle<CR>", opts)
---vim.api.nvim_set_keymap("n", "c", "<Leader>c<Space>", {noremap = true, silent = true})
+map("v", "c", ":call NERDComment(\"n\", \"Toggle\")<CR>", opts)
+map("n", "c", ":call NERDComment(\"n\", \"Toggle\")<CR>", opts)
 
 -- formatter
 map("n", ";p", ":Format<CR>", opts)
