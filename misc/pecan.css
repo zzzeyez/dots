@@ -5,22 +5,22 @@
 
   /* background colors 
    ---------------------------------------- */
-  /*--background-base: #283237;*/
-  /*--background-workspace: #e88388;*/
-  /*--background-load: #72bef2;*/
-  /*--background-network: #283237;*/
-  /*--background-date: #283237;*/
-  /*--background-battery: #283237;*/
-  /*--background-clock: #72bef2;*/
+  --background-base: var(--background);
+  --background-workspace: var(--color1);
+  --background-load: NONE;
+  --background-network: NONE;
+  --background-date: NONE;
+  --background-battery: NONE;
+  --background-clock: var(--color6);
 
   /* foreground colors 
    ---------------------------------------- */
-  /*--foreground-workspace: #283237;*/
-  /*--foreground-load: #283237;*/
-  /*--foreground-network: #e88388;*/
-  /*--foreground-date: #b9c0cb;*/
-  /*--foreground-battery: #dbaa79;*/
-  /*--foreground-clock: #283237;*/
+  --foreground-workspace: var(--color0);
+  --foreground-load: var(--color1);
+  --foreground-network: var(--color2);
+  --foreground-date: var(--color8);
+  --foreground-battery: var(--color6);
+  --foreground-clock: var(--color0);
 
   /* alignment 
    ---------------------------------------- */
@@ -60,15 +60,17 @@
 
   /* size 
    ---------------------------------------- */
-  --height-xanthia: var(--height);    
+  --height-xanthia: calc(
+  var(--height) - var(--border) * 2
+  );    
   --height-xanthia-image: 200px;
 
   /* color + opacity 
    ---------------------------------------- */
-  --background-xanthia: #283237;
-  --foreground-xanthia: #b9c0cb;
+  --background-xanthia: NONE;
+  --foreground-xanthia: var(--color5);
   --opacity-xanthia: 1;
-  --time-visible-xanthia: 200s;
+  --time-visible-xanthia: auto;
 
   /* alignment - use 0 or auto to position 
    ---------------------------------------- */
@@ -79,7 +81,9 @@
 
   /* padding from edges of screen 
    ---------------------------------------- */
-  --margin-top-xanthia: 0px;
+  --margin-top-xanthia: calc(
+    var(--border) + var(--padding-top)
+  );
   --margin-horizontal-xanthia: calc(
     var(--padding-right) + var(--border) * 3 +
       var(--text-padding) * 4 + 14ch
@@ -89,10 +93,10 @@
 
   /* border 
    ---------------------------------------- */
-  --border-radius-right-xanthia: 0px;
+  --border-radius-right-xanthia: var(--border-radius-inner);
   --border-radius-left-xanthia: var(--border-radius-inner);
-  --border-radius-right-xanthia-image: var(--border-radius-inner);
-  --border-radius-left-xanthia-image: 0px;
+  --border-radius-right-xanthia-image: 3px;
+  --border-radius-left-xanthia-image: 3px;
   --border-xanthia-image: var(--border);
   --shadow-xanthia: var(--shadow-inner);
   --shadow-xanthia-image: var(--shadow-inner);

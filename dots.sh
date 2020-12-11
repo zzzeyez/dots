@@ -538,6 +538,7 @@ help() {
 	echo '-r : apply settings for new user account'
 	echo '-t : test mode (puts `echo` before commands)'
 	echo '-b : backup to ssd and icloud'
+  echo '-d : delete home directory and relink dotfiles'
 	echo '-u : system upgrade'
 	echo
 }

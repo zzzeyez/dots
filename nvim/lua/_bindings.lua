@@ -42,15 +42,11 @@ map("n", "[c", ":PrevDiagnosticCycle<CR>", opts)
 map("n", "]c", ":NextDiagnosticCycle<CR>", opts)
 
 -- commenter
-map("v", "c", ":call NERDComment(\"n\", \"Toggle\")<CR>", opts)
-map("n", "c", ":call NERDComment(\"n\", \"Toggle\")<CR>", opts)
+map("v", "-", ":call NERDComment(\"n\", \"Toggle\")<CR>", opts)
+map("n", "-", ":call NERDComment(\"n\", \"Toggle\")<CR>", opts)
 
 -- formatter
 map("n", ";p", ":Format<CR>", opts)
 
 -- minimap
 map("n", "m", ":MinimapToggle<CR>", opts)
-
--- limelight
-map("n", "l", ":Limelight<CR>", opts)
-map("n", "L", ":Limelight!<CR>", opts)
