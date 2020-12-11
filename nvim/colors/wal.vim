@@ -20,7 +20,7 @@ hi Normal ctermbg=NONE ctermfg=7
 
 " this is tab-line
 hi NonText ctermbg=NONE ctermfg=8
-hi Comment ctermbg=NONE ctermfg=6
+hi Comment ctermbg=NONE ctermfg=8
 hi Constant ctermbg=NONE ctermfg=3
 hi Error ctermbg=1 ctermfg=7
 hi Identifier ctermbg=NONE ctermfg=1 cterm=BOLD

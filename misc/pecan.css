@@ -17,7 +17,7 @@
    ---------------------------------------- */
   --foreground-workspace: var(--color0);
   --foreground-load: var(--color1);
-  --foreground-network: var(--color2);
+  --foreground-network: var(--color8);
   --foreground-date: var(--color8);
   --foreground-battery: var(--color6);
   --foreground-clock: var(--color0);
@@ -51,7 +51,7 @@
 
   /* typography 
    ---------------------------------------- */
-  --font: SauceCodePro Nerd font, Menlo, Monospace;
+  --font: OperatorMonoNerdFontComplete-Book, Menlo, Monospace;
   --font-size: 12px;
   --text-padding: 2ch;
 
@@ -90,6 +90,11 @@
   );
   --margin-top-xanthia-image: calc(var(--height) + 10px + var(--padding-top) * 2);
   --margin-horizontal-xanthia-image: 10px;
+
+  /* typography 
+   ---------------------------------------- */
+  --font-xanthia: OperatorMonoNerdFontComplete-Italic;
+  --font-size-xanthia: var(--font-size);
 
   /* border 
    ---------------------------------------- */
