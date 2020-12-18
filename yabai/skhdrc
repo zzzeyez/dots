@@ -70,8 +70,8 @@ rcmd + shift - t : bash ~/scripts/bin/thugpro
 ############################
 
 # create & destroy
-shift + ctrl - return : yabai -m space --create
-shift + ctrl - backspace : yabai -m space --destroy
+shift + ctrl - return : yabai -m space --create; landscape
+shift + ctrl - backspace : yabai -m space --destroy; landscape
 
 # toggle
 ctrl - space : yabai -m space --layout bsp
@@ -79,19 +79,29 @@ shift + ctrl - space : yabai -m space --layout float
 ctrl - f : yabai -m window --toggle native-fullscreen
 
 # move
-ctrl - left : yabai -m space --focus prev
-ctrl - right : yabai -m space --focus next
+ctrl - left : yabai -m space --focus prev; landscape
+ctrl - right : yabai -m space --focus next; landscape
 alt - left : yabai -m window --focus prev
 alt - right : yabai -m window --focus next
-ctrl - 1 : yabai -m space --focus 1
-ctrl - 2 : yabai -m space --focus 2
-ctrl - 3 : yabai -m space --focus 3
-ctrl - 4 : yabai -m space --focus 4
-ctrl - 5 : yabai -m space --focus 5
-shift + ctrl - left : yabai -m window --space prev; yabai -m space --focus prev
-shift + ctrl - right : yabai -m window --space next; yabai -m space --focus next
-shift + ctrl - 1 : yabai -m window --space 1; yabai -m space --focus 1
-shift + ctrl - 2 : yabai -m window --space 2; yabai -m space --focus 2
-shift + ctrl - 3 : yabai -m window --space 3; yabai -m space --focus 3
-shift + ctrl - 4 : yabai -m window --space 4; yabai -m space --focus 4
-shift + ctrl - 5 : yabai -m window --space 5; yabai -m space --focus 5
+ctrl - 1 : landscape -p; yabai -m space --focus 1; landscape
+ctrl - 2 : landscape -p; yabai -m space --focus 2; landscape
+ctrl - 3 : landscape -p; yabai -m space --focus 3; landscape
+ctrl - 4 : landscape -p; yabai -m space --focus 4; landscape
+ctrl - 5 : landscape -p; yabai -m space --focus 5; landscape
+ctrl - 6 : landscape -p; yabai -m space --focus 6; landscape
+ctrl - 7 : landscape -p; yabai -m space --focus 7; landscape
+ctrl - 8 : landscape -p; yabai -m space --focus 8; landscape
+ctrl - 9 : landscape -p; yabai -m space --focus 9; landscape
+ctrl - 0 : landscape -p; yabai -m space --focus 10; landscape
+shift + ctrl - left : yabai -m window --space prev; landscape -p; yabai -m space --focus prev; landscape
+shift + ctrl - right : yabai -m window --space next; landscape -p; yabai -m space --focus next; landscape
+shift + ctrl - 1 : yabai -m window --space 1; landscape -p; yabai -m space --focus 1; landscape
+shift + ctrl - 2 : yabai -m window --space 2; landscape -p; yabai -m space --focus 2; landscape
+shift + ctrl - 3 : yabai -m window --space 3; landscape -p; yabai -m space --focus 3; landscape
+shift + ctrl - 4 : yabai -m window --space 4; landscape -p; yabai -m space --focus 4; landscape
+shift + ctrl - 5 : yabai -m window --space 5; landscape -p; yabai -m space --focus 5; landscape
+shift + ctrl - 6 : yabai -m window --space 6; landscape -p; yabai -m space --focus 6; landscape
+shift + ctrl - 7 : yabai -m window --space 7; landscape -p; yabai -m space --focus 7; landscape
+shift + ctrl - 8 : yabai -m window --space 8; landscape -p; yabai -m space --focus 8; landscape
+shift + ctrl - 9 : yabai -m window --space 9; landscape -p; yabai -m space --focus 9; landscape
+shift + ctrl - 0 : yabai -m window --space 10; landscape -p; yabai -m space --focus 10; landscape

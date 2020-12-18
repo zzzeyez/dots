@@ -25,25 +25,27 @@ o.title = true
 o.titlestring = "%t %y"
 --o.number = true
 o.ruler = false
-o.list = true
---vim.api.nvim_command("set list")
---vim.api.nvim_command([[set listchars=tab:!·,trail:·]])
--- o.lazyredraw = true
-o.list = true
-g.listchars = [[tab:|]]
-o.fillchars = [[vert: ]]
 o.updatetime = 50
 o.hidden = true
 wo.wrap = false
 o.showmode = false
 o.laststatus = 0
 
+-- list/fill chars
+o.list = true
+o.fillchars = 'vert: '
+--o.listchars = 'tab:┆·,trail:·,precedes:,extends:'
+o.listchars = table.concat({'tab: ', 'space: ', 'eol: ', 'trail: '}, ',')
+--vim.cmd [[augroup TreeSitterFolds]]
+--vim.cmd   [[autocmd BufEnter * setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr() foldlevel=99]]
+--vim.cmd [[augroup END]]
+
 -- tabs
 o.smartindent = true
 o.tabstop = 2
 o.shiftwidth = 2
-o.expandtab = true
-bo.expandtab = true
+o.expandtab = false
+bo.expandtab = false
 bo.tabstop = 2
 bo.smartindent = true
 bo.shiftwidth = 2

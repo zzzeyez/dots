@@ -7,12 +7,12 @@ servers = (
     tls_verify = "yes";
     autoconnect = "no";
   },
-  /* { */
-  /*   address = "mail.akropolys.com"; */
-  /*   chatnet = "bitlbee"; */
-  /*   port = "6667"; */
-  /*   autoconnect = "yes"; */
-  /* }, */
+
+
+
+
+
+
   {
     address = "foxbnc.co.uk";
     chatnet = "red";
@@ -179,7 +179,12 @@ settings = {
     use_status_window = "no";
     show_names_on_join = "no";
   };
-  "perl/core/scripts" = { lastfm_user = "em3i3mei"; title_string = "$C"; };
+  "perl/core/scripts" = {
+    lastfm_user = "em3i3mei";
+    title_string = "$C";
+    notify_chan = "always";
+    notify_priv = "always";
+  };
   "irc/core" = { skip_motd = "yes"; };
 };
 ignores = (

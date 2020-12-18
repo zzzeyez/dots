@@ -34,7 +34,7 @@
 
   /* padding 
    ---------------------------------------- */
-  --padding-left: 0px;
+	--padding-left: var(--landscape-width);
   --padding-right: 0px;
   --padding-top: 0px;
 
