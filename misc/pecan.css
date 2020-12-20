@@ -5,22 +5,22 @@
 
   /* background colors 
    ---------------------------------------- */
-  --background-base: var(--background);
-  --background-workspace: var(--color1);
-  --background-load: NONE;
-  --background-network: NONE;
-  --background-date: NONE;
-  --background-battery: NONE;
-  --background-clock: var(--color6);
+  --background-base: var(--background, #222);
+  --background-workspace: var(--color1, #222);
+  --background-load: var(--background, #222);
+  --background-network: var(--background, #222);
+  --background-date: var(--background, #222);
+  --background-battery: var(--background, #222);
+  --background-clock: var(--color6, #222);
 
   /* foreground colors 
    ---------------------------------------- */
-  --foreground-workspace: var(--color0);
-  --foreground-load: var(--color1);
-  --foreground-network: var(--color8);
-  --foreground-date: var(--color8);
-  --foreground-battery: var(--color6);
-  --foreground-clock: var(--color0);
+  --foreground-workspace: var(--color0, #fff);
+  --foreground-load: var(--color1, #fff);
+  --foreground-network: var(--color8, #fff);
+  --foreground-date: var(--color8, #fff);
+  --foreground-battery: var(--color6, #fff);
+  --foreground-clock: var(--color0, #fff);
 
   /* alignment 
    ---------------------------------------- */
@@ -34,7 +34,10 @@
 
   /* padding 
    ---------------------------------------- */
-	--padding-left: var(--landscape-width);
+	--padding-left: 0px;
+	/*--padding-left: calc(*/
+	/*var(--landscape-width)*/
+	/*);*/
   --padding-right: 0px;
   --padding-top: 0px;
 
@@ -67,7 +70,7 @@
 
   /* color + opacity 
    ---------------------------------------- */
-  --background-xanthia: NONE;
+  --background-xanthia: var(--background);
   --foreground-xanthia: var(--color5);
   --opacity-xanthia: 1;
   --time-visible-xanthia: auto;
@@ -105,4 +108,13 @@
   --border-xanthia-image: var(--border);
   --shadow-xanthia: var(--shadow-inner);
   --shadow-xanthia-image: var(--shadow-inner);
+
+  /* landscape
+   -------------------------------------------------------------- */
+
+	/*--background-landscape: ;*/
+	--border-landscape: 0px;
+	/*--margin-landscape: ;*/
+	/*--border-radius-landscape: ;*/
+	--shadow-landscape: NONE;
 }

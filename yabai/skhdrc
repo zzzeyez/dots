@@ -3,6 +3,9 @@ cmd - return : open-app iterm2
 ctrl - return : tmx new
 ctrl - o : tmx attach
 
+# finder
+cmd - o : open-app finder
+
 #tmux won't map C-Tab or C-`
 ctrl - tab [
 	"iTerm2"       : skhd -k "ctrl - l"
@@ -14,10 +17,10 @@ ctrl - 0x32 [
 ]
 
 # safari
-cmd - f [
-	"Safari"       ~
-	*              : open-app finder
-]
+#cmd - f [
+	#"Safari"       ~
+	#*              : open-app finder
+#]
 cmd - t [
 	"Safari"       ~
 	*              : open -a Safari
@@ -70,8 +73,14 @@ rcmd + shift - t : bash ~/scripts/bin/thugpro
 ############################
 
 # create & destroy
-shift + ctrl - return : yabai -m space --create; landscape
-shift + ctrl - backspace : yabai -m space --destroy; landscape
+#shift + ctrl - return : yabai -m space --create && landscape
+#create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
+shift + ctrl - return : yabai -m space --create && \
+									index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+									yabai -m window --space "${index}" && \
+									yabai -m space --focus "${index}" && \
+									landscape
+shift + ctrl - backspace : yabai -m space --destroy && landscape
 
 # toggle
 ctrl - space : yabai -m space --layout bsp
@@ -79,8 +88,8 @@ shift + ctrl - space : yabai -m space --layout float
 ctrl - f : yabai -m window --toggle native-fullscreen
 
 # move
-ctrl - left : yabai -m space --focus prev; landscape
-ctrl - right : yabai -m space --focus next; landscape
+ctrl - left : yabai -m space --focus prev && landscape
+ctrl - right : yabai -m space --focus next && landscape
 alt - left : yabai -m window --focus prev
 alt - right : yabai -m window --focus next
 ctrl - 1 : landscape -p; yabai -m space --focus 1; landscape

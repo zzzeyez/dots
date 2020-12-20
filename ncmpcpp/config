@@ -26,7 +26,7 @@ song_window_title_format = "%a - %t"
 # now playing
 now_playing_prefix = "$2» "
 #now_playing_suffix = " $2«"
-execute_on_song_change = "lastfm -nqo"
+execute_on_song_change = "lastfm -vnqo"
 
 # playlist
 browser_playlist_prefix = "$3 ♥ $3 "
