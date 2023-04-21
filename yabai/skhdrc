@@ -4,7 +4,7 @@ ctrl - return : tmx new
 ctrl - o : tmx attach
 
 # finder
-cmd - o : open-app finder
+cmd - n : open-app finder
 
 #tmux won't map C-Tab or C-`
 ctrl - tab [
@@ -58,22 +58,25 @@ cmd + shift - n : night
 # cmd - h : toggleshadow
 cmd - h : togglebar
 
+# lastfm
+cmd + shift - l : lastfm -noq
+
 # screenshot
 cmd + shift - p : scr -n
 cmd - p : scr -nu
 
 # thps
-rcmd + shift - t : bash ~/scripts/bin/thugpro
+cmd + shift - t : bash ~/scripts/bin/thugpro
 
 # fullscreen
-# cmd + shift - f : chunkc tiling::window --toggle native-fullscreen
+cmd + shift - f : chunkc tiling::window --toggle native-fullscreen
 
 ############################
 # yabai                    #
 ############################
 
 # create & destroy
-#shift + ctrl - return : yabai -m space --create && landscape
+shift + ctrl - return : yabai -m space --create && landscape
 #create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
 shift + ctrl - return : yabai -m space --create && \
 									index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
@@ -87,11 +90,30 @@ ctrl - space : yabai -m space --layout bsp
 shift + ctrl - space : yabai -m space --layout float
 ctrl - f : yabai -m window --toggle native-fullscreen
 
+# rebind
+ctrl - down : skhd -k "pagedown"
+ctrl - up : skhd -k "pageup"
+# brightness
+f1 : osascript -e 'tell application "System Events"' -e 'key code 145' -e ' end tell'
+f2 : osascript -e 'tell application "System Events"' -e 'key code 144' -e ' end tell'
+f11 : m volume down
+f12 : m volume up
+cmd - escape : m shutdown
+
+
 # move
 ctrl - left : yabai -m space --focus prev && landscape
 ctrl - right : yabai -m space --focus next && landscape
-alt - left : yabai -m window --focus prev
-alt - right : yabai -m window --focus next
+ctrl - left : yabai -m window --focus west
+ctrl - right : yabai -m window --focus east
+cmd - up : yabai -m window --focus north
+cmd - down : yabai -m window --focus south
+cmd - left : yabai -m window --focus west
+cmd - right : yabai -m window --focus east
+ctrl + shift - left : yabai -m window --swap west
+ctrl + shift - right : yabai -m window --swap east
+ctrl + shift - up : yabai -m window --swap north
+ctrl + shift - down : yabai -m window --swap south
 ctrl - 1 : landscape -p; yabai -m space --focus 1; landscape
 ctrl - 2 : landscape -p; yabai -m space --focus 2; landscape
 ctrl - 3 : landscape -p; yabai -m space --focus 3; landscape

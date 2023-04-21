@@ -69,6 +69,7 @@ brew install rmtrash
 brew install romkatv/powerlevel10k/powerlevel10k
 brew install fd
 brew install koekeishiya/formulae/krp
+brew install m-cli
 
 # install node + npm packages
 #curl -sL install-node.now.sh/lts | bash

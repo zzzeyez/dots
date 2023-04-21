@@ -80,8 +80,15 @@ fzykill() {
   ps aux | fzy | awk '{ print $2 }' | xargs kill
 }
 
+start() {
+	skhd & disown
+	open -a unshaky
+	mopidy & disown 
+	exit
+}
+
 # iterm2italics fix
-export TERM=xterm-256color-italic
+#export TERM=xterm-256color-italic
 
 # nvim man page
 export MANPAGER='nvim +Man!'

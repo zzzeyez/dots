@@ -1,10 +1,11 @@
 :root {
   /* size 
    ---------------------------------------- */
-  --height: 36px;
+  --height: 32px;
 
   /* background colors 
    ---------------------------------------- */
+  --background: var(--color0);
   --background-base: var(--background, #222);
   --background-workspace: var(--color1, #222);
   --background-load: var(--background, #222);
@@ -48,9 +49,9 @@
 
   /* border 
    ---------------------------------------- */
-  --border: 0px;
+  --border: 3px;
   --border-radius: 0px;
-  --border-radius-inner: 0px;
+  --border-radius-inner: 3px;
 
   /* typography 
    ---------------------------------------- */
@@ -66,7 +67,7 @@
   --height-xanthia: calc(
   var(--height) - var(--border) * 2
   );    
-  --height-xanthia-image: 200px;
+  --height-xanthia-image: 120px;
 
   /* color + opacity 
    ---------------------------------------- */
@@ -103,9 +104,9 @@
    ---------------------------------------- */
   --border-radius-right-xanthia: var(--border-radius-inner);
   --border-radius-left-xanthia: var(--border-radius-inner);
-  --border-radius-right-xanthia-image: 3px;
-  --border-radius-left-xanthia-image: 3px;
-  --border-xanthia-image: var(--border);
+  --border-radius-right-xanthia-image: var(--border-radius-inner);
+  --border-radius-left-xanthia-image: var(--border-radius-inner);
+  --border-xanthia-image: 0;
   --shadow-xanthia: var(--shadow-inner);
   --shadow-xanthia-image: var(--shadow-inner);
 
@@ -113,8 +114,8 @@
    -------------------------------------------------------------- */
 
 	/*--background-landscape: ;*/
-	--border-landscape: 0px;
+	--border-landscape: var(--border);
 	/*--margin-landscape: ;*/
-	/*--border-radius-landscape: ;*/
+	--border-radius-landscape: var(--border-radius-inner);
 	--shadow-landscape: NONE;
 }

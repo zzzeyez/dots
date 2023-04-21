@@ -1,21 +1,24 @@
-sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
 
 # default
-yabai -m config layout float
-yabai -m config top_padding    46
+yabai -m config layout bsp
+yabai -m config top_padding    10
 yabai -m config bottom_padding 10
 yabai -m config left_padding   10
 yabai -m config right_padding  10
 yabai -m config window_gap     10
 
 # space 1
-yabai -m config --space 1 layout bsp
-yabai -m config --space 1 top_padding 36
-yabai -m config --space 1 bottom_padding 0
-yabai -m config --space 1 left_padding   0
-yabai -m config --space 1 right_padding  0
-yabai -m config --space 1 window_gap 0
+yabai -m config --space 1 layout float
+yabai -m config --space 1 top_padding 10
+yabai -m config --space 1 bottom_padding 10
+yabai -m config --space 1 left_padding   10
+yabai -m config --space 1 right_padding  10
+yabai -m config --space 1 window_gap 10
+
+#bar
+yabai -m config external_bar off:0:0
 
 # options
 yabai -m config mouse_modifier ctrl

@@ -7,6 +7,10 @@ vim.g.mapleader = " "
 -- ;
 map("n", ";", ":", {})
 
+-- Pages in half
+map("n", "PageUp", "<C-u>", {})
+map("n", "PageDown", "<C-d>", {})
+
 -- redo
 map("n", "U", "<C-R>", {})
 
@@ -42,11 +46,11 @@ map("n", "[c", ":PrevDiagnosticCycle<CR>", opts)
 map("n", "]c", ":NextDiagnosticCycle<CR>", opts)
 
 -- commenter
-map("v", "-", ":call NERDComment(\"n\", \"Toggle\")<CR>", opts)
-map("n", "-", ":call NERDComment(\"n\", \"Toggle\")<CR>", opts)
+map("v", "-", ":call nerdcommenter#Comment(\"n\", \"Toggle\")<CR>", opts)
+map("n", "-", ":call nerdcommenter#Comment(\"n\", \"Toggle\")<CR>", opts)
 
 -- formatter
 map("n", ";p", ":Format<CR>", opts)
 
 -- minimap
-map("n", "m", ":MinimapToggle<CR>", opts)
+map("n", ";m", ":MinimapToggle<CR>", opts)

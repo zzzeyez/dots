@@ -40,9 +40,7 @@ hi TabLineFill ctermbg=NONE ctermfg=8
 hi TabLineSel ctermbg=4 ctermfg=8
 hi TermCursorNC ctermbg=3 ctermfg=0
 hi Title ctermbg=NONE ctermfg=4
-hi CursorLine ctermbg=8 ctermfg=NONE cterm=NONE
 hi LineNr ctermbg=NONE ctermfg=8
-hi CursorLineNr ctermbg=NONE ctermfg=7
 hi helpLeadBlank ctermbg=NONE ctermfg=7
 hi helpNormal ctermbg=NONE ctermfg=7
 hi Visual ctermbg=0 ctermfg=15 cterm=reverse term=reverse
@@ -188,19 +186,29 @@ hi ALEWarning ctermbg=NONE ctermfg=3
 
 " hide splits
 hi VertSplit cterm=NONE ctermfg=NONE ctermbg=NONE
+
 " hide empty line tilde
 hi! EndOfBuffer ctermbg=NONE ctermfg=0
+
 " minimap
-hi MinimapCurrentLine ctermfg=1 ctermbg=NONE
-hi MinimapBase ctermfg=8 ctermbg=NONE
-let g:minimap_highlight = 'MinimapCurrentLine'
-let g:minimap_base_highlight = 'MinimapBase'
+"let g:minimap_cursor_color = 'MinimapCursor'
+"let g:minimap_range_color = 'MinimapRange'
+"let g:minimap_base_highlight = 'MinimapBase'
+"let g:minimap_highlight = 'MinimapCurrentLine'
+"hi MinimapCursor ctermfg=1 ctermbg=3
+"hi MinimapRange ctermfg=1 ctermbg=3
+"hi MinimapBase ctermfg=8 ctermbg=NONE
+"hi MinimapCurrentLine ctermfg=1 ctermbg=3
 
 " italics
 hi Directory cterm=italic
 hi Comment cterm=italic
 hi String cterm=italic
 hi Statement cterm=italic
+
+"cursor line number
+hi CursorLine ctermbg=8 ctermfg=8 cterm=NONE
+hi CursorLineNr ctermbg=NONE ctermfg=1
 
 " }}}
 

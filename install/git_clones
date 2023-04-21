@@ -35,3 +35,4 @@ nvim-treesitter/nvim-treesitter             .config/nvim/pack/plugins/start/nvim
 mfussenegger/nvim-fzy                       .config/nvim/pack/plugins/start/nvim-fzy
 preservim/nerdcommenter                     .config/nvim/pack/plugins/start/nerdcommenter
 zirrostig/vim-repaste                       .config/nvim/pack/plugins/start/vim-repaste
+psliwka/vim-smoothie                        .config/nvim/pack/plugins/start/vim-smoothie

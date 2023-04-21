@@ -2,7 +2,7 @@ local M = {}
 
 -- Key mapping
 function M.map(mode, key, result, opts)
-  vim.fn.nvim_set_keymap(
+  vim.api.nvim_set_keymap(
     mode,
     key,
     result,
