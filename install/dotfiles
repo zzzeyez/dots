@@ -28,6 +28,14 @@ ncmpcpp/mopidy.conf .config/mopidy/mopidy.conf
 title=neovim
 nvim .config/nvim
 
+# lf
+title=lf
+lf .config/lf
+
+# neofetch
+title=neofetch
+neofetch .config/neofetch
+
 # tmux
 title=tmux
 tmux/tmux.conf .tmux.conf
