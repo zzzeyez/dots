@@ -51,11 +51,15 @@ brew install gotop
 brew install neofetch
 brew install fff
 brew install redshift
+brew install lf
+brew install viu #lf needs this for it's image previews on macos
 brew install git
 brew install git-lfs
 #brew install youtube-dl
 brew install imagemagick
 brew install jq
+brew install npm
+brew install go
 brew install mpd
 brew tap mopidy/mopidy
 brew install mopidy

@@ -171,7 +171,8 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool true
 # set repeat rate to 15ms, fastest value in system pref = 2 (30ms)
 defaults write NSGlobalDomain KeyRepeat -float 1
 # set delay until repeat to 135ms, fastest value in system pref = 15 (225ms)
-defaults write NSGlobalDomain InitialKeyRepeat -int 9
+# dont go below 10 lol
+defaults write NSGlobalDomain InitialKeyRepeat -int 11
 
 ##
 # map caps-lock to alt-key (resets on reboot)

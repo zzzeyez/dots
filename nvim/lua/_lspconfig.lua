@@ -1,19 +1,19 @@
-local lspconfig = require "lspconfig"
-local configs = require "lspconfig/configs"
-local completion = require "completion"
-local utils = require "utils"
+--local lspconfig = require "lspconfig"
+--local configs = require "lspconfig/configs"
+--local completion = require "completion"
+--local utils = require "utils"
 
-local on_attach = function(client)
-  completion.on_attach(client)
+--local on_attach = function(client)
+  --completion.on_attach(client)
 
-  local opts = {noremap = true, silent = true}
+  --local opts = {noremap = true, silent = true}
 
-  vim.api.nvim_command("autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()")
+  --vim.api.nvim_command("autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()")
 
-  vim.api.nvim_command("autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()")
+  --vim.api.nvim_command("autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()")
 
-  vim.api.nvim_command("autocmd CursorMoved <buffer> lua vim.lsp.util.buf_clear_references()")
-end
+  --vim.api.nvim_command("autocmd CursorMoved <buffer> lua vim.lsp.util.buf_clear_references()")
+--end
 
 --require("nlua.lsp.nvim").setup(
 --  lspconfig,
@@ -31,11 +31,11 @@ end
 --  }
 --}
 
-local servers = {
-  bashls = {},
-  vimls = {},
-  tsserver = {},
-  jsonls = {},
+--local servers = {
+  --bashls = {},
+  --vimls = {},
+  --tsserver = {},
+  --jsonls = {},
 --  clangd = {},
 --  svelte = {},
 --  jedi_language_server = {},
@@ -43,7 +43,7 @@ local servers = {
 --    filetypes = {"html", "jinja"}
 --  },
 --  vuels = {},
-  cssls = {},
+  --cssls = {},
 --  gopls = {
 --    cmd = {"gopls", "serve"},
 --    settings = {
@@ -55,8 +55,8 @@ local servers = {
 --      }
 --    }
 --  }
-}
+--}
 
-for server, config in pairs(servers) do
-  lspconfig[server].setup(vim.tbl_deep_extend("force", {on_attach = on_attach}, config))
-end
+--for server, config in pairs(servers) do
+  --lspconfig[server].setup(vim.tbl_deep_extend("force", {on_attach = on_attach}, config))
+--end

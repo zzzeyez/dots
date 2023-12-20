@@ -28,9 +28,9 @@ f() {
 }
 
 # rm to trash
-rm() {
-	rmtrash "$@"
-}
+#rm() {
+#	rmtrash "$@"
+#}
 
 # cd + ls
 # autoload -U add-zsh-hook
@@ -95,4 +95,11 @@ export MANPAGER='nvim +Man!'
 
 # remove right padding
 ZLE_RPROMPT_INDENT=0
+
+export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin/usr/bin/local:/Users/zzzeyez/scripts/bin:/Users/zzzeyez/.bin:/usr/local/opt/coreutils/libexec/gnubin:/opt/X11/bin
+
+# fixes "command not found python" error
+export PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 

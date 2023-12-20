@@ -199,12 +199,20 @@ hi! EndOfBuffer ctermbg=NONE ctermfg=0
 "hi MinimapRange ctermfg=1 ctermbg=3
 "hi MinimapBase ctermfg=8 ctermbg=NONE
 "hi MinimapCurrentLine ctermfg=1 ctermbg=3
+hi CodewindowBorder ctermbg=NONE ctermfg=NONE
+hi CodewindowBackground ctermbg=NONE ctermfg=8
+hi CodewindowWarn ctermbg=NONE ctermfg=1
+hi CodewindowError ctermbg=NONE ctermfg=1
+hi CodewindowAddition ctermbg=NONE ctermfg=1
+hi CodewindowDeletion ctermbg=NONE ctermfg=1
+hi CodewindowUnderline ctermbg=NONE ctermfg=NONE
+hi CodewindowBoundsBackground ctermbg=NONE ctermfg=8
 
 " italics
-hi Directory cterm=italic
+hi Directory cterm=NONE
 hi Comment cterm=italic
 hi String cterm=italic
-hi Statement cterm=italic
+hi Statement cterm=NONE
 
 "cursor line number
 hi CursorLine ctermbg=8 ctermfg=8 cterm=NONE

@@ -28,9 +28,9 @@ cmd - t [
 
 # wallpaper
 fast : wallpaper -o ~/pictures/wallpapers
-cmd + shift - 0 : wallpaper ~/pictures/wallpapers
-lcmd - 0 : wallpaper -o ~/pictures/wallpapers
-cmd + shift - d : new-roses -ns ~/pictures/wallpapers
+#cmd + shift - 0 : wallpaper ~/pictures/wallpapers
+lcmd - 0 : wallpaper -no ~/pictures/wallpapers
+#cmd + shift - d : new-roses -ns ~/pictures/wallpapers
 # colors
 rcmd - 0 : wallpaper -o 0
 rcmd - 1 : wallpaper -o 1
@@ -44,19 +44,19 @@ rcmd - 8 : wallpaper -o 8
 
 # palette
 play : colorlovers -nqr
-cmd + shift - r : colorlovers -nqr
-lcmd + shift - e : colorlovers -nq -b 202020
-lcmd + shift - w : colorlovers -nq -b fefefe
-rcmd + shift - e : wal -i ~/pictures/wallpapers -q -o wal-set
-rcmd + shift - w : wal -i ~/pictures/wallpapers -l -q -o wal-set
-cmd + shift - s : colorlovers -nqs
+cmd + shift - 0 : colorlovers -nqr
+#lcmd + shift - e : colorlovers -nq -b 202020
+#lcmd + shift - w : colorlovers -nq -b fefefe
+#rcmd + shift - e : wal -i ~/pictures/wallpapers -q -o wal-set
+#rcmd + shift - w : wal -i ~/pictures/wallpapers -l -q -o wal-set
+#cmd + shift - s : colorlovers -nqs
 
 # nightmode
-cmd + shift - n : night
+#cmd + shift - n : night
 
 # bar
 # cmd - h : toggleshadow
-cmd - h : togglebar
+cmd + shift - h : togglebar
 
 # lastfm
 cmd + shift - l : lastfm -noq
@@ -102,28 +102,29 @@ cmd - escape : m shutdown
 
 
 # move
-ctrl - left : yabai -m space --focus prev && landscape
-ctrl - right : yabai -m space --focus next && landscape
-ctrl - left : yabai -m window --focus west
-ctrl - right : yabai -m window --focus east
+# causing problems rn :(
+#ctrl - left : yabai -m space --focus prev && landscape
+#ctrl - right : yabai -m space --focus next && landscape
+#ctrl - left : yabai -m window --focus west
+#ctrl - right : yabai -m window --focus east
 cmd - up : yabai -m window --focus north
 cmd - down : yabai -m window --focus south
 cmd - left : yabai -m window --focus west
 cmd - right : yabai -m window --focus east
-ctrl + shift - left : yabai -m window --swap west
-ctrl + shift - right : yabai -m window --swap east
-ctrl + shift - up : yabai -m window --swap north
-ctrl + shift - down : yabai -m window --swap south
-ctrl - 1 : landscape -p; yabai -m space --focus 1; landscape
-ctrl - 2 : landscape -p; yabai -m space --focus 2; landscape
-ctrl - 3 : landscape -p; yabai -m space --focus 3; landscape
-ctrl - 4 : landscape -p; yabai -m space --focus 4; landscape
-ctrl - 5 : landscape -p; yabai -m space --focus 5; landscape
-ctrl - 6 : landscape -p; yabai -m space --focus 6; landscape
-ctrl - 7 : landscape -p; yabai -m space --focus 7; landscape
-ctrl - 8 : landscape -p; yabai -m space --focus 8; landscape
-ctrl - 9 : landscape -p; yabai -m space --focus 9; landscape
-ctrl - 0 : landscape -p; yabai -m space --focus 10; landscape
+cmd + shift - left : yabai -m window --swap west
+cmd + shift - right : yabai -m window --swap east
+cmd + shift - up : yabai -m window --swap north
+cmd + shift - down : yabai -m window --swap south
+#ctrl - 1 : landscape -p; yabai -m space --focus 1; landscape
+#ctrl - 2 : landscape -p; yabai -m space --focus 2; landscape
+#ctrl - 3 : landscape -p; yabai -m space --focus 3; landscape
+#ctrl - 4 : landscape -p; yabai -m space --focus 4; landscape
+#ctrl - 5 : landscape -p; yabai -m space --focus 5; landscape
+#ctrl - 6 : landscape -p; yabai -m space --focus 6; landscape
+#ctrl - 7 : landscape -p; yabai -m space --focus 7; landscape
+#ctrl - 8 : landscape -p; yabai -m space --focus 8; landscape
+#ctrl - 9 : landscape -p; yabai -m space --focus 9; landscape
+#ctrl - 0 : landscape -p; yabai -m space --focus 10; landscape
 shift + ctrl - left : yabai -m window --space prev; landscape -p; yabai -m space --focus prev; landscape
 shift + ctrl - right : yabai -m window --space next; landscape -p; yabai -m space --focus next; landscape
 shift + ctrl - 1 : yabai -m window --space 1; landscape -p; yabai -m space --focus 1; landscape

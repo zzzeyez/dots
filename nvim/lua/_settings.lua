@@ -3,6 +3,10 @@ local o = vim.o
 local bo = vim.bo
 local g = vim.g
 
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- main
 g.mapleader = " "
 o.clipboard = "unnamedplus"
